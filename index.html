@@ -3,10 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>대양상사 웹사이트</title>
+    <title>메인 퀵메뉴</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Noto Sans KR 폰트 적용 */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        /* 각 메뉴 제목 아래의 색상 밑줄 효과 */
+        .menu-title-underline::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            margin: 8px auto 0;
+        }
+        .underline-red::after { background-color: #D9534F; }
+        .underline-green::after { background-color: #5CB85C; }
+        .underline-yellow::after { background-color: #F0AD4E; }
+        .underline-blue::after { background-color: #428BCA; }
+
+        /* 페이지 전환 애니메이션 */
+        .page {
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+        .page.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            position: absolute;
+            pointer-events: none;
+        }
+    </style>
 </head>
-<body>
-    <h1>안녕하세요! GitHub Pages입니다.</h1>
-    <p>이곳은 대양상사의 웹사이트 프로젝트입니다.</p>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <div id="app-container" class="w-full max-w-6xl">
+
+        <!-- 메인 페이지 -->
+        <main id="main-page" class="page text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800">주요 퀵메뉴</h1>
+            <p class="text-lg md:text-xl text-gray-500 mt-2 mb-12 md:mb-20">MAIN QUICK MENU</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                
+                <!-- 1. 회사소개 -->
+                <div class="menu-item flex flex-col items-center">
+                    <div class="w-36 h-36 md:w-44 md:h-44 bg-white rounded-full flex items-center justify-center shadow-lg mb-6">
+                        <!-- 호텔 아이콘 SVG -->
+                        <svg class="w-16 h-16 md:w-20 md:h-20 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0v-4m0 4h5m0-4v4m0-4H8m4.5-9h.01M12 12h.01M9.5 12h.01M7 12h.01M7 15h.01M9.5 15h.01M12 15h.01M14.5 15h.01M17 15h.01M7 18h.01M9.5 18h.01M12 18h.01M14.5 18h.01M17 18h.01"></path></svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-700 menu-title-underline underline-red">회사소개</h2>
+                    <p class="text-gray-500 mt-4 px-2">노하우와 서비스로 최고의 상품을 만들고자 노력합니다.</p>
+                </div>
+
+                <!-- 2. 온라인문의 -->
+                <div class="menu-item flex flex-col items-center">
+                    <div class="w-36 h-36 md:w-44 md:h-44 bg-white rounded-full flex items-center justify-center shadow-lg mb-6">
+                         <!-- 컴퓨터 아이콘 SVG -->
+                        <svg class="w-16 h-16 md:w-20 md:h-20 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path><rect x="10" y="8" width="4" height="1.5" rx="0.5" fill="currentColor"/><rect x="10" y="10.5" width="4" height="1.5" rx="0.5" fill="currentColor"/></svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-700 menu-title-underline underline-green">온라인문의</h2>
+                    <p class="text-gray-500 mt-4 px-2">무엇이 궁금하신가요. 성의를 다해 답변해 드리겠습니다.</p>
+                </div>
+
+                <!-- 3. 질문과답변 -->
+                <div class="menu-item flex flex-col items-center">
+                    <div class="w-36 h-36 md:w-44 md:h-44 bg-white rounded-full flex items-center justify-center shadow-lg mb-6">
+                        <!-- 필기구 아이콘 SVG -->
+                        <svg class="w-16 h-16 md:w-20 md:h-20 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17.5 4.5l-10 10 M15 7.5l-5 5 M12.5 10.5l-1 1 M18 7l-2 2 M14 5l2-2" stroke="currentColor" stroke-width="0.7"></path><path d="M5 15h8" stroke-width="1.5" stroke-linecap="round"></path><path d="M5 12h8" stroke-width="1.5" stroke-linecap="round"></path><path d="M5 9h5" stroke-width="1.5" stroke-linecap="round"></path></svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-700 menu-title-underline underline-yellow">질문과답변</h2>
+                    <p class="text-gray-500 mt-4 px-2">대양상사 질문과답변 입니다. 궁금하신내용을 답변해 드립니다.</p>
+                </div>
+
+                <!-- 4. 카다로그 (버튼) -->
+                <a href="#" id="catalog-button" class="menu-item flex flex-col items-center cursor-pointer">
+                    <div class="w-36 h-36 md:w-44 md:h-44 bg-white rounded-full flex items-center justify-center shadow-lg mb-6 transform transition hover:scale-105">
+                        <!-- 문서 아이콘 SVG -->
+                        <svg class="w-16 h-16 md:w-20 md:h-20 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13.5l2 2 4-4"></path></svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-700 menu-title-underline underline-blue">카다로그</h2>
+                    <p class="text-gray-500 mt-4 px-2">대양상사의 카다로그를 보여드립니다. 무엇이 있는지 궁금하신가요.</p>
+                </a>
+
+            </div>
+        </main>
+
+        <!-- 카탈로그 페이지 -->
+        <section id="catalog-page" class="page hidden text-center bg-white p-8 md:p-16 rounded-lg shadow-xl">
+             <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-8">카다로그</h1>
+             <p class="text-lg text-gray-600 mb-12">
+                이곳에 카탈로그 내용이 표시됩니다. 상품 목록, 이미지, 설명 등을 추가할 수 있습니다.
+             </p>
+             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 예시 카탈로그 아이템 -->
+                <div class="border rounded-lg p-4">
+                    <img src="https://placehold.co/400x300/e2e8f0/333?text=상품+1" alt="상품 이미지 1" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-bold">프리미엄 상품 A</h3>
+                    <p class="text-gray-500 mt-2">최고급 소재로 만든 프리미엄 상품입니다.</p>
+                </div>
+                <div class="border rounded-lg p-4">
+                    <img src="https://placehold.co/400x300/e2e8f0/333?text=상품+2" alt="상품 이미지 2" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-bold">스탠다드 상품 B</h3>
+                    <p class="text-gray-500 mt-2">실용성과 디자인을 모두 갖춘 상품입니다.</p>
+                </div>
+                 <div class="border rounded-lg p-4">
+                    <img src="https://placehold.co/400x300/e2e8f0/333?text=상품+3" alt="상품 이미지 3" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-xl font-bold">이코노미 상품 C</h3>
+                    <p class="text-gray-500 mt-2">합리적인 가격의 실속있는 상품입니다.</p>
+                </div>
+             </div>
+             <button id="back-button" class="mt-12 bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg transition">
+                메인으로 돌아가기
+             </button>
+        </section>
+
+    </div>
+
+
+    <script>
+        // 페이지 요소 가져오기
+        const mainPage = document.getElementById('main-page');
+        const catalogPage = document.getElementById('catalog-page');
+        
+        // 버튼 요소 가져오기
+        const catalogButton = document.getElementById('catalog-button');
+        const backButton = document.getElementById('back-button');
+
+        // '카다로그' 버튼 클릭 이벤트
+        catalogButton.addEventListener('click', (e) => {
+            e.preventDefault(); // 링크의 기본 동작 방지
+            
+            // 메인 페이지 숨기고 카탈로그 페이지 보이기
+            mainPage.classList.add('hidden');
+            catalogPage.classList.remove('hidden');
+            
+            // 스크롤을 맨 위로 이동
+            window.scrollTo(0, 0);
+        });
+
+        // '메인으로 돌아가기' 버튼 클릭 이벤트
+        backButton.addEventListener('click', () => {
+            // 카탈로그 페이지 숨기고 메인 페이지 보이기
+            catalogPage.classList.add('hidden');
+            mainPage.classList.remove('hidden');
+
+            // 스크롤을 맨 위로 이동
+            window.scrollTo(0, 0);
+        });
+    </script>
 </body>
 </html>
