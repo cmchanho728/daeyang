@@ -26,16 +26,6 @@
         .underline-yellow::after { background-color: #F0AD4E; }
         .underline-blue::after { background-color: #428BCA; }
 
-        /* 페이지 전환 애니메이션 */
-        .page {
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-        }
-        .page.hidden {
-            opacity: 0;
-            transform: translateY(20px);
-            position: absolute;
-            pointer-events: none;
-        }
     </style>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
@@ -79,8 +69,8 @@
                     <p class="text-gray-500 mt-4 px-2">대양상사 질문과답변 입니다. 궁금하신내용을 답변해 드립니다.</p>
                 </div>
 
-                <!-- 4. 카다로그 (버튼) -->
-                <a href="#" id="catalog-button" class="menu-item flex flex-col items-center cursor-pointer">
+                <!-- 4. 카다로그 (PDF 링크) -->
+                <a href="카다로그.pdf" target="_blank" class="menu-item flex flex-col items-center cursor-pointer">
                     <div class="w-36 h-36 md:w-44 md:h-44 bg-white rounded-full flex items-center justify-center shadow-lg mb-6 transform transition hover:scale-105">
                         <!-- 문서 아이콘 SVG -->
                         <svg class="w-16 h-16 md:w-20 md:h-20 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13.5l2 2 4-4"></path></svg>
@@ -91,69 +81,12 @@
 
             </div>
         </main>
-
-        <!-- 카탈로그 페이지 -->
-        <section id="catalog-page" class="page hidden text-center bg-white p-8 md:p-16 rounded-lg shadow-xl">
-             <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-8">카다로그</h1>
-             <p class="text-lg text-gray-600 mb-12">
-                이곳에 카탈로그 내용이 표시됩니다. 상품 목록, 이미지, 설명 등을 추가할 수 있습니다.
-             </p>
-             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- 예시 카탈로그 아이템 -->
-                <div class="border rounded-lg p-4">
-                    <img src="https://placehold.co/400x300/e2e8f0/333?text=상품+1" alt="상품 이미지 1" class="w-full h-48 object-cover rounded-md mb-4">
-                    <h3 class="text-xl font-bold">프리미엄 상품 A</h3>
-                    <p class="text-gray-500 mt-2">최고급 소재로 만든 프리미엄 상품입니다.</p>
-                </div>
-                <div class="border rounded-lg p-4">
-                    <img src="https://placehold.co/400x300/e2e8f0/333?text=상품+2" alt="상품 이미지 2" class="w-full h-48 object-cover rounded-md mb-4">
-                    <h3 class="text-xl font-bold">스탠다드 상품 B</h3>
-                    <p class="text-gray-500 mt-2">실용성과 디자인을 모두 갖춘 상품입니다.</p>
-                </div>
-                 <div class="border rounded-lg p-4">
-                    <img src="https://placehold.co/400x300/e2e8f0/333?text=상품+3" alt="상품 이미지 3" class="w-full h-48 object-cover rounded-md mb-4">
-                    <h3 class="text-xl font-bold">이코노미 상품 C</h3>
-                    <p class="text-gray-500 mt-2">합리적인 가격의 실속있는 상품입니다.</p>
-                </div>
-             </div>
-             <button id="back-button" class="mt-12 bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-lg transition">
-                메인으로 돌아가기
-             </button>
-        </section>
-
     </div>
 
-
+    <!-- 스크립트가 더 이상 필요하지 않으므로 삭제하거나 비워둡니다. -->
     <script>
-        // 페이지 요소 가져오기
-        const mainPage = document.getElementById('main-page');
-        const catalogPage = document.getElementById('catalog-page');
-        
-        // 버튼 요소 가져오기
-        const catalogButton = document.getElementById('catalog-button');
-        const backButton = document.getElementById('back-button');
-
-        // '카다로그' 버튼 클릭 이벤트
-        catalogButton.addEventListener('click', (e) => {
-            e.preventDefault(); // 링크의 기본 동작 방지
-            
-            // 메인 페이지 숨기고 카탈로그 페이지 보이기
-            mainPage.classList.add('hidden');
-            catalogPage.classList.remove('hidden');
-            
-            // 스크롤을 맨 위로 이동
-            window.scrollTo(0, 0);
-        });
-
-        // '메인으로 돌아가기' 버튼 클릭 이벤트
-        backButton.addEventListener('click', () => {
-            // 카탈로그 페이지 숨기고 메인 페이지 보이기
-            catalogPage.classList.add('hidden');
-            mainPage.classList.remove('hidden');
-
-            // 스크롤을 맨 위로 이동
-            window.scrollTo(0, 0);
-        });
+        // 현재 페이지에서는 JavaScript 기능이 필수는 아닙니다.
+        // 다른 메뉴에 동적인 기능을 추가할 경우 여기에 작성할 수 있습니다.
     </script>
 </body>
 </html>
