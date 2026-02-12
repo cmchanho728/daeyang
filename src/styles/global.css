@@ -90,3 +90,17 @@ button{font:inherit}
   padding:4px 10px;
   border-radius:999px;
 }
+
+.main-image-section{
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+}
+
+.main-image{
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+}
