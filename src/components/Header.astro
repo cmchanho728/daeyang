@@ -1,5 +1,6 @@
 ---
 const base = import.meta.env.BASE_URL;
+
 const nav = [
   { label: "회사소개", href: `${base}about/` },
   { label: "사업분야", href: `${base}business/` },
@@ -11,37 +12,60 @@ const nav = [
 
 <header class="header">
   <div class="container bar">
-    <a class="logo" href={import.meta.env.BASE_URL}>
+    <!-- 🔹 로고: 항상 홈으로 이동 -->
+    <a class="logo" href={base}>
       <span class="mark">DY</span>
       <span class="name">대양특장</span>
     </a>
 
-    <!-- Desktop nav -->
+    <!-- 🔹 데스크탑 메뉴 -->
     <nav class="nav-desktop" aria-label="주요 메뉴">
-      {nav.map((i) => <a class="nav-link" href={i.href}>{i.label}</a>)}
-      <a class="btn primary" href={`${base}contact/`}>견적/문의</a>
+      {nav.map((item) => (
+        <a class="nav-link" href={item.href}>
+          {item.label}
+        </a>
+      ))}
+      <a class="btn primary" href={`${base}contact/`}>
+        견적/문의
+      </a>
     </nav>
 
-    <!-- Mobile button -->
-    <button class="menu-btn" aria-label="메뉴 열기" aria-expanded="false" data-menu-btn>
+    <!-- 🔹 모바일 햄버거 -->
+    <button
+      class="menu-btn"
+      aria-label="메뉴 열기"
+      aria-expanded="false"
+      data-menu-btn
+    >
       ☰
     </button>
   </div>
 
-  <!-- Mobile panel -->
+  <!-- 🔹 모바일 메뉴 패널 -->
   <div class="mobile-panel" data-mobile-panel hidden>
     <div class="container mobile-inner">
-      {nav.map((i) => <a class="mobile-link" href={i.href}>{i.label}</a>)}
+      {nav.map((item) => (
+        <a class="mobile-link" href={item.href}>
+          {item.label}
+        </a>
+      ))}
+
       <div class="mobile-cta">
-        <a class="btn primary" href={`${base}contact/`}>견적/문의</a>
-        <a class="btn ghost" href="tel:000-0000-0000">전화하기</a>
+        <a class="btn primary" href={`${base}contact/`}>
+          견적/문의
+        </a>
+        <a class="btn ghost" href="tel:031-858-2277">
+          전화하기
+        </a>
       </div>
     </div>
   </div>
 
+  <!-- 🔹 모바일 토글 스크립트 -->
   <script is:inline>
     const btn = document.querySelector('[data-menu-btn]');
     const panel = document.querySelector('[data-mobile-panel]');
+
     if (btn && panel) {
       btn.addEventListener('click', () => {
         const open = btn.getAttribute('aria-expanded') === 'true';
@@ -54,47 +78,103 @@ const nav = [
 </header>
 
 <style>
-.header{
-  position:sticky; top:0; z-index:50;
-  background:rgba(255,255,255,0.92);
-  backdrop-filter:saturate(180%) blur(10px);
-  border-bottom:1px solid var(--line);
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid var(--line);
 }
-.bar{display:flex; align-items:center; justify-content:space-between; height:60px}
-.logo{display:flex; gap:10px; align-items:center}
-.mark{
-  width:34px; height:34px; display:inline-flex; align-items:center; justify-content:center;
-  border-radius:10px;
-  background:#eff6ff; color:var(--brand); border:1px solid #dbeafe;
-  font-weight:800;
-}
-.name{font-weight:800; letter-spacing:-0.02em}
-.nav-desktop{display:none; align-items:center; gap:16px}
-.nav-link{color:var(--muted); font-weight:600}
-.nav-link:hover{color:var(--text)}
 
-.menu-btn{
-  display:inline-flex; align-items:center; justify-content:center;
-  width:44px; height:44px;
-  border-radius:12px;
-  border:1px solid var(--line);
-  background:#fff;
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
 }
-.mobile-panel{
-  border-top:1px solid var(--line);
-  background:#fff;
-}
-.mobile-inner{padding:16px}
-.mobile-link{
-  display:block;
-  padding:12px 4px;
-  border-bottom:1px solid var(--line);
-  font-weight:700;
-}
-.mobile-cta{display:grid; grid-template-columns:1fr; gap:10px; padding-top:14px}
 
-@media (min-width:1024px){
-  .menu-btn, .mobile-panel{display:none}
-  .nav-desktop{display:flex}
+.logo {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.mark {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #eff6ff;
+  color: var(--brand);
+  border: 1px solid #dbeafe;
+  font-weight: 800;
+}
+
+.name {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.nav-desktop {
+  display: none;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-link {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.nav-link:hover {
+  color: var(--text);
+}
+
+.menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.mobile-panel {
+  border-top: 1px solid var(--line);
+  background: #fff;
+}
+
+.mobile-inner {
+  padding: 16px;
+}
+
+.mobile-link {
+  display: block;
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--line);
+  font-weight: 700;
+}
+
+.mobile-cta {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding-top: 14px;
+}
+
+@media (min-width: 1024px) {
+  .menu-btn,
+  .mobile-panel {
+    display: none;
+  }
+
+  .nav-desktop {
+    display: flex;
+  }
 }
 </style>
