@@ -1,0 +1,38 @@
+<footer class="footer">
+  <div class="container inner">
+    <div class="brand">
+      <div class="title">대양특장</div>
+      <div class="desc">산업용 자재 · 부품 · 납품</div>
+    </div>
+
+    <div class="cols">
+      <div>
+        <div class="head">연락처</div>
+        <div class="item"><a href="tel:000-0000-0000">전화: 031-858-2277</a></div>
+        <div class="item"><a href="mailto:info@dyic.kr">이메일: daeyangsss@kakao.com</a></div>
+      </div>
+      <div>
+        <div class="head">주소</div>
+        <div class="item">경기도 양주시 남면 은남로 76-4</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container bottom">
+    <span>© {new Date().getFullYear()} 대양특장 주식회사. All rights reserved.</span>
+  </div>
+</footer>
+
+<style>
+.footer{border-top:1px solid var(--line); background:#fff}
+.inner{padding:24px 16px}
+.brand .title{font-weight:900}
+.brand .desc{color:var(--muted); margin-top:4px}
+.cols{display:grid; gap:14px; margin-top:18px}
+.head{font-weight:800; margin-bottom:6px}
+.item{color:var(--muted); margin:4px 0}
+.bottom{padding:14px 16px; color:var(--muted); font-size:13px; border-top:1px solid var(--line)}
+@media (min-width:768px){
+  .cols{grid-template-columns:repeat(2,1fr)}
+}
+</style>
