@@ -1,16 +1,17 @@
 ---
+const base = import.meta.env.BASE_URL;
 const nav = [
-  { label: "회사소개", href: "about/" },
-  { label: "사업분야", href: "business/" },
-  { label: "제품소개", href: "products/" },
-  { label: "오시는길", href: "location/" },
-  { label: "문의", href: "contact/" },
+  { label: "회사소개", href: `${base}about/` },
+  { label: "사업분야", href: `${base}business/` },
+  { label: "제품소개", href: `${base}products/` },
+  { label: "오시는길", href: `${base}location/` },
+  { label: "문의", href: `${base}contact/` },
 ];
 ---
 
 <header class="header">
   <div class="container bar">
-    <a class="logo" href="/">
+    <a class="logo" href={import.meta.env.BASE_URL}>
       <span class="mark">DY</span>
       <span class="name">대양특장</span>
     </a>
@@ -18,7 +19,7 @@ const nav = [
     <!-- Desktop nav -->
     <nav class="nav-desktop" aria-label="주요 메뉴">
       {nav.map((i) => <a class="nav-link" href={i.href}>{i.label}</a>)}
-      <a class="btn primary" href="/contact/">견적/문의</a>
+      <a class="btn primary" href={`${base}contact/`}>견적/문의</a>
     </nav>
 
     <!-- Mobile button -->
@@ -32,7 +33,7 @@ const nav = [
     <div class="container mobile-inner">
       {nav.map((i) => <a class="mobile-link" href={i.href}>{i.label}</a>)}
       <div class="mobile-cta">
-        <a class="btn primary" href="/contact/">견적/문의</a>
+        <a class="btn primary" href={`${base}contact/`}>견적/문의</a>
         <a class="btn ghost" href="tel:000-0000-0000">전화하기</a>
       </div>
     </div>
