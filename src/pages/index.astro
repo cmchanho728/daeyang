@@ -14,6 +14,12 @@ const base = import.meta.env.BASE_URL;
         <a class="btn ghost" href={`${base}catalog.pdf`} target="_blank" rel="noopener">카다로그</a>
         <a class="btn primary" href={`${base}contact/`}>견적 문의</a>
         <a class="btn ghost" href="tel:0318582276">전화하기</a>
+        <a class="btn kakao"
+          href="http://pf.kakao.com/_bjkAX/chat"
+          target="_blank"
+          rel="noopener">
+          카카오톡 상담
+        </a>
       </div>
     </div>
   </section>
@@ -37,3 +43,17 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
 </BaseLayout>
+
+
+<style>
+.btn.kakao{
+  background: #FEE500;
+  border-color: #FEE500;
+  color: #191919;
+  font-weight: 700;
+}
+
+.btn.kakao:hover{
+  filter: brightness(0.95);
+}
+</style>
