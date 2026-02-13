@@ -137,6 +137,17 @@ button{font:inherit}
   transform: translateY(-5px);
 }
 
+.btn.kakao{
+  background: #FEE500;
+  border-color: #FEE500;
+  color: #191919;
+  font-weight: 700;
+}
+
+.btn.kakao:hover{
+  filter: brightness(0.95);
+}
+
 @media (max-width: 900px) {
   .product-grid {
     grid-template-columns: repeat(2, 1fr);

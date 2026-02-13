@@ -1,17 +1,89 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
+
+const items = [
+  { title: "분뇨차 펌프", href: `${base}products/pump-vacuum/`, desc: "진공 라인 핵심 부품 · 펌프/부속" },
+  { title: "분뇨차 밸브", href: `${base}products/valve-vacuum/`, desc: "체크/차단/안전 밸브 등" },
+  { title: "분뇨차 기타 부품", href: `${base}products/etc-vacuum/`, desc: "호스/피팅/게이지/소모품" },
+  { title: "유조차 펌프", href: `${base}products/pump-fuel/`, desc: "유류 이송 라인 펌프/부속" },
+  { title: "유조차 밸브", href: `${base}products/valve-fuel/`, desc: "차단/체크/안전 밸브 등" },
+  { title: "유조차 기타 부품", href: `${base}products/etc-fuel/`, desc: "노즐/미터/호스/피팅" },
+];
 ---
-<BaseLayout title="제품소개 | 대양특장">
+
+<BaseLayout title="대양특장 | 제품소개 | (구) 대양상사">
   <section class="section">
     <div class="container">
-      <h1 class="h1">제품소개</h1>
-      <p class="p">제품/품목을 카드 형태로 보여주고, 추후 상세 페이지로 확장합니다.</p>
+      <p class="breadcrumb">
+        <a href={`${base}`}>홈</a> <span>›</span>
+        <strong>제품소개</strong>
+      </p>
 
-      <div class="grid cols-3" style="margin-top:16px;">
-        <div class="card"><b>제품 A</b><div class="p">요약 설명</div></div>
-        <div class="card"><b>제품 B</b><div class="p">요약 설명</div></div>
-        <div class="card"><b>제품 C</b><div class="p">요약 설명</div></div>
+      <h1 class="h1">제품소개</h1>
+      <p class="p">분뇨차·유조차 주요 부품을 카테고리별로 안내합니다.</p>
+
+      <div class="grid">
+        {items.map((item) => (
+          <a class="card" href={item.href}>
+            <div class="card-title">{item.title}</div>
+            <div class="card-desc">{item.desc}</div>
+            <div class="card-cta">자세히 보기 →</div>
+          </a>
+        ))}
+      </div>
+
+      <div class="actions">
+        <a class="btn primary" href={`${base}contact/`}>견적 문의</a>
+        <a class="btn ghost" href={`${base}catalog.pdf`} target="_blank" rel="noopener">카다로그</a>
+        <a class="btn kakao" href="https://pf.kakao.com/_bjkAX/chat" target="_blank" rel="noopener">카카오톡 상담</a>
+        <a class="btn ghost" href="tel:031-858-2276">전화하기</a>
       </div>
     </div>
   </section>
+
+  <style>
+    .breadcrumb{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:14px;margin-bottom:14px;flex-wrap:wrap}
+    .breadcrumb a{color:var(--muted)}
+    .breadcrumb a:hover{color:var(--text)}
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:18px;
+      background:#fff;
+      transition: transform .15s ease, box-shadow .15s ease;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      min-height: 120px;
+    }
+
+    .card:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
+
+    .card-title{font-weight:800;letter-spacing:-0.02em}
+    .card-desc{color:var(--muted);font-size:14px;line-height:1.4}
+    .card-cta{margin-top:auto;color:var(--brand);font-weight:700}
+
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+
+    @media (max-width: 900px){
+      .grid{grid-template-columns: repeat(2, 1fr);}
+    }
+
+    @media (max-width: 560px){
+      .grid{grid-template-columns: 1fr;}
+    }
+  </style>
 </BaseLayout>
