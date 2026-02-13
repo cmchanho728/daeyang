@@ -5,11 +5,98 @@ const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
 
 const products = [
-  { name: "10L", img: `${base}products/pump-vacuum-10l.jpg`, link: "#" },
-  { name: "8L", img: `${base}products/pump-vacuum-8l.jpg`, link: "#" },
-  { name: "5L", img: `${base}products/pump-vacuum-5l.jpg`, link: "#" },
-  { name: "3L", img: `${base}products/pump-vacuum-3l.jpg`, link: "#" },
+  {
+    name: "진공펌프 10L (10000)",
+    img: `${base}products/pump-vacuum-10l.jpg`,
+    link: "#spec-10l",
+    specs: {
+      "용량": "10L",
+      "형식": "—",
+      "흡입/토출": "—",
+      "회전수(RPM)": "—",
+      "최대 진공": "—",
+      "유량": "—",
+      "재질": "—",
+      "중량": "—",
+      "비고": "—",
+    },
+  },
+  {
+    name: "진공펌프 8L (8000)",
+    img: `${base}products/pump-vacuum-8l.jpg`,
+    link: "#spec-8l",
+    specs: {
+      "용량": "8L",
+      "형식": "—",
+      "흡입/토출": "—",
+      "회전수(RPM)": "—",
+      "최대 진공": "—",
+      "유량": "—",
+      "재질": "—",
+      "중량": "—",
+      "비고": "—",
+    },
+  },
+  {
+    name: "진공펌프 5L (6000)",
+    img: `${base}products/pump-vacuum-5l.jpg`,
+    link: "#spec-5l",
+    specs: {
+      "용량": "5L",
+      "형식": "—",
+      "흡입/토출": "—",
+      "회전수(RPM)": "—",
+      "최대 진공": "—",
+      "유량": "—",
+      "재질": "—",
+      "중량": "—",
+      "비고": "—",
+    },
+  },
+  {
+    name: "진공펌프 3L (4000)",
+    img: `${base}products/pump-vacuum-3l.jpg`,
+    link: "#spec-3l",
+    specs: {
+      "용량": "3L",
+      "형식": "—",
+      "흡입/토출": "—",
+      "회전수(RPM)": "—",
+      "최대 진공": "—",
+      "유량": "—",
+      "재질": "—",
+      "중량": "—",
+      "비고": "—",
+    },
+  },
 ];
+
+<section class="specs">
+  <h2 class="h2">제품 스펙</h2>
+  <p class="muted">상세 규격은 차량/연식/적용 라인에 따라 달라질 수 있습니다. 정확한 확인은 문의 바랍니다.</p>
+
+  {products.map((p) => (
+    <div class="spec-card" id={`spec-${p.name.toLowerCase()}`}>
+      <div class="spec-head">
+        <h3 class="h3">{p.name} 스펙</h3>
+        <a class="mini-link" href={`${base}contact/`}>이 규격으로 견적 문의 →</a>
+      </div>
+
+      <div class="table-wrap">
+        <table class="spec-table">
+          <tbody>
+            {Object.entries(p.specs).map(([k, v]) => (
+              <tr>
+                <th>{k}</th>
+                <td>{v}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  ))}
+</section>
 ---
 
 <BaseLayout title="분뇨차 펌프 | 대양특장">
@@ -110,4 +197,78 @@ const products = [
     grid-template-columns: 1fr;
   }
 }
+
+.h2{
+  margin-top: 44px;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.muted{
+  color: #6b7280;
+  margin: 8px 0 18px;
+  line-height: 1.6;
+}
+
+.spec-card{
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 14px;
+  padding: 16px;
+  background: #fff;
+  margin-bottom: 14px;
+}
+
+.spec-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.h3{
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.mini-link{
+  color: #2563eb;
+  font-weight: 700;
+  text-decoration: none;
+}
+.mini-link:hover{
+  text-decoration: underline;
+}
+
+.table-wrap{
+  overflow-x: auto;
+}
+
+.spec-table{
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 520px;
+}
+
+.spec-table th,
+.spec-table td{
+  border-top: 1px solid rgba(0,0,0,0.08);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.spec-table th{
+  width: 180px;
+  color: #374151;
+  font-weight: 700;
+  background: rgba(0,0,0,0.02);
+}
+
+.spec-table td{
+  color: #111827;
+}
+
 </style>
