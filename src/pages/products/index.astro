@@ -24,8 +24,26 @@ const items = [
       <h1 class="h1">제품소개</h1>
       <p class="p">분뇨차·유조차 주요 부품을 카테고리별로 안내합니다.</p>
 
+      <div class="banner">
+        <img src={`${base}products-vctruck.jpg`} alt="제품 카테고리 안내" loading="lazy" />
+      </div>
+      
       <div class="grid">
-        {items.map((item) => (
+        {items.slice(0, 3).map((item) => (
+          <a class="card" href={item.href}>
+            <div class="card-title">{item.title}</div>
+            <div class="card-desc">{item.desc}</div>
+            <div class="card-cta">자세히 보기 →</div>
+          </a>
+        ))}
+      </div>
+
+      <div class="banner">
+        <img src={`${base}products-tltruck.jpg`} alt="제품 이미지" loading="lazy" />
+      </div>
+
+      <div class="grid">
+        {items.slice(3, 6).map((item) => (
           <a class="card" href={item.href}>
             <div class="card-title">{item.title}</div>
             <div class="card-desc">{item.desc}</div>
@@ -85,5 +103,18 @@ const items = [
     @media (max-width: 560px){
       .grid{grid-template-columns: 1fr;}
     }
+
+    .banner{
+      margin: 18px 0;
+    }
+
+    .banner img{
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      display: block;
+      border: 1px solid var(--line);
+    }
+
   </style>
 </BaseLayout>
