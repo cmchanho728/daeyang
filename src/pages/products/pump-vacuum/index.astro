@@ -1,51 +1,113 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-const base = import.meta.env.BASE_URL;
 
-const title = "분뇨차 펌프";
-const subtitle = "3L/5L/8L/10L 등 각종 분뇨차 펌프";
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
+
+const products = [
+  { name: "10L", img: `${base}products/pump-vacuum-10l.jpg`, link: "#" },
+  { name: "8L", img: `${base}products/pump-vacuum-8l.jpg`, link: "#" },
+  { name: "5L", img: `${base}products/pump-vacuum-5l.jpg`, link: "#" },
+  { name: "3L", img: `${base}products/pump-vacuum-3l.jpg`, link: "#" },
+];
 ---
 
-<BaseLayout title={`대양특장 | ${title} | (구) 대양상사`}>
+<BaseLayout title="분뇨차 펌프 | 대양특장">
   <section class="section">
     <div class="container">
+
+      <!-- 🔹 Breadcrumb -->
       <p class="breadcrumb">
-        <a href={`${base}`}>홈</a> <span>›</span>
-        <a href={`${base}products/`}>제품소개</a> <span>›</span>
-        <strong>{title}</strong>
+        <a href={`${base}`}>홈</a> &gt;
+        <a href={`${base}products/`}>제품소개</a> &gt;
+        <strong>분뇨차 펌프</strong>
       </p>
 
-      <h1 class="h1">{title}</h1>
-      <p class="p">{subtitle}</p>
+      <!-- 🔹 타이틀 -->
+      <h1 class="h1">분뇨차 펌프</h1>
+      <p class="p">
+        분뇨차용 진공 펌프 제품 라인업입니다.  
+        규격에 맞는 제품 상담 및 견적 문의 가능합니다.
+      </p>
 
+      <!-- 🔹 제품 그리드 -->
+      <div class="grid">
+        {products.map(item => (
+          <a href={item.link} class="card">
+            <img src={item.img} alt={`분뇨차 펌프 ${item.name}`} />
+            <div class="card-title">{item.name}</div>
+          </a>
+        ))}
+      </div>
+
+      <!-- 🔹 하단 버튼 -->
       <div class="actions">
         <a class="btn primary" href={`${base}contact/`}>견적 문의</a>
-        <a class="btn ghost" href={`${base}catalog.pdf`} target="_blank" rel="noopener">카다로그</a>
-        <a class="btn kakao" href="https://pf.kakao.com/_bjkAX/chat" target="_blank" rel="noopener">카카오톡 상담</a>
-        <a class="btn ghost" href="tel:031-858-2277">전화하기</a>
+        <a class="btn ghost" href="tel:031-858-2276">전화하기</a>
       </div>
 
-      <div class="card">
-        <h2 class="h2">취급 품목 예시</h2>
-        <ul class="list">
-          <li>펌프 본체 / 리페어 키트</li>
-          <li>커플링 / 샤프트 / 씰(패킹)</li>
-          <li>연결 피팅 및 부속</li>
-        </ul>
-        <p class="note">※ 정확한 규격은 차량/모델/연식에 따라 달라질 수 있습니다. 사진 또는 모델 정보를 보내주시면 빠르게 확인해드립니다.</p>
-      </div>
     </div>
   </section>
-
-  <style>
-    .breadcrumb{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:14px;margin-bottom:14px;flex-wrap:wrap}
-    .breadcrumb a{color:var(--muted)}
-    .breadcrumb a:hover{color:var(--text)}
-    .actions{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 26px}
-    .card{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fff}
-    .h2{font-size:18px;margin:0 0 10px}
-    .list{margin:0;padding-left:18px;color:var(--text)}
-    .list li{margin:6px 0}
-    .note{margin-top:10px;color:var(--muted);font-size:14px}
-  </style>
 </BaseLayout>
+
+<style>
+.breadcrumb {
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: #666;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.card {
+  display: block;
+  text-decoration: none;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  transition: 0.25s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-title {
+  padding: 16px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2a37;
+}
+
+.actions {
+  margin-top: 40px;
+  display: flex;
+  gap: 12px;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
