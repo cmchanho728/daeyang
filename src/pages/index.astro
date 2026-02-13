@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ProductShowcase from "../components/ProductShowcase.astro";
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -37,23 +38,12 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
 
-  <section class="products-section">
-    <div class="container">
-
-      <h2 class="section-title">
-        <a href={`${base}products/`}>제품 안내</a>
-      </h2>
-
-      <div class="product-grid">
-        <a href={`${base}products/pump-vacuum/`} class="product-box">분뇨차 펌프</a>
-        <a href={`${base}products/valve-vacuum/`} class="product-box">분뇨차 밸브</a>
-        <a href={`${base}products/etc-vacuum/`} class="product-box">분뇨차 기타 부품</a>
-        <a href={`${base}products/pump-fuel/`} class="product-box">유조차 펌프</a>
-        <a href={`${base}products/valve-fuel/`} class="product-box">유조차 밸브</a>
-        <a href={`${base}products/etc-fuel/`} class="product-box">유조차 기타 부품</a>
-      </div>
-    </div>
-  </section>
+  <ProductShowcase
+    showTitle={true}
+    titleText="제품 안내"
+    subtitleText="분뇨차·유조차 주요 부품을 카테고리별로 안내합니다."
+    showActions={false}
+  />
 </BaseLayout>
 
 
