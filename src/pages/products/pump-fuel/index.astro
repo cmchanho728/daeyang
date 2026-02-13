@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
+
+const title = "유조차 펌프";
+const subtitle = "200L/300L/600L/1000L 등 각종 유조차 펌프";
+---
+
+<BaseLayout title={`대양특장 | ${title} | (구) 대양상사`}>
+  <section class="section">
+    <div class="container">
+      <p class="breadcrumb">
+        <a href={`${base}`}>홈</a> <span>›</span>
+        <a href={`${base}products/`}>제품소개</a> <span>›</span>
+        <strong>{title}</strong>
+      </p>
+
+      <h1 class="h1">{title}</h1>
+      <p class="p">{subtitle}</p>
+
+      <div class="actions">
+        <a class="btn primary" href={`${base}contact/`}>견적 문의</a>
+        <a class="btn ghost" href={`${base}catalog.pdf`} target="_blank" rel="noopener">카다로그</a>
+        <a class="btn kakao" href="https://pf.kakao.com/_bjkAX/chat" target="_blank" rel="noopener">카카오톡 상담</a>
+        <a class="btn ghost" href="tel:031-858-2277">전화하기</a>
+      </div>
+
+      <div class="card">
+        <h2 class="h2">취급 품목 예시</h2>
+        <ul class="list">
+          <li>펌프 본체 / 리페어 키트</li>
+          <li>커플링 / 샤프트 / 씰(패킹)</li>
+          <li>연결 피팅 및 부속</li>
+        </ul>
+        <p class="note">※ 정확한 규격은 차량/모델/연식에 따라 달라질 수 있습니다. 사진 또는 모델 정보를 보내주시면 빠르게 확인해드립니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .breadcrumb{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:14px;margin-bottom:14px;flex-wrap:wrap}
+    .breadcrumb a{color:var(--muted)}
+    .breadcrumb a:hover{color:var(--text)}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 26px}
+    .card{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fff}
+    .h2{font-size:18px;margin:0 0 10px}
+    .list{margin:0;padding-left:18px;color:var(--text)}
+    .list li{margin:6px 0}
+    .note{margin-top:10px;color:var(--muted);font-size:14px}
+  </style>
+</BaseLayout>

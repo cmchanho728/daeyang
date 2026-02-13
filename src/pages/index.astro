@@ -36,13 +36,18 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
 
-  <section class="section" style="background:#f8fafc; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <section class="products-section">
     <div class="container">
-      <h2 style="margin:0 0 10px; font-size:18px; font-weight:900;">주요 서비스</h2>
-      <div class="grid cols-3">
-        <div class="card"><b>납품/배송</b><div class="p">현장 일정 맞춤 대응</div></div>
-        <div class="card"><b>견적/발주</b><div class="p">빠른 견적 회신</div></div>
-        <div class="card"><b>사후지원</b><div class="p">지속적인 거래 지원</div></div>
+
+      <h2 class="section-title">제품 안내</h2>
+
+      <div class="product-grid">
+        <a href={`${base}products/pump-vacuum/`} class="product-box">분뇨차 펌프</a>
+        <a href={`${base}products/valve-vacuum/`} class="product-box">분뇨차 밸브</a>
+        <a href={`${base}products/etc-vacuum/`} class="product-box">분뇨차 기타 부품</a>
+        <a href={`${base}products/pump-fuel/`} class="product-box">유조차 펌프</a>
+        <a href={`${base}products/valve-fuel/`} class="product-box">유조차 밸브</a>
+        <a href={`${base}products/etc-fuel/`} class="product-box">유조차 기타 부품</a>
       </div>
     </div>
   </section>
