@@ -1,6 +1,6 @@
----
+﻿---
 const rawBase = import.meta.env.BASE_URL;
-const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
+const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
 
 const nav = [
   { label: "회사소개", href: `${base}about/` },
@@ -13,66 +13,46 @@ const nav = [
 
 <header class="header">
   <div class="container bar">
-    <!-- 🔹 로고: 항상 홈으로 이동 -->
     <a class="logo" href={base}>
       <span class="mark">DY</span>
       <span class="name">대양특장 주식회사 (구 대양상사)</span>
     </a>
 
-    <!-- 🔹 데스크탑 메뉴 -->
     <nav class="nav-desktop" aria-label="주요 메뉴">
       {nav.map((item) => (
-        <a class="nav-link" href={item.href}>
-          {item.label}
-        </a>
+        <a class="nav-link" href={item.href}>{item.label}</a>
       ))}
-      <a class="btn primary" href={`${base}contact/`}>
-        견적/문의
-      </a>
+      <a class="btn primary" href={`${base}contact/`}>견적/문의</a>
     </nav>
 
-    <!-- 🔹 모바일 햄버거 -->
-    <button
-      class="menu-btn"
-      aria-label="메뉴 열기"
-      aria-expanded="false"
-      data-menu-btn
-    >
-      ☰
+    <button class="menu-btn" aria-label="메뉴 열기" aria-expanded="false" data-menu-btn>
+      메뉴
     </button>
   </div>
 
-  <!-- 🔹 모바일 메뉴 패널 -->
   <div class="mobile-panel" data-mobile-panel hidden>
     <div class="container mobile-inner">
       {nav.map((item) => (
-        <a class="mobile-link" href={item.href}>
-          {item.label}
-        </a>
+        <a class="mobile-link" href={item.href}>{item.label}</a>
       ))}
 
       <div class="mobile-cta">
-        <a class="btn primary" href={`${base}contact/`}>
-          견적/문의
-        </a>
-        <a class="btn ghost" href="tel:031-858-2277">
-          전화하기
-        </a>
+        <a class="btn primary" href={`${base}contact/`}>견적/문의</a>
+        <a class="btn ghost" href="tel:031-858-2277">전화하기</a>
       </div>
     </div>
   </div>
 
-  <!-- 🔹 모바일 토글 스크립트 -->
   <script is:inline>
-    const btn = document.querySelector('[data-menu-btn]');
-    const panel = document.querySelector('[data-mobile-panel]');
+    const btn = document.querySelector("[data-menu-btn]");
+    const panel = document.querySelector("[data-mobile-panel]");
 
     if (btn && panel) {
-      btn.addEventListener('click', () => {
-        const open = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', String(!open));
+      btn.addEventListener("click", () => {
+        const open = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", String(!open));
         panel.hidden = open;
-        document.body.style.overflow = open ? '' : 'hidden';
+        document.body.style.overflow = open ? "" : "hidden";
       });
     }
   </script>
@@ -138,11 +118,13 @@ const nav = [
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+  width: 56px;
+  height: 36px;
+  border-radius: 10px;
   border: 1px solid var(--line);
   background: #fff;
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .mobile-panel {

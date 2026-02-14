@@ -1,18 +1,17 @@
----
+﻿---
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
 
-// 이미지 파일은 public/ 에 넣어두면 됨
-// 예) public/products-vacuum.jpg , public/products-fuel.jpg
 const vacuumBanner = Astro.props.vacuumBanner ?? `${base}products-vctruck.jpg`;
 const fuelBanner = Astro.props.fuelBanner ?? `${base}products-tltruck.jpg`;
 
 const showTitle = Astro.props.showTitle ?? true;
 const titleText = Astro.props.titleText ?? "제품소개";
-const subtitleText = Astro.props.subtitleText ?? "분뇨차·유조차 주요 부품을 카테고리별로 안내합니다.";
+const subtitleText =
+  Astro.props.subtitleText ?? "분뇨차·유조차 주요 부품을 카테고리별로 안내합니다.";
 
 const vacuumCards = [
-  { title: "분뇨차 펌프", desc: "진공 라인 핵심 부품 · 펌프/부속", href: `${base}products/pump-vacuum/` },
+  { title: "분뇨차 펌프", desc: "진공 라인 핵심 부품 펌프/부속", href: `${base}products/pump-vacuum/` },
   { title: "분뇨차 밸브", desc: "체크/차단/안전 밸브 등", href: `${base}products/valve-vacuum/` },
   { title: "분뇨차 기타 부품", desc: "호스/피팅/게이지/소모품", href: `${base}products/etc-vacuum/` },
 ];
@@ -35,7 +34,6 @@ const showActions = Astro.props.showActions ?? false;
       </>
     )}
 
-    <!-- 분뇨차 배너 -->
     <div class="banner">
       <img src={vacuumBanner} alt="분뇨차량 탱크 부품" loading="lazy" />
     </div>
@@ -50,7 +48,6 @@ const showActions = Astro.props.showActions ?? false;
       ))}
     </div>
 
-    <!-- 유조차 배너 -->
     <div class="banner">
       <img src={fuelBanner} alt="유조차량 탱크 부품" loading="lazy" />
     </div>
@@ -68,62 +65,65 @@ const showActions = Astro.props.showActions ?? false;
     {showActions && (
       <div class="actions">
         <a class="btn primary" href={`${base}contact/`}>견적 문의</a>
-        <a class="btn ghost" href={`${base}catalog.pdf`} target="_blank" rel="noopener">카다로그</a>
+        <a class="btn ghost" href={`${base}catalog/`}>카다로그</a>
         <a class="btn kakao" href="https://pf.kakao.com/_bjkAX/chat" target="_blank" rel="noopener">카카오톡 상담</a>
-        <a class="btn ghost" href="tel:031-858-2276">전화하기</a>
+        <a class="btn ghost" href="tel:031-858-2277">전화하기</a>
       </div>
     )}
   </div>
 
   <style>
-    .wrap{padding: 24px 0 10px;}
-    .h1{font-size: 40px; margin: 0 0 6px; font-weight: 900; letter-spacing: -0.03em;}
-    .p{margin: 0 0 16px; color: var(--muted);}
+    .wrap { padding: 24px 0 10px; }
+    .h1 { font-size: 40px; margin: 0 0 6px; font-weight: 900; letter-spacing: -0.03em; }
+    .p { margin: 0 0 16px; color: var(--muted); }
 
-    .banner{margin: 18px 0 12px;}
-    .banner img{
-      width:100%;
-      height:auto;
-      display:block;
+    .banner { margin: 18px 0 12px; }
+    .banner img {
+      width: 100%;
+      height: auto;
+      display: block;
       border-radius: 16px;
       border: 1px solid var(--line);
     }
 
-    .grid{
-      display:grid;
+    .grid {
+      display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
       margin-bottom: 18px;
     }
 
-    .card{
-      border:1px solid var(--line);
+    .card {
+      border: 1px solid var(--line);
       border-radius: 16px;
       padding: 16px;
       background: #fff;
-      transition: transform .15s ease, box-shadow .15s ease;
-      display:flex;
-      flex-direction:column;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      display: flex;
+      flex-direction: column;
       gap: 8px;
       min-height: 120px;
     }
-    .card:hover{
+
+    .card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
     }
-    .card-title{font-weight: 900;}
-    .card-desc{color: var(--muted); font-size: 14px; line-height: 1.4;}
-    .card-cta{margin-top:auto; color: var(--brand); font-weight: 800;}
 
-    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top: 6px;}
+    .card-title { font-weight: 900; }
+    .card-desc { color: var(--muted); font-size: 14px; line-height: 1.4; }
+    .card-cta { margin-top: auto; color: var(--brand); font-weight: 800; }
 
-    @media (max-width: 900px){
-      .grid{grid-template-columns: repeat(2, 1fr);}
-      .h1{font-size: 32px;}
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .h1 { font-size: 32px; }
     }
-    @media (max-width: 560px){
-      .grid{grid-template-columns: 1fr;}
-      .h1{font-size: 28px;}
+
+    @media (max-width: 560px) {
+      .grid { grid-template-columns: 1fr; }
+      .h1 { font-size: 28px; }
     }
   </style>
 </section>

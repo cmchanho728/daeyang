@@ -1,0 +1,168 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+
+const imageModules = import.meta.glob("../../assets/catalog/*.{jpg,jpeg,png,webp}", {
+  eager: true,
+});
+
+const images = Object.entries(imageModules)
+  .map(([path, mod]) => ({
+    path,
+    image: mod.default,
+    alt: path.split("/").pop()?.replace(/\.[^.]+$/, "") ?? "catalog image",
+  }))
+  .sort((a, b) =>
+    a.path.localeCompare(b.path, undefined, { numeric: true, sensitivity: "base" }),
+  );
+---
+
+<BaseLayout title="카다로그 | 대양특장">
+  <section class="section">
+    <div class="container">
+      <h1 class="h1">카다로그</h1>
+      <p class="p">제품 카다로그 이미지를 확인하세요.</p>
+
+      <div class="catalog" data-catalog>
+        <div class="viewer" data-viewer>
+          {images.map((item, index) => (
+            <figure class={`panel ${index === 0 ? "is-active" : ""}`} data-panel={index}>
+              <Image
+                src={item.image}
+                alt={`카다로그 ${index + 1}`}
+                width={1600}
+                sizes="(min-width: 1024px) 72vw, 100vw"
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding="async"
+              />
+            </figure>
+          ))}
+        </div>
+
+        <div class="thumbs" role="tablist" aria-label="카다로그 썸네일">
+          {images.map((item, index) => (
+            <button
+              class={`thumb ${index === 0 ? "is-active" : ""}`}
+              type="button"
+              data-thumb={index}
+              aria-label={`카다로그 ${index + 1} 보기`}
+              aria-selected={index === 0 ? "true" : "false"}
+            >
+              <Image
+                src={item.image}
+                alt={`카다로그 썸네일 ${index + 1}`}
+                width={260}
+                sizes="(min-width: 1024px) 180px, 34vw"
+                loading="lazy"
+                decoding="async"
+              />
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    const root = document.querySelector("[data-catalog]");
+    if (root) {
+      const panels = Array.from(root.querySelectorAll("[data-panel]"));
+      const thumbs = Array.from(root.querySelectorAll("[data-thumb]"));
+
+      const setActive = (index) => {
+        panels.forEach((panel, i) => panel.classList.toggle("is-active", i === index));
+        thumbs.forEach((thumb, i) => {
+          const selected = i === index;
+          thumb.classList.toggle("is-active", selected);
+          thumb.setAttribute("aria-selected", selected ? "true" : "false");
+        });
+      };
+
+      thumbs.forEach((thumb, index) => {
+        thumb.addEventListener("click", () => setActive(index));
+      });
+    }
+  </script>
+
+  <style>
+    .catalog {
+      margin-top: 18px;
+      display: grid;
+      gap: 14px;
+      grid-template-columns: 1fr;
+    }
+
+    .viewer {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .panel {
+      display: none;
+    }
+
+    .panel.is-active {
+      display: block;
+    }
+
+    .panel :global(img) {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    .thumbs {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 2px;
+      scrollbar-width: thin;
+    }
+
+    .thumb {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      padding: 0;
+      cursor: pointer;
+      overflow: hidden;
+      flex: 0 0 min(34vw, 180px);
+    }
+
+    .thumb.is-active {
+      border-color: var(--brand);
+      box-shadow: 0 0 0 2px rgba(11, 91, 211, 0.15);
+    }
+
+    .thumb :global(img) {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (min-width: 1024px) {
+      .catalog {
+        grid-template-columns: minmax(0, 1fr) 200px;
+        align-items: start;
+      }
+
+      .thumbs {
+        max-height: 72vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .thumb {
+        flex: none;
+        width: 100%;
+      }
+    }
+  </style>
+</BaseLayout>
