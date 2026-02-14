@@ -1,23 +1,48 @@
----
+﻿---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 ---
-<BaseLayout title="오시는길 | 대양특장">
+
+<BaseLayout title="오시는 길 | 대양특장">
   <section class="section">
     <div class="container">
-      <h1 class="h1">오시는길</h1>
-      <p class="p">주소와 지도(카카오/네이버)를 넣습니다.</p>
+      <h1 class="h1">오시는 길</h1>
+      <p class="p">주소와 지도를 확인하세요.</p>
 
-      <div class="grid cols-2" style="margin-top:16px;">
-        <div class="card">
-          <b>주소</b>
-          <div class="p" style="margin-top:6px;">경기도 양주시 남면 은남로 76-4</div>
-          <div class="p">주차/방문 안내 문구</div>
-        </div>
+      <div style="margin-top:16px;">
         <div class="card">
           <b>지도</b>
-          <div class="p" style="margin-top:6px;">지도는 다음 단계에서 임베드로 추가</div>
+          <div class="map-wrap" style="margin-top:10px;">
+            <iframe
+              title="대양특장 위치"
+              src="https://www.google.com/maps?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%EC%A3%BC%EC%8B%9C%20%EB%82%A8%EB%A9%B4%20%EC%9D%80%EB%82%A8%EB%A1%9C%2076-4&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen>
+            </iframe>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <style>
+    .map-wrap {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .map-wrap iframe {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      height: auto;
+      border: 0;
+    }
+
+    @media (max-width: 768px) {
+      .map-wrap iframe { aspect-ratio: 16 / 9; }
+    }
+  </style>
 </BaseLayout>
