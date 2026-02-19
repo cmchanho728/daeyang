@@ -1,6 +1,9 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
+
+const isVercel = process.env.VERCEL === "1";
 
 export default defineConfig({
-  site: 'https://cmchanho728.github.io',
-  base: '/daeyang/',
+  // Vercel에서는 루트 배포이므로 base 제거
+  base: isVercel ? "/" : "/daeyang/",
+  site: "https://www.dyic.kr",
 });
