@@ -8,6 +8,10 @@ const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
 <BaseLayout title="회사소개 | 대양특장">
   <section class="section about-simple">
     <div class="container">
+      <p class="breadcrumb">
+        <a href={`${base}`}>홈</a> <span>&gt;</span>
+        <strong>회사소개</strong>
+      </p>
       <article class="block">
         <h1 class="block-title">인사말 / Greetings</h1>
 
@@ -70,6 +74,19 @@ const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
     .about-simple .container {
       max-width: 770px;
     }
+
+    .breadcrumb {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .breadcrumb a { color: var(--muted); }
+    .breadcrumb a:hover { color: var(--text); }
 
     .block + .block {
       margin-top: 36px;

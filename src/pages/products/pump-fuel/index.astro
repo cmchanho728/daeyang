@@ -11,7 +11,9 @@ const products = [
   {
     id: "200l",
     name: "200L 펌프",
-    img: `${base}products-tltruck.jpg`,
+    img: `${base}products/pump-tl-600.jpg`,
+    cardImg: `${base}products/pump-tl-600.jpg`,
+    specImg: `${base}products/pump-tl-200-outer.jpg`,
     specs: {
       "용량": "200L/min",
       "흡입 / 토출": "50mm / 50mm",
@@ -24,7 +26,9 @@ const products = [
   {
     id: "300l",
     name: "300L 펌프",
-    img: `${base}products-tltruck.jpg`,
+    img: `${base}products/pump-tl-600.jpg`,
+    cardImg: `${base}products/pump-tl-600.jpg`,
+    specImg: `${base}products/pump-tl-300-outer.jpg`,
     specs: {
       "용량": "300L/min",
       "흡입 / 토출": "64mm / 64mm",
@@ -37,7 +41,9 @@ const products = [
   {
     id: "600l",
     name: "600L 펌프",
-    img: `${base}products-tltruck.jpg`,
+    img: `${base}products/pump-tl-600.jpg`,
+    cardImg: `${base}products/pump-tl-600.jpg`,
+    specImg: `${base}products/pump-tl-600-outer.jpg`,
     specs: {
       "용량": "600L/min",
       "흡입 / 토출": "85mm / 85mm",
@@ -50,7 +56,9 @@ const products = [
   {
     id: "1000l",
     name: "1000L 펌프",
-    img: `${base}products-tltruck.jpg`,
+    img: `${base}products/pump-tl-600.jpg`,
+    cardImg: `${base}products/pump-tl-600.jpg`,
+    specImg: `${base}products/pump-tl-1000-outer.jpg`,
     specs: {
       "용량": "1000L/min",
       "흡입 / 토출": "85mm / 85mm",
@@ -78,7 +86,7 @@ const products = [
       <div class="grid">
         {products.map((item) => (
           <a href={`#spec-${item.id}`} class="card">
-            <img src={item.img} alt={`${pageTitle} ${item.name}`} loading="lazy" />
+            <img src={item.cardImg ?? item.img} alt={`${pageTitle} ${item.name}`} loading="lazy" />
             <div class="card-title">{item.name}</div>
           </a>
         ))}
@@ -111,7 +119,9 @@ const products = [
               </div>
 
               <figure class="spec-photo">
-                <img src={p.img} alt={`${p.name} 외관`} loading="lazy" />
+                <button class="photo-btn" type="button" data-spec-photo={p.specImg ?? p.img} data-spec-title={`${p.name} 외관`}>
+                  <img src={p.specImg ?? p.img} alt={`${p.name} 외관`} loading="lazy" />
+                </button>
               </figure>
             </div>
           </div>
@@ -126,6 +136,53 @@ const products = [
       </div>
     </div>
   </section>
+
+  <div class="lightbox" data-lightbox hidden>
+    <button class="backdrop" type="button" aria-label="닫기" data-close-lightbox></button>
+    <div class="dialog" role="dialog" aria-modal="true" aria-label="제품 이미지 확대 보기">
+      <button class="close" type="button" aria-label="닫기" data-close-lightbox>×</button>
+      <img src="" alt="" data-lightbox-image />
+      <p class="caption" data-lightbox-caption></p>
+    </div>
+  </div>
+
+  <script is:inline>
+    const lightbox = document.querySelector("[data-lightbox]");
+    const lightboxImage = document.querySelector("[data-lightbox-image]");
+    const lightboxCaption = document.querySelector("[data-lightbox-caption]");
+    const openButtons = Array.from(document.querySelectorAll("[data-spec-photo]"));
+    const closeButtons = Array.from(document.querySelectorAll("[data-close-lightbox]"));
+
+    const closeLightbox = () => {
+      if (!lightbox || !lightboxImage || !lightboxCaption) return;
+      lightbox.hidden = true;
+      lightboxImage.setAttribute("src", "");
+      lightboxImage.setAttribute("alt", "");
+      lightboxCaption.textContent = "";
+      document.body.style.overflow = "";
+    };
+
+    openButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (!lightbox || !lightboxImage || !lightboxCaption) return;
+        const src = btn.dataset.specPhoto || "";
+        const title = btn.dataset.specTitle || "제품 이미지";
+        lightboxImage.setAttribute("src", src);
+        lightboxImage.setAttribute("alt", title);
+        lightboxCaption.textContent = title;
+        lightbox.hidden = false;
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    closeButtons.forEach((btn) => {
+      btn.addEventListener("click", closeLightbox);
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && lightbox && !lightbox.hidden) closeLightbox();
+    });
+  </script>
 
   <style>
     .breadcrumb { font-size:14px; margin-bottom:12px; color:#666; }
@@ -154,7 +211,16 @@ const products = [
     .spec-table th{ width:180px; color:#374151; font-weight:700; background:rgba(0,0,0,0.02); }
     .spec-table td{ color:#111827; }
     .spec-photo{ margin:0; border:1px solid rgba(0,0,0,0.1); border-radius:12px; overflow:hidden; background:#fff; }
+    .photo-btn{ width:100%; border:0; background:transparent; padding:0; cursor:zoom-in; display:block; }
     .spec-photo img{ width:100%; aspect-ratio:4/3; object-fit:cover; display:block; }
+
+    .lightbox{ position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center; padding:20px; }
+    .lightbox[hidden]{ display:none !important; }
+    .backdrop{ position:absolute; inset:0; border:0; background:rgba(0,0,0,0.7); cursor:pointer; }
+    .dialog{ position:relative; z-index:1; width:min(100%, 980px); max-height:92vh; margin:auto; border-radius:10px; background:#fff; padding:14px 14px 8px; overflow:auto; }
+    .dialog img{ width:100%; height:auto; display:block; border-radius:8px; }
+    .close{ position:absolute; top:10px; right:10px; width:34px; height:34px; border:0; border-radius:999px; background:rgba(0,0,0,0.65); color:#fff; font-size:24px; line-height:1; cursor:pointer; }
+    .caption{ margin:10px 0 4px; color:#374151; font-weight:700; }
 
     @media (max-width:980px){ .spec-content{ grid-template-columns:1fr; } }
   </style>

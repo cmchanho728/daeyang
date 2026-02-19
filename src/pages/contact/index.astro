@@ -1,10 +1,17 @@
 ﻿---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
 ---
 
 <BaseLayout title="문의 | 대양특장">
   <section class="section">
     <div class="container">
+      <p class="breadcrumb">
+        <a href={`${base}`}>홈</a> <span>&gt;</span>
+        <strong>문의</strong>
+      </p>
       <h1 class="h1">문의</h1>
       <p class="p">견적, 납기, 제품 문의는 전화 또는 이메일로 연락 주세요.</p>
 
@@ -13,7 +20,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           <b>연락처</b>
           <div class="p" style="margin-top:6px;">
             전화: <a href="tel:0318582277" style="color:var(--brand); font-weight:700;">031-858-2277</a><br/>
-            이메일: <a href="mailto:daeyangsss@kakao.com" style="color:var(--brand); font-weight:700;">daeyangsss@kakao.com</a>
+            이메일: <a href="mailto:daeyangsss@kakao.com" style="color:var(--brand); font-weight:700;">daeyangsss@kakao.com</a><br/>
+            카카오톡: <a href="https://pf.kakao.com/_bjkAX/chat" target="_blank" rel="noopener" style="color:var(--brand); font-weight:700;">상담 바로가기</a>
           </div>
         </div>
         <div class="card">
@@ -23,4 +31,19 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       </div>
     </div>
   </section>
+
+  <style>
+    .breadcrumb {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .breadcrumb a { color: var(--muted); }
+    .breadcrumb a:hover { color: var(--text); }
+  </style>
 </BaseLayout>
