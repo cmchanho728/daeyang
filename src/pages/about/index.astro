@@ -1,23 +1,153 @@
-﻿---
+---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
 ---
 
 <BaseLayout title="회사소개 | 대양특장">
-  <section class="section">
+  <section class="section about-simple">
     <div class="container">
-      <h1 class="h1">회사소개</h1>
-      <p class="p">대양특장은 분뇨차·유조차 부품을 안정적으로 공급하는 전문 기업입니다.</p>
+      <article class="block">
+        <h1 class="block-title">인사말 / Greetings</h1>
 
-      <div class="grid cols-2" style="margin-top:16px;">
-        <div class="card">
-          <b>주요 업무</b>
-          <div class="p">부품 공급, 견적 상담, 납품 및 사후 응대</div>
+        <div class="copy">
+          <p>
+            대양특장은 분뇨차량용 펌프, 밸브와 유조차량용 펌프, 밸브를 전문적으로 생산 및 공급하고
+            있습니다.
+          </p>
+          <p>
+            앞으로도 최상급의 제품을 제공하기 위해 지속적인 연구와 품질 개선에 힘쓰며, 정밀한 기술로
+            고객의 신뢰에 보답하겠습니다.
+          </p>
+
+          <p class="en">
+            Our company supplies pumps and valves for vacuum and tanker trucks.<br />
+            We continuously improve quality through research and practical efforts.<br />
+            We strive to provide reliable products with precision engineering.
+          </p>
         </div>
-        <div class="card">
-          <b>강점</b>
-          <div class="p">빠른 대응과 꾸준한 공급 경험</div>
+
+      </article>
+
+      <article class="block">
+        <h2 class="block-title">회사연혁 / Company History</h2>
+
+        <div class="history">
+          <div class="row">
+            <div class="date">2014.10</div>
+            <div class="desc">SUS 4" 기어펌프, SUS 사방밸브, SUS 보톰밸브, SUS 안전밸브 생산</div>
+          </div>
+          <div class="row">
+            <div class="date">2013.10</div>
+            <div class="desc">대양상사 확장 이전</div>
+          </div>
+          <div class="row">
+            <div class="date">2013.01</div>
+            <div class="desc">진공펌프 10L, 8L 개발</div>
+          </div>
+          <div class="row">
+            <div class="date">2006.05</div>
+            <div class="desc">대양상사 확장 이전</div>
+          </div>
+          <div class="row">
+            <div class="date">2000.01</div>
+            <div class="desc">대양상사 설립</div>
+          </div>
         </div>
-      </div>
+
+        <img class="section-image" src={`${base}about-us.jpg`} alt="대양특장 연혁 관련 이미지" loading="lazy" />
+      </article>
     </div>
   </section>
+
+  <style>
+    .about-simple {
+      padding-top: 24px;
+      padding-bottom: 36px;
+    }
+    
+    .about-simple .container {
+      max-width: 770px;
+    }
+
+    .block + .block {
+      margin-top: 36px;
+    }
+
+    .block-title {
+      margin: 0 0 14px;
+      padding: 8px 14px;
+      background: linear-gradient(180deg, #eef2ff 0%, #e5ecff 100%);
+      border: 1px solid #d9e2f5;
+      border-radius: 6px;
+      font-size: clamp(20px, 1.61vw, 29px);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      font-weight: 800;
+      color: #1f2937;
+    }
+
+    .copy {
+      padding: 0 6px;
+    }
+
+    .copy p {
+      margin: 0 0 10px;
+      font-size: clamp(13px, 0.875vw, 16px);
+      line-height: 1.5;
+      font-weight: 700;
+      color: #1f2937;
+    }
+
+    .copy .en {
+      margin-top: 18px;
+      font-size: clamp(11px, 0.735vw, 13px);
+      line-height: 1.45;
+      font-weight: 600;
+      color: #4b5563;
+    }
+
+    .history {
+      padding: 0 6px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .date {
+      font-size: clamp(13px, 0.84vw, 15px);
+      font-weight: 800;
+      color: #111827;
+      letter-spacing: -0.01em;
+    }
+
+    .desc {
+      font-size: clamp(13px, 0.84vw, 15px);
+      line-height: 1.45;
+      font-weight: 700;
+      color: #1f2937;
+    }
+
+    .section-image {
+      margin-top: 18px;
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      display: block;
+    }
+
+    @media (max-width: 900px) {
+      .row {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+    }
+  </style>
 </BaseLayout>
