@@ -13,15 +13,15 @@ const subtitleText =
   Astro.props.subtitleText ?? "분뇨차·유조차 주요 부품을 카테고리별로 안내합니다.";
 
 const vacuumCards = [
-  { title: "분뇨차 펌프", desc: "진공 라인 핵심 부품 펌프/부속", href: `${base}products/pump-vacuum/` },
-  { title: "분뇨차 밸브", desc: "체크/차단/안전 밸브 등", href: `${base}products/valve-vacuum/` },
-  { title: "분뇨차 기타 부품", desc: "호스/피팅/게이지/소모품", href: `${base}products/etc-vacuum/` },
+  { title: "진공차량 펌프", desc: "버큠탱크로리(분뇨차,준설차) 진공펌프", href: `${base}products/pump-vacuum/` },
+  { title: "진공차량 밸브", desc: "버큠탱크로리 사방/이방/체크 밸브 등", href: `${base}products/valve-vacuum/` },
+  { title: "진공차량 부품", desc: "맨홀/탈취기/에어클리너/오일여과기/오일통 등", href: `${base}products/etc-vacuum/` },
 ];
 
 const fuelCards = [
-  { title: "유조차 펌프", desc: "유류 이송 라인 펌프/부속", href: `${base}products/pump-fuel/` },
-  { title: "유조차 밸브", desc: "차단/체크/안전 밸브 등", href: `${base}products/valve-fuel/` },
-  { title: "유조차 기타 부품", desc: "노즐/미터/호스/피팅", href: `${base}products/etc-fuel/` },
+  { title: "유조차량 펌프", desc: "유류 이송차량 용 기어펌프", href: `${base}products/pump-fuel/` },
+  { title: "유조차량 밸브", desc: "사방/이방/바이페스/보톰 밸브 등", href: `${base}products/valve-fuel/` },
+  { title: "유조차량 부품", desc: "맨홀/스트레이너/보톰핸들 등", href: `${base}products/etc-fuel/` },
 ];
 
 const showActions = Astro.props.showActions ?? false;
