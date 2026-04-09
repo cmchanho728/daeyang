@@ -190,7 +190,7 @@ const products = [
     .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-top:32px; }
     .card { display:block; text-decoration:none; border-radius:14px; overflow:hidden; background:#fff; box-shadow:0 6px 18px rgba(0,0,0,0.05); transition:0.25s; }
     .card:hover { transform:translateY(-4px); }
-    .card img { width:100%; height:260px; object-fit:cover; display:block; }
+    .card img { width:100%; aspect-ratio: 16 / 9; object-fit:cover; display:block; }
     .card-title { padding:16px; text-align:center; font-size:18px; font-weight:600; color:#1f2a37; }
 
     .actions { margin-top:40px; display:flex; gap:12px; flex-wrap:wrap; }
