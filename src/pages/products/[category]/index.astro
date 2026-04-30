@@ -1,0 +1,29 @@
+---
+// filepath: src/pages/products/[category]/index.astro
+// 동적 라우팅을 사용하여 카테고리별 제품 페이지 생성
+
+import ProductCategoryPage from "../../../components/ProductCategoryPage.astro";
+import { productsData, categories } from "../../../data/products";
+
+export function getStaticPaths() {
+  return categories.map((category) => ({
+    params: { category },
+    props: { category },
+  }));
+}
+
+interface Props {
+  category: string;
+}
+
+const { category } = Astro.props;
+
+// 해당 카테고리 데이터 가져오기
+const categoryData = productsData[category];
+
+if (!categoryData) {
+  return Astro.redirect("/products/");
+}
+---
+
+<ProductCategoryPage category={category} data={categoryData} />
