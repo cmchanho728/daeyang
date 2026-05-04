@@ -72,23 +72,55 @@ const { pageTitle, pageDescription, products } = data;
               <section class="info-panel">
                 <h4 class="panel-title">제품사진</h4>
 
-                <figure class="spec-photo">
-                  <button
-                    class="photo-btn"
-                    type="button"
-                    data-spec-photo={p.img}
-                    data-spec-title={`${p.name} 제품사진`}
-                  >
-                    <img src={p.img} alt={`${p.name} 제품사진`} loading="lazy" />
-                  </button>
-                </figure>
+                {(p.images && p.images.length > 0) ? (
+                  <div class="photo-grid">
+                    {p.images.map((img) => (
+                      <figure class="spec-photo">
+                        <button
+                          class="photo-btn"
+                          type="button"
+                          data-spec-photo={img.src}
+                          data-spec-title={img.alt || `${p.name} 제품사진`}
+                        >
+                          <img src={img.src} alt={img.alt || `${p.name} 제품사진`} loading="lazy" />
+                        </button>
+                      </figure>
+                    ))}
+                  </div>
+                ) : (
+                  <figure class="spec-photo">
+                    <button
+                      class="photo-btn"
+                      type="button"
+                      data-spec-photo={p.img}
+                      data-spec-title={`${p.name} 제품사진`}
+                    >
+                      <img src={p.img} alt={`${p.name} 제품사진`} loading="lazy" />
+                    </button>
+                  </figure>
+                )}
               </section>
 
               <section class="info-panel">
                 <h4 class="panel-title">외관도</h4>
 
-                <figure class="spec-photo drawing-photo">
-                  {p.specImg ? (
+                {(p.drawings && p.drawings.length > 0) ? (
+                  <div class="photo-grid drawing-grid">
+                    {p.drawings.map((img) => (
+                      <figure class="spec-photo drawing-photo">
+                        <button
+                          class="photo-btn"
+                          type="button"
+                          data-spec-photo={img.src}
+                          data-spec-title={img.alt || `${p.name} 외관도`}
+                        >
+                          <img src={img.src} alt={img.alt || `${p.name} 외관도`} loading="lazy" />
+                        </button>
+                      </figure>
+                    ))}
+                  </div>
+                ) : p.specImg ? (
+                  <figure class="spec-photo drawing-photo">
                     <button
                       class="photo-btn"
                       type="button"
@@ -97,12 +129,12 @@ const { pageTitle, pageDescription, products } = data;
                     >
                       <img src={p.specImg} alt={`${p.name} 외관도`} loading="lazy" />
                     </button>
-                  ) : (
-                    <div class="no-image">
-                      <p>외관도 준비중</p>
-                    </div>
-                  )}
-                </figure>
+                  </figure>
+                ) : (
+                  <div class="no-image">
+                    <p>외관도 준비중</p>
+                  </div>
+                )}
               </section>
             </div>
 
@@ -210,16 +242,53 @@ const { pageTitle, pageDescription, products } = data;
     }
 
     .info-panel .spec-photo{
-      max-width:260px;
+      width:100%;
+      max-width:230px;
       margin:0 auto;
+      height:160px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid rgba(0,0,0,0.12);
+      border-radius:12px;
+      background:#fff;
+      overflow:hidden;
+      padding:0;
     }
 
     .info-panel .spec-photo img{
       width:100%;
-      height:auto;
-      aspect-ratio:auto;
+      height:100%;
       object-fit:contain;
       background:#fff;
+      display:block;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      width: 100%;
+      max-width: 230px;
+      margin: 0 auto;
+    }
+
+    .photo-grid .spec-photo {
+      margin: 0;
+      max-width: 100%;
+    }
+
+    .drawing-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      width: 100%;
+      max-width: 230px;
+      margin: 0 auto;
+    }
+
+    .drawing-photo {
+      height:160px;
     }
 
     .drawing-photo img{
@@ -230,10 +299,11 @@ const { pageTitle, pageDescription, products } = data;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 200px;
+      height: 160px;
       background: #f5f5f5;
-      border: 1px dashed #ccc;
-      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 12px;
+      margin: 0;
     }
 
     .no-image p {
@@ -247,9 +317,8 @@ const { pageTitle, pageDescription, products } = data;
     .spec-table th, .spec-table td{ border-top:1px solid rgba(0,0,0,0.08); padding:10px 12px; text-align:left; vertical-align:top; }
     .spec-table th{ width:180px; color:#374151; font-weight:700; background:rgba(0,0,0,0.02); }
     .spec-table td{ color:#111827; }
-    .spec-photo{ margin:0; border:1px solid rgba(0,0,0,0.1); border-radius:12px; overflow:hidden; background:#fff; }
-    .photo-btn{ width:100%; border:0; background:transparent; padding:0; cursor:zoom-in; display:block; }
-    .spec-photo img{ width:100%; aspect-ratio:4/3; object-fit:cover; display:block; }
+    .spec-photo{ margin:0; display:flex; align-items:center; justify-content:center; }
+    .photo-btn{ width:100%; height:100%; border:0; background:transparent; padding:0; cursor:zoom-in; display:flex; align-items:center; justify-content:center; }
 
     .lightbox{ position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center; padding:20px; }
     .lightbox[hidden]{ display:none !important; }
@@ -269,12 +338,28 @@ const { pageTitle, pageDescription, products } = data;
       }
 
       .info-panel .spec-photo{
-        max-width:100%;
+        max-width:200px;
+        height:140px;
       }
 
-      .info-panel .spec-photo img{
-        height:auto;
-        aspect-ratio:4/3;
+      .photo-grid {
+        max-width: 200px;
+      }
+
+      .photo-grid .spec-photo {
+        height: 140px;
+      }
+
+      .drawing-grid {
+        max-width: 200px;
+      }
+
+      .drawing-grid .spec-photo {
+        height: 140px;
+      }
+
+      .drawing-photo {
+        height:140px;
       }
     }
 
@@ -285,6 +370,31 @@ const { pageTitle, pageDescription, products } = data;
 
       .panel-title{
         font-size:17px;
+      }
+
+      .info-panel .spec-photo{
+        max-width:180px;
+        height:120px;
+      }
+
+      .photo-grid {
+        max-width: 180px;
+      }
+
+      .photo-grid .spec-photo {
+        height: 120px;
+      }
+
+      .drawing-grid {
+        max-width: 180px;
+      }
+
+      .drawing-grid .spec-photo {
+        height: 120px;
+      }
+
+      .drawing-photo {
+        height:120px;
       }
     }
   </style>

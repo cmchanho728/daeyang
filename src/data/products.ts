@@ -4,12 +4,19 @@
 const base = import.meta.env.BASE_URL || "/";
 const baseUrl = base.endsWith("/") ? base : `${base}/`;
 
+export interface ProductImage {
+  src: string;
+  alt?: string;
+}
+
 export interface Product {
   id: string;
   name: string;
   img: string;
   cardImg?: string;
   specImg?: string;
+  images?: ProductImage[];
+  drawings?: ProductImage[];
   specs: Record<string, string>;
 }
 
@@ -42,6 +49,21 @@ export const productsData: Record<string, CategoryData> = {
       {
         id: "300l",
         name: "300L 펌프",
+        img: `${baseUrl}products/pump/pump-tl-300.jpg`,
+        cardImg: `${baseUrl}products/pump/pump-tl-300.jpg`,
+        specImg: `${baseUrl}products/pump/pump-tl-300-outer.jpg`,
+        specs: {
+          "용량": "300L/min",
+          "흡입 / 토출": "64mm / 64mm",
+          "최대 회전수 (RPM)": "500 RPM",
+          "압력": "5Kg/cm2",
+          "재질": "FC200",
+          "중량": "30Kg",
+        },
+      },
+      {
+        id: "300l-bypass",
+        name: "300L 내장형 펌프",
         img: `${baseUrl}products/pump/pump-tl-300.jpg`,
         cardImg: `${baseUrl}products/pump/pump-tl-300.jpg`,
         specImg: `${baseUrl}products/pump/pump-tl-300-outer.jpg`,
@@ -124,9 +146,37 @@ export const productsData: Record<string, CategoryData> = {
       {
         id: "5l",
         name: "진공펌프 5L (6000)",
-        img: `${baseUrl}products/pump/pump-vacuum-5l.jpg`,
-        cardImg: `${baseUrl}products/pump/pump-vacuum-5l.jpg`,
-        specImg: `${baseUrl}products/pump/pump-vacuum-5l-outer.jpg`,
+        img: `${baseUrl}products/vc/pump/5l-long.jpg`,
+        cardImg: `${baseUrl}products/vc/pump/5l-long.jpg`,
+        images: [
+          {
+            src: `${baseUrl}products/vc/pump/5l-long.jpg`,
+            alt: "진공펌프 5L 장축 이미지",
+          },
+          {
+            src: `${baseUrl}products/vc/pump/5l-cw.jpg`,
+            alt: "진공펌프 5L 단축 정방향 이미지",
+          },
+          {
+            src: `${baseUrl}products/vc/pump/5l-ccw.jpg`,
+            alt: "진공펌프 5L 단축 역방향 이미지",
+          },
+        ],
+        specImg: `${baseUrl}products/vc/pump/5l-long-outer.jpg`,
+        drawings: [
+          {
+            src: `${baseUrl}products/vc/pump/5l-long-outer.jpg`,
+            alt: "진공펌프 5L 장축 외관도",
+          },
+          {
+            src: `${baseUrl}products/vc/pump/5l-cw-outer.jpg`,
+            alt: "진공펌프 5L 단축 정방향 외관도",
+          },
+          {
+            src: `${baseUrl}products/vc/pump/5l-ccw-outer.jpg`,
+            alt: "진공펌프 5L 단축 역방향 외관도",
+          },
+        ],
         specs: {
           "체적 용량": "5L",
           "흡입 / 토출": "75mm / 75mm",
@@ -216,9 +266,29 @@ export const productsData: Record<string, CategoryData> = {
       {
         id: "shutoff",
         name: "사방밸브",
-        img: `${baseUrl}products/valve/valve-vc-4way.jpg`,
-        cardImg: `${baseUrl}products/valve/valve-vc-4way.jpg`,
-        specImg: `${baseUrl}products/valve/valve-vc-4way-outer.jpg`,
+        img: `${baseUrl}products/vc/valve/4way-65a.jpg`,
+        cardImg: `${baseUrl}products/vc/valve/4way-65a.jpg`,
+        images: [
+          {
+            src: `${baseUrl}products/vc/valve/4way-65a.jpg`,
+            alt: "분뇨차 용 65A 사방밸브",
+          },
+          {
+            src: `${baseUrl}products/vc/valve/4way-50a.jpg`,
+            alt: "분뇨차 용 50A 사방밸브 외관도",
+          },
+        ],
+        specImg: `${baseUrl}products/vc/valve/4way-65a-outer.jpg`,
+        drawings: [
+          {
+            src: `${baseUrl}products/vc/valve/4way-65a-outer.jpg`,
+            alt: "분뇨차 용 65A 사방밸브 외관도",
+          },
+          {
+            src: `${baseUrl}products/vc/valve/4way-50a-outer.jpg`,
+            alt: "분뇨차 용 50A 사방밸브 내부도",
+          }
+        ],
         specs: {
           "모델명": "분뇨차 용 사방밸브",
           "규격": "65A  ||  50A  ||  80A 별도 문의",
