@@ -9,6 +9,7 @@ import { etcFuel } from "./etc-fuel";
 import { etcGasket } from "./etc-gasket";
 import { etcJoint } from "./etc-joint";
 import { etcVacuum } from "./etc-vacuum";
+import { etcHose } from "./etc-hose";
 
 export const productsData: Record<string, CategoryData> = {
   "pump-fuel": pumpFuel,
@@ -19,6 +20,7 @@ export const productsData: Record<string, CategoryData> = {
   "etc-flange": etcFlange,
   "etc-fuel": etcFuel,
   "etc-gasket": etcGasket,
+  "etc-hose": etcHose,
   "etc-joint": etcJoint,
   "etc-vacuum": etcVacuum,
 };
