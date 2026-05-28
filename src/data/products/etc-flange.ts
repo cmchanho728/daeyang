@@ -29,7 +29,7 @@ export const etcFlange: CategoryData = {
         cardImg: `${baseUrl}products/etc/flange/flange-rect.jpg`,
         specImg: `${baseUrl}products/etc/flange/flange-rect-spec.jpg`,
         specs: {
-          "규격": "확인 필요",
+          "규격": "□ 90 || □ 105 || □ 120",
           "형식": "확인 필요",
           "재질": "확인 필요",
           "적용라인": "확인 필요",
