@@ -34,12 +34,7 @@ There is no test suite and no linter configured. `npm run astro check` is the cl
 
 - Single deployment target: [Vercel](https://vercel.com), root-hosted at the production domain `www.dyic.kr`. There is no GitHub Pages deployment — the old `.github/workflows/deploy.yml` (GitHub Actions → GitHub Pages) has been removed.
 - `astro.config.mjs` no longer sets `base`; it defaults to `/`. Previously it branched between `/` (Vercel) and `/daeyang/` (GitHub Pages project-site path) to support dual deployment — that branching was removed once GitHub Pages was dropped.
-- Existing code still builds asset/link paths off `import.meta.env.BASE_URL`, normalized to a trailing slash, e.g.:
-  ```js
-  const rawBase = import.meta.env.BASE_URL;
-  const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
-  ```
-  This pattern is repeated per-file (see `Header.astro`, `ProductCategoryPage.astro`, `src/data/products/base.ts`'s exported `baseUrl`) rather than centralized. It's a holdover from the dual-deployment days and now always resolves to `/`, but it's harmless — follow the existing per-file pattern when adding new pages/components rather than introducing a new helper or hardcoding paths differently.
+- Asset/link paths are built off `import.meta.env.BASE_URL`, normalized to a trailing slash by the single helper `src/utils/url.ts` (exports `baseUrl`). Import it as `import { baseUrl as base } from "../utils/url"` (adjust relative depth) rather than recomputing it per-file. It's a holdover from the dual-deployment days and now always resolves to `/`, but it's harmless. `src/data/products/base.ts` re-exports the same `baseUrl` for data files, which live outside the Astro component tree and can't rely on relative imports for `public/` assets otherwise.
 - `src/layouts/Layout.astro` (the unused Astro-starter template layout) and `src/components/Welcome.astro` have been deleted. The real layout used everywhere is `src/layouts/BaseLayout.astro` (sets the Korean `<html lang="ko">`, SEO/OG meta tags, and wraps content in `Header` + `<main><slot /></main>` + `Footer`).
 
 ## Product catalog data model

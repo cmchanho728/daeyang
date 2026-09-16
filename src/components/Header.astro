@@ -1,8 +1,6 @@
 ﻿---
 import { site } from "../config/site";
-
-const rawBase = import.meta.env.BASE_URL;
-const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
+import { baseUrl as base } from "../utils/url";
 
 const nav = [
   { label: "회사소개", href: `${base}about/` },

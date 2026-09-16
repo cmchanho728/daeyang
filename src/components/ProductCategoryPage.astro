@@ -5,6 +5,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import type { Product, CategoryData } from "../data/products";
 import { site } from "../config/site";
+import { baseUrl as base } from "../utils/url";
 
 interface Props {
   category: string;
@@ -12,9 +13,6 @@ interface Props {
 }
 
 const { category, data } = Astro.props;
-
-const rawBase = import.meta.env.BASE_URL;
-const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
 
 const { pageTitle, pageDescription, products } = data;
 ---

@@ -1,6 +1,5 @@
 ---
-const rawBase = import.meta.env.BASE_URL;
-const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
+import { baseUrl as base } from "../utils/url";
 ---
 
 <section class="link-panel" aria-label="추가 제품 링크">
