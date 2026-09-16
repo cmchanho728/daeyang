@@ -1,0 +1,9 @@
+---
+import { site } from "../config/site";
+import { baseUrl as base } from "../utils/url";
+---
+
+<a class="btn primary" href={`${base}contact/`}>견적 문의</a>
+<a class="btn ghost" href={`${base}catalog/`}>카다로그</a>
+<a class="btn kakao" href={site.kakaoUrl} target="_blank" rel="noopener">카카오톡 상담</a>
+<a class="btn ghost" href={site.phone.href}>전화하기</a>

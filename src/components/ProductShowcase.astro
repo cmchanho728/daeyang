@@ -1,6 +1,6 @@
 ﻿---
 import ProductLinkPanel from "./ProductLinkPanel.astro";
-import { site } from "../config/site";
+import ContactActions from "./ContactActions.astro";
 import { baseUrl as base } from "../utils/url";
 
 const vacuumBanner = Astro.props.vacuumBanner ?? `${base}products-vctruck.jpg`;
@@ -68,10 +68,7 @@ const showLinkPanel = Astro.props.showLinkPanel ?? false;
     
     {showActions && (
       <div class="actions">
-        <a class="btn primary" href={`${base}contact/`}>견적 문의</a>
-        <a class="btn ghost" href={`${base}catalog/`}>카다로그</a>
-        <a class="btn kakao" href={site.kakaoUrl} target="_blank" rel="noopener">카카오톡 상담</a>
-        <a class="btn ghost" href={site.phone.href}>전화하기</a>
+        <ContactActions />
       </div>
     )}
     
