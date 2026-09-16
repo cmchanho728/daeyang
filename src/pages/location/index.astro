@@ -1,11 +1,12 @@
 ﻿---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { site } from "../../config/site";
 
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
 ---
 
-<BaseLayout title="오시는 길 | 대양특장">
+<BaseLayout title={`오시는 길 | ${site.shortName}`}>
   <section class="section">
     <div class="container">
       <p class="breadcrumb">
@@ -20,8 +21,8 @@ const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
           <b>지도</b>
           <div class="map-wrap" style="margin-top:10px;">
             <iframe
-              title="대양특장 위치"
-              src="https://www.google.com/maps?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%96%91%EC%A3%BC%EC%8B%9C%20%EB%82%A8%EB%A9%B4%20%EC%9D%80%EB%82%A8%EB%A1%9C%2076-4&output=embed"
+              title={`${site.shortName} 위치`}
+              src={`https://www.google.com/maps?q=${encodeURIComponent(site.address)}&output=embed`}
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
               allowfullscreen>

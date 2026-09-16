@@ -4,6 +4,7 @@
 
 import BaseLayout from "../layouts/BaseLayout.astro";
 import type { Product, CategoryData } from "../data/products";
+import { site } from "../config/site";
 
 interface Props {
   category: string;
@@ -18,7 +19,7 @@ const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
 const { pageTitle, pageDescription, products } = data;
 ---
 
-<BaseLayout title={`${pageTitle} | 대양특장`}>
+<BaseLayout title={`${pageTitle} | ${site.shortName}`}>
   <section class="section">
     <div class="container">
       <p class="breadcrumb">
@@ -155,8 +156,8 @@ const { pageTitle, pageDescription, products } = data;
       <div class="actions">
         <a class="btn primary" href={`${base}contact/`}>견적 문의</a>
         <a class="btn ghost" href={`${base}catalog/`}>카다로그</a>
-        <a class="btn kakao" href="https://pf.kakao.com/_bjkAX/chat" target="_blank" rel="noopener">카카오톡 상담</a>
-        <a class="btn ghost" href="tel:031-858-2277">전화하기</a>
+        <a class="btn kakao" href={site.kakaoUrl} target="_blank" rel="noopener">카카오톡 상담</a>
+        <a class="btn ghost" href={site.phone.href}>전화하기</a>
       </div>
     </div>
   </section>

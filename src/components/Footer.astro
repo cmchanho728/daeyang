@@ -1,4 +1,6 @@
 ---
+import { site } from "../config/site";
+
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
 ---
@@ -6,7 +8,7 @@ const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
 <footer class="footer">
   <div class="container inner">
     <div class="brand">
-      <div class="title">대양특장 주식회사</div>
+      <div class="title">{site.companyName}</div>
       <div class="desc">분뇨차·유조차 부품 및 탱크 부품 공급</div>
     </div>
 
@@ -21,17 +23,17 @@ const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
         <h3>대양특장 주식회사는 언제나 최상의<br />부품과 안정적인 공급을 약속합니다</h3>
 
         <div class="cta-row">
-          <a class="cta phone" href="tel:031-858-2277">
+          <a class="cta phone" href={site.phone.href}>
             <span class="ico">☎</span>
             <span>전화 상담</span>
           </a>
 
-          <a class="cta email" href="mailto:daeyangsss@kakao.com">
+          <a class="cta email" href={`mailto:${site.email}`}>
             <span class="ico">✉</span>
             <span>이메일 문의</span>
           </a>
 
-          <a class="cta kakao" href="https://pf.kakao.com/_bjkAX/chat" target="_blank" rel="noopener">
+          <a class="cta kakao" href={site.kakaoUrl} target="_blank" rel="noopener">
             <span class="talk">TALK</span>
             <span>카카오톡 상담</span>
           </a>
@@ -41,12 +43,12 @@ const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
 
     <div class="address">
       <div class="head">주소</div>
-      <div class="item">경기도 양주시 남면 은남로 76-4</div>
+      <div class="item">{site.address}</div>
     </div>
   </div>
 
   <div class="container bottom">
-    <span>© {new Date().getFullYear()} 대양특장 주식회사. All rights reserved.</span>
+    <span>© {new Date().getFullYear()} {site.companyName}. All rights reserved.</span>
   </div>
 </footer>
 

@@ -1,4 +1,6 @@
 ﻿---
+import { site } from "../config/site";
+
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
 
@@ -15,7 +17,7 @@ const nav = [
   <div class="container bar">
     <a class="logo" href={base}>
       <span class="mark">DY</span>
-      <span class="name">대양특장 주식회사 (구 대양상사)</span>
+      <span class="name">{site.companyName} (구 {site.formerName})</span>
     </a>
 
     <nav class="nav-desktop" aria-label="주요 메뉴">
@@ -38,7 +40,7 @@ const nav = [
 
       <div class="mobile-cta">
         <a class="btn primary" href={`${base}contact/`}>견적/문의</a>
-        <a class="btn ghost" href="tel:031-858-2277">전화하기</a>
+        <a class="btn ghost" href={site.phone.href}>전화하기</a>
       </div>
     </div>
   </div>

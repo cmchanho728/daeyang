@@ -1,11 +1,12 @@
 ﻿---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { site } from "../../config/site";
 
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
 ---
 
-<BaseLayout title="문의 | 대양특장">
+<BaseLayout title={`문의 | ${site.shortName}`}>
   <section class="section">
     <div class="container">
       <p class="breadcrumb">
@@ -19,9 +20,9 @@ const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
         <div class="card">
           <b>연락처</b>
           <div class="p" style="margin-top:6px;">
-            전화: <a href="tel:0318582277" style="color:var(--brand); font-weight:700;">031-858-2277</a><br/>
-            이메일: <a href="mailto:daeyangsss@kakao.com" style="color:var(--brand); font-weight:700;">daeyangsss@kakao.com</a><br/>
-            카카오톡: <a href="https://pf.kakao.com/_bjkAX/chat" target="_blank" rel="noopener" style="color:var(--brand); font-weight:700;">상담 바로가기</a>
+            전화: <a href={site.phone.href} style="color:var(--brand); font-weight:700;">{site.phone.display}</a><br/>
+            이메일: <a href={`mailto:${site.email}`} style="color:var(--brand); font-weight:700;">{site.email}</a><br/>
+            카카오톡: <a href={site.kakaoUrl} target="_blank" rel="noopener" style="color:var(--brand); font-weight:700;">상담 바로가기</a>
           </div>
         </div>
         <div class="card">

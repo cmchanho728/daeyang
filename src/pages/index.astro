@@ -1,17 +1,18 @@
 ﻿---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProductShowcase from "../components/ProductShowcase.astro";
+import { site } from "../config/site";
 const base = import.meta.env.BASE_URL;
 ---
 
-<BaseLayout title="대양특장 | (구) 대양상사 | 분뇨차·유조차 부품 전문">
+<BaseLayout title={`${site.shortName} | (구) ${site.formerName} | 분뇨차·유조차 부품 전문`}>
   <section class="section">
     <div class="container">
       <span class="badge">Vacuum Truck · Fuel Tanker</span>
-      <h1 class="h1">대양특장 주식회사</h1>
-      <p class="sub">구 대양상사 · 20년 이상 분뇨차·유조차 부품 전문 기업</p>
+      <h1 class="h1">{site.companyName}</h1>
+      <p class="sub">구 {site.formerName} · 20년 이상 분뇨차·유조차 부품 전문 기업</p>
       <p>
-        대양특장은 기존 대양상사가 법인 전환한 회사입니다.
+        {site.shortName}은 기존 {site.formerName}가 법인 전환한 회사입니다.
         20년 이상 분뇨차·유조차 부품을 공급해온 전문 기업입니다.
       </p>
 
@@ -20,13 +21,13 @@ const base = import.meta.env.BASE_URL;
         <a class="btn ghost" href={`${base}catalog/`}>카다로그</a>
         <a
           class="btn kakao"
-          href="https://pf.kakao.com/_bjkAX/chat"
+          href={site.kakaoUrl}
           target="_blank"
           rel="noopener"
         >
           카카오톡 상담
         </a>
-        <a class="btn ghost" href="tel:031-858-2277">전화하기</a>
+        <a class="btn ghost" href={site.phone.href}>전화하기</a>
       </div>
     </div>
   </section>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
+import { site } from "../../config/site";
 
 const imageModules = import.meta.glob("../../assets/catalog/*.{jpg,jpeg,png,webp}", {
   eager: true,
@@ -17,7 +18,7 @@ const images = Object.entries(imageModules)
   );
 ---
 
-<BaseLayout title="카다로그 | 대양특장">
+<BaseLayout title={`카다로그 | ${site.shortName}`}>
   <section class="section">
     <div class="container">
       <h1 class="h1">카다로그</h1>

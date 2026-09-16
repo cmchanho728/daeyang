@@ -10,7 +10,7 @@ Astro (v5, static output, no UI framework) marketing/catalog site for 대양특�
 
 - 사용자와의 대화는 한국어로 진행한다.
 - `package-lock.json`, `dist/`, `node_modules/`, `public/` 안의 이미지 파일은 꼭 필요할 때만 읽는다. 이미지는 내용을 직접 열어보지 말고 크기·해상도 등 메타 정보만 확인한다.
-- 연락처(전화·이메일·카카오톡)와 주소는 현재 `Header.astro`, `Footer.astro`, 각 페이지, `BaseLayout.astro`(OG 메타) 등 여러 파일에 하드코딩되어 있다. 단일 소스로 관리하도록 리팩터링 예정이므로, 새로 추가하는 연락처/주소 정보도 우선 기존 방식(파일별 하드코딩)을 따르되 리팩터링 시 한 곳으로 모을 수 있게 값의 출처를 명확히 표시한다.
+- 연락처(전화·이메일·카카오톡)와 주소, 회사명/구 상호, 사이트 URL은 `src/config/site.ts`의 `site` 객체에서 단일 관리한다. `Header.astro`, `Footer.astro`, 각 페이지, `BaseLayout.astro`(OG 메타)는 모두 이 값을 import해서 사용하므로, 새 페이지/컴포넌트에서도 문자열을 직접 하드코딩하지 말고 `site`에서 가져다 쓴다. 대표자·사업자등록번호·팩스·영업시간은 아직 확정 전이라 빈 문자열로 두었고, 값이 채워지기 전까지는 화면에 노출하는 UI가 없다 — 위치가 정해지면 빈 값일 때 숨기는 조건부 렌더링과 함께 추가할 것.
 - 용어 통일 예정: "카탈로그", "바이패스", "플랜지"로 맞출 계획이다. 현재 코드에는 아래처럼 표기가 섞여 있으니, 일괄 변경 지시가 있기 전까지는 임의로 바꾸지 말고 기존 표기를 유지한다.
   - "카탈로그" ← 현재 전 파일에서 "카다로그"로 표기 (`src/pages/catalog/index.astro`, `Header`/`Footer` 및 각 페이지의 CTA 버튼 등).
   - "바이패스" ← `src/pages/business/index.astro`에 "바이페스"로 표기된 항목 있음. 파일명·id(`300l-bypass`, `bypass.jpg` 등)는 영문 그대로이므로 변경 대상 아님.
@@ -61,4 +61,4 @@ Each product's images (`img`/`cardImg`/`specImg`/`images[]`/`drawings[]`) refere
 - `src/pages/` — one folder per top-level route (`about/`, `business/`, `catalog/`, `contact/`, `location/`, `products/`), each with an `index.astro`. Static marketing pages import `BaseLayout` directly; the products index and homepage additionally use `src/components/ProductShowcase.astro` (category-card overview grid) and `src/components/ProductLinkPanel.astro`.
 - `src/components/Header.astro` / `Footer.astro` — shared site chrome, included only via `BaseLayout`.
 - Styling is plain CSS: global rules in `src/styles/global.css` (imported once, in `BaseLayout.astro`), plus component-scoped `<style>` blocks in individual `.astro` files. No CSS framework or preprocessor.
-- Contact/CTA patterns are repeated across pages rather than componentized: 견적 문의 (quote request) link to `/contact/`, 카다로그 (catalog) link to `/catalog/`, a KakaoTalk chat link (`https://pf.kakao.com/_bjkAX/chat`), and a `tel:031-858-2277` phone link. Keep these consistent when adding new pages.
+- Contact/CTA patterns are repeated across pages rather than componentized: 견적 문의 (quote request) link to `/contact/`, 카다로그 (catalog) link to `/catalog/`, a KakaoTalk chat link, and a phone link. The KakaoTalk URL and phone `href`/display text come from `site.kakaoUrl` / `site.phone` in `src/config/site.ts` (see above) rather than literals. Keep these consistent when adding new pages.

@@ -1,11 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { site } from "../../config/site";
 
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
 ---
 
-<BaseLayout title="회사소개 | 대양특장">
+<BaseLayout title={`회사소개 | ${site.shortName}`}>
   <section class="section about-simple">
     <div class="container">
       <p class="breadcrumb">

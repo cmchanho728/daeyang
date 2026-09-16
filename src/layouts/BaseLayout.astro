@@ -2,8 +2,11 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { site } from "../config/site";
 
-const { title = "대양특장 | (구) 대양상사 | 분뇨차·유조차 부품 전문" } = Astro.props;
+const {
+  title = `${site.shortName} | (구) ${site.formerName} | 분뇨차·유조차 부품 전문`,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -15,17 +18,17 @@ const { title = "대양특장 | (구) 대양상사 | 분뇨차·유조차 부품
 
     <meta
       name="description"
-      content="대양특장은 기존 대양상사가 법인 전환한 회사로, 분뇨차·유조차 부품을 20년 이상 공급해온 전문 기업입니다."
+      content={`${site.shortName}은 기존 ${site.formerName}가 법인 전환한 회사로, 분뇨차·유조차 부품을 20년 이상 공급해온 전문 기업입니다.`}
     />
 
-    <meta property="og:title" content="대양특장 | (구) 대양상사 | 분뇨차·유조차 부품 전문" />
+    <meta property="og:title" content={`${site.shortName} | (구) ${site.formerName} | 분뇨차·유조차 부품 전문`} />
     <meta
       property="og:description"
-      content="분뇨차·유조차 부품 전문 기업 대양특장. 펌프, 밸브, 기타 부품 상담 및 견적 문의 가능."
+      content={`분뇨차·유조차 부품 전문 기업 ${site.shortName}. 펌프, 밸브, 기타 부품 상담 및 견적 문의 가능.`}
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://dyic.kr" />
-    <meta property="og:image" content="https://dyic.kr/main.jpg" />
+    <meta property="og:url" content={site.siteUrl} />
+    <meta property="og:image" content={`${site.siteUrl}/main.jpg`} />
     <meta property="og:locale" content="ko_KR" />
     <meta name="robots" content="index, follow" />
   </head>

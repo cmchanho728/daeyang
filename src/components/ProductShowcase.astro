@@ -1,5 +1,6 @@
 ﻿---
 import ProductLinkPanel from "./ProductLinkPanel.astro";
+import { site } from "../config/site";
 
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
@@ -71,8 +72,8 @@ const showLinkPanel = Astro.props.showLinkPanel ?? false;
       <div class="actions">
         <a class="btn primary" href={`${base}contact/`}>견적 문의</a>
         <a class="btn ghost" href={`${base}catalog/`}>카다로그</a>
-        <a class="btn kakao" href="https://pf.kakao.com/_bjkAX/chat" target="_blank" rel="noopener">카카오톡 상담</a>
-        <a class="btn ghost" href="tel:031-858-2277">전화하기</a>
+        <a class="btn kakao" href={site.kakaoUrl} target="_blank" rel="noopener">카카오톡 상담</a>
+        <a class="btn ghost" href={site.phone.href}>전화하기</a>
       </div>
     )}
     
