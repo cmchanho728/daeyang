@@ -1,5 +1,6 @@
 ﻿---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 import { site } from "../../config/site";
 import { baseUrl as base } from "../../utils/url";
 ---
@@ -7,10 +8,7 @@ import { baseUrl as base } from "../../utils/url";
 <BaseLayout title={`오시는 길 | ${site.shortName}`}>
   <section class="section">
     <div class="container">
-      <p class="breadcrumb">
-        <a href={`${base}`}>홈</a> <span>&gt;</span>
-        <strong>오시는 길</strong>
-      </p>
+      <Breadcrumb items={[{ label: "홈", href: base }, { label: "오시는 길" }]} />
       <h1 class="h1">오시는 길</h1>
       <p class="p">주소와 지도를 확인하세요.</p>
 
@@ -32,19 +30,6 @@ import { baseUrl as base } from "../../utils/url";
   </section>
 
   <style>
-    .breadcrumb {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 14px;
-      flex-wrap: wrap;
-    }
-
-    .breadcrumb a { color: var(--muted); }
-    .breadcrumb a:hover { color: var(--text); }
-
     .map-wrap {
       border: 1px solid var(--line);
       border-radius: 12px;

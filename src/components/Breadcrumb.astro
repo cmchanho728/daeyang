@@ -1,0 +1,49 @@
+---
+interface Crumb {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: Crumb[];
+  compact?: boolean;
+}
+
+const { items, compact = false } = Astro.props;
+---
+
+<p class={compact ? "breadcrumb compact" : "breadcrumb"}>
+  {items.map((item, i) => (
+    <Fragment>
+      {i > 0 && (compact ? " > " : <span>&gt;</span>)}
+      {item.href ? <a href={item.href}>{item.label}</a> : <strong>{item.label}</strong>}
+    </Fragment>
+  ))}
+</p>
+
+<style>
+  .breadcrumb {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb a {
+    color: var(--muted);
+  }
+
+  .breadcrumb a:hover {
+    color: var(--text);
+  }
+
+  .breadcrumb.compact {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: #666;
+  }
+</style>
