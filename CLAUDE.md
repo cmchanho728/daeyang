@@ -1,0 +1,64 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project overview
+
+Astro (v5, static output, no UI framework) marketing/catalog site for 대양특장 (formerly 대양상사), a Korean manufacturer of parts for vacuum/septic trucks (분뇨차) and fuel tankers (유조차). Site content is Korean. Production domain: `www.dyic.kr`.
+
+## Working conventions
+
+- 사용자와의 대화는 한국어로 진행한다.
+- `package-lock.json`, `dist/`, `node_modules/`, `public/` 안의 이미지 파일은 꼭 필요할 때만 읽는다. 이미지는 내용을 직접 열어보지 말고 크기·해상도 등 메타 정보만 확인한다.
+- 연락처(전화·이메일·카카오톡)와 주소는 현재 `Header.astro`, `Footer.astro`, 각 페이지, `BaseLayout.astro`(OG 메타) 등 여러 파일에 하드코딩되어 있다. 단일 소스로 관리하도록 리팩터링 예정이므로, 새로 추가하는 연락처/주소 정보도 우선 기존 방식(파일별 하드코딩)을 따르되 리팩터링 시 한 곳으로 모을 수 있게 값의 출처를 명확히 표시한다.
+- 용어 통일 예정: "카탈로그", "바이패스", "플랜지"로 맞출 계획이다. 현재 코드에는 아래처럼 표기가 섞여 있으니, 일괄 변경 지시가 있기 전까지는 임의로 바꾸지 말고 기존 표기를 유지한다.
+  - "카탈로그" ← 현재 전 파일에서 "카다로그"로 표기 (`src/pages/catalog/index.astro`, `Header`/`Footer` 및 각 페이지의 CTA 버튼 등).
+  - "바이패스" ← `src/pages/business/index.astro`에 "바이페스"로 표기된 항목 있음. 파일명·id(`300l-bypass`, `bypass.jpg` 등)는 영문 그대로이므로 변경 대상 아님.
+  - "플랜지" ← `src/data/products/etc-flange.ts`는 이미 "플랜지"로 일치, `src/components/ProductLinkPanel.astro`와 `src/data/products/etc-joint.ts`는 "플렌지"로 표기되어 있어 불일치.
+  - 제품군(카테고리) 명칭 자체의 확정본은 아직 없음 — 확정되면 이 목록을 갱신할 것.
+- 작업은 `renewal` 브랜치에서 진행한다. 커밋은 단계별로 나누고, 각 커밋 전에 변경 내역을 요약해서 보여준 뒤 진행한다.
+
+## Commands
+
+```sh
+npm install       # install dependencies
+npm run dev       # dev server at localhost:4321
+npm run build     # production build to ./dist/
+npm run preview   # preview the production build locally
+npm run astro ...  # run Astro CLI commands, e.g. `npm run astro check`
+```
+
+There is no test suite and no linter configured. `npm run astro check` is the closest thing to a type-check (validates `.astro` files and TS against `tsconfig.json`, which extends `astro/tsconfigs/strict`).
+
+## Deployment and base path
+
+- Deployed via GitHub Actions (`.github/workflows/deploy.yml`) to GitHub Pages on every push to `main`. The workflow just runs `npm ci && npm run build` and publishes `./dist`.
+- `astro.config.mjs` sets `base` conditionally: `/` when `process.env.VERCEL === "1"` (Vercel deploys are root-hosted), otherwise `/daeyang/` (GitHub Pages project-site path). This means the site is deployed to *both* Vercel and GitHub Pages, with different base paths.
+- Because of this, **never hardcode root-relative asset/link paths** (e.g. `/products/...`, `href="/contact/"`). Always build paths off `import.meta.env.BASE_URL`, normalized to a trailing slash, e.g.:
+  ```js
+  const rawBase = import.meta.env.BASE_URL;
+  const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
+  ```
+  This pattern is repeated per-file (see `Header.astro`, `ProductCategoryPage.astro`, `src/data/products/base.ts`'s exported `baseUrl`) rather than centralized — follow the existing pattern when adding new pages/components rather than introducing a new helper.
+- `src/layouts/Layout.astro` is the original unused Astro-starter template layout — the real layout used everywhere is `src/layouts/BaseLayout.astro` (sets the Korean `<html lang="ko">`, SEO/OG meta tags, and wraps content in `Header` + `<main><slot /></main>` + `Footer`).
+
+## Product catalog data model
+
+The product catalog is the core piece of domain logic, split across `src/data/products/`:
+
+- `types.ts` — `Product` (id, name, images, `specs: Record<string,string>`) and `CategoryData` (pageTitle, pageDescription, products[]) interfaces.
+- `base.ts` — exports `baseUrl`, the normalized `BASE_URL` used to prefix every image path in product data files (since data files live outside the Astro component tree and can't rely on relative imports for `public/` assets).
+- One file per product category (e.g. `pump-fuel.ts`, `valve-vacuum.ts`, `etc-hose.ts`, ...), each exporting a `CategoryData` object. Category naming convention is `<group>-<subtype>` (`pump-fuel`, `pump-vacuum`, `valve-fuel`, `valve-vacuum`, `etc-coupling`, `etc-flange`, `etc-fuel`, `etc-gasket`, `etc-hose`, `etc-joint`, `etc-vacuum`).
+- `index.ts` — aggregates all category files into `productsData: Record<string, CategoryData>` and derives `categories = Object.keys(productsData)`. **This is the single registration point** — adding a new product category means creating a new category file and adding one line here.
+- Top-level `src/data/products.ts` just re-exports from `./products/index` (kept for import-path convenience).
+
+Routing: `src/pages/products/[category]/index.astro` uses `getStaticPaths()` over `categories` to statically generate one page per category, rendered by the shared `src/components/ProductCategoryPage.astro` component (breadcrumb, product grid, per-product spec table + photo/drawing lightbox gallery). To add a new product category page, you only need to add data — not a new page or route.
+
+Each product's images (`img`/`cardImg`/`specImg`/`images[]`/`drawings[]`) reference files under `public/products/...`; adding a product means adding both the data entry and the corresponding image file(s) under `public/`.
+
+## Page/component structure
+
+- `src/pages/` — one folder per top-level route (`about/`, `business/`, `catalog/`, `contact/`, `location/`, `products/`), each with an `index.astro`. Static marketing pages import `BaseLayout` directly; the products index and homepage additionally use `src/components/ProductShowcase.astro` (category-card overview grid) and `src/components/ProductLinkPanel.astro`.
+- `src/components/Header.astro` / `Footer.astro` — shared site chrome, included only via `BaseLayout`.
+- Styling is plain CSS: global rules in `src/styles/global.css` (imported once, in `BaseLayout.astro`), plus component-scoped `<style>` blocks in individual `.astro` files. No CSS framework or preprocessor.
+- Contact/CTA patterns are repeated across pages rather than componentized: 견적 문의 (quote request) link to `/contact/`, 카다로그 (catalog) link to `/catalog/`, a KakaoTalk chat link (`https://pf.kakao.com/_bjkAX/chat`), and a `tel:031-858-2277` phone link. Keep these consistent when adding new pages.
