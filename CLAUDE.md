@@ -32,15 +32,15 @@ There is no test suite and no linter configured. `npm run astro check` is the cl
 
 ## Deployment and base path
 
-- Deployed via GitHub Actions (`.github/workflows/deploy.yml`) to GitHub Pages on every push to `main`. The workflow just runs `npm ci && npm run build` and publishes `./dist`.
-- `astro.config.mjs` sets `base` conditionally: `/` when `process.env.VERCEL === "1"` (Vercel deploys are root-hosted), otherwise `/daeyang/` (GitHub Pages project-site path). This means the site is deployed to *both* Vercel and GitHub Pages, with different base paths.
-- Because of this, **never hardcode root-relative asset/link paths** (e.g. `/products/...`, `href="/contact/"`). Always build paths off `import.meta.env.BASE_URL`, normalized to a trailing slash, e.g.:
+- Single deployment target: [Vercel](https://vercel.com), root-hosted at the production domain `www.dyic.kr`. There is no GitHub Pages deployment — the old `.github/workflows/deploy.yml` (GitHub Actions → GitHub Pages) has been removed.
+- `astro.config.mjs` no longer sets `base`; it defaults to `/`. Previously it branched between `/` (Vercel) and `/daeyang/` (GitHub Pages project-site path) to support dual deployment — that branching was removed once GitHub Pages was dropped.
+- Existing code still builds asset/link paths off `import.meta.env.BASE_URL`, normalized to a trailing slash, e.g.:
   ```js
   const rawBase = import.meta.env.BASE_URL;
   const base = rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
   ```
-  This pattern is repeated per-file (see `Header.astro`, `ProductCategoryPage.astro`, `src/data/products/base.ts`'s exported `baseUrl`) rather than centralized — follow the existing pattern when adding new pages/components rather than introducing a new helper.
-- `src/layouts/Layout.astro` is the original unused Astro-starter template layout — the real layout used everywhere is `src/layouts/BaseLayout.astro` (sets the Korean `<html lang="ko">`, SEO/OG meta tags, and wraps content in `Header` + `<main><slot /></main>` + `Footer`).
+  This pattern is repeated per-file (see `Header.astro`, `ProductCategoryPage.astro`, `src/data/products/base.ts`'s exported `baseUrl`) rather than centralized. It's a holdover from the dual-deployment days and now always resolves to `/`, but it's harmless — follow the existing per-file pattern when adding new pages/components rather than introducing a new helper or hardcoding paths differently.
+- `src/layouts/Layout.astro` (the unused Astro-starter template layout) and `src/components/Welcome.astro` have been deleted. The real layout used everywhere is `src/layouts/BaseLayout.astro` (sets the Korean `<html lang="ko">`, SEO/OG meta tags, and wraps content in `Header` + `<main><slot /></main>` + `Footer`).
 
 ## Product catalog data model
 
