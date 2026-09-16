@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumb from "../../components/Breadcrumb.astro";
+import Lightbox from "../../components/Lightbox.astro";
 import { site } from "../../config/site";
 import { baseUrl as base } from "../../utils/url";
 
@@ -37,7 +38,7 @@ const certifications = [
         <div class="grid">
           {patents.map((item) => (
             <figure class="card">
-              <button class="image-btn" type="button" data-full={item.img} data-title={item.title}>
+              <button class="image-btn" type="button" data-lightbox-src={item.img} data-lightbox-caption={item.title}>
                 <img src={item.img} alt={`${item.title} 이미지`} loading="lazy" />
               </button>
               <figcaption>{item.title}</figcaption>
@@ -50,7 +51,7 @@ const certifications = [
         <div class="grid">
           {certifications.map((item) => (
             <figure class="card">
-              <button class="image-btn" type="button" data-full={item.img} data-title={item.title}>
+              <button class="image-btn" type="button" data-lightbox-src={item.img} data-lightbox-caption={item.title}>
                 <img src={item.img} alt={`${item.title} 이미지`} loading="lazy" />
               </button>
               <figcaption>{item.title}</figcaption>
@@ -61,23 +62,11 @@ const certifications = [
     </div>
   </section>
 
-  <div class="lightbox" data-lightbox hidden>
-    <button class="backdrop" type="button" aria-label="닫기" data-close></button>
-    <div class="dialog" role="dialog" aria-modal="true" aria-label="이미지 확대 보기">
-      <button class="close" type="button" aria-label="닫기" data-close>×</button>
-      <img src="" alt="" data-lightbox-image />
-      <p class="caption" data-lightbox-caption></p>
-    </div>
-  </div>
+  <Lightbox />
 
   <script is:inline>
     const tabs = Array.from(document.querySelectorAll("[data-tab]"));
     const panels = Array.from(document.querySelectorAll("[data-panel]"));
-    const openButtons = Array.from(document.querySelectorAll("[data-full]"));
-    const lightbox = document.querySelector("[data-lightbox]");
-    const lightboxImage = document.querySelector("[data-lightbox-image]");
-    const lightboxCaption = document.querySelector("[data-lightbox-caption]");
-    const closeButtons = Array.from(document.querySelectorAll("[data-close]"));
 
     const setActive = (target) => {
       tabs.forEach((tab) => {
@@ -95,38 +84,6 @@ const certifications = [
 
     tabs.forEach((tab) => {
       tab.addEventListener("click", () => setActive(tab.dataset.tab));
-    });
-
-    const closeLightbox = () => {
-      if (!lightbox || !lightboxImage || !lightboxCaption) return;
-      lightbox.hidden = true;
-      lightboxImage.setAttribute("src", "");
-      lightboxImage.setAttribute("alt", "");
-      lightboxCaption.textContent = "";
-      document.body.style.overflow = "";
-    };
-
-    openButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        if (!lightbox || !lightboxImage || !lightboxCaption) return;
-        const src = btn.dataset.full || "";
-        const title = btn.dataset.title || "이미지";
-        lightboxImage.setAttribute("src", src);
-        lightboxImage.setAttribute("alt", title);
-        lightboxCaption.textContent = title;
-        lightbox.hidden = false;
-        document.body.style.overflow = "hidden";
-      });
-    });
-
-    closeButtons.forEach((btn) => {
-      btn.addEventListener("click", closeLightbox);
-    });
-
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && lightbox && !lightbox.hidden) {
-        closeLightbox();
-      }
     });
   </script>
 
@@ -199,68 +156,6 @@ const certifications = [
       font-weight: 700;
       letter-spacing: -0.02em;
       color: #2a2a2a;
-    }
-
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .lightbox[hidden] {
-      display: none !important;
-    }
-
-    .backdrop {
-      position: absolute;
-      inset: 0;
-      border: 0;
-      background: rgba(0, 0, 0, 0.7);
-      cursor: pointer;
-    }
-
-    .dialog {
-      position: relative;
-      z-index: 1;
-      width: min(100%, 980px);
-      max-height: 92vh;
-      margin: auto;
-      border-radius: 10px;
-      background: #fff;
-      padding: 14px 14px 8px;
-      overflow: auto;
-    }
-
-    .dialog img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 8px;
-    }
-
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 34px;
-      height: 34px;
-      border: 0;
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.65);
-      color: #fff;
-      font-size: 24px;
-      line-height: 1;
-      cursor: pointer;
-    }
-
-    .caption {
-      margin: 10px 0 4px;
-      color: #374151;
-      font-weight: 700;
     }
 
     @media (max-width: 1200px) {
