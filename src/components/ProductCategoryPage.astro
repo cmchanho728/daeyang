@@ -183,18 +183,11 @@ const metaOgImage = products[0] ? `${site.siteUrl}${products[0].img}` : undefine
             </div>
 
             <div class="product-inquiry">
-              <h4 class="panel-title">이 제품 문의</h4>
-              <div class="inquiry-actions">
-                <a class="btn ghost" href={site.phone.href}>전화 문의</a>
+              <div class="inquiry-head">
+                <h4 class="panel-title">이 제품 문의</h4>
                 <a class="btn kakao" href={site.kakaoUrl} target="_blank" rel="noopener">카카오톡 상담</a>
-                <a
-                  class="btn ghost"
-                  href={`mailto:${site.email}?subject=${encodeURIComponent(`[견적문의] ${categoryLabel} - ${p.name}`)}`}
-                >
-                  이메일 문의
-                </a>
               </div>
-              <p class="inquiry-note">카카오톡은 내용이 자동으로 입력되지 않으니 "{p.name}" 제품명을 함께 알려주세요.</p>
+              <p class="inquiry-note">상담 시 제품명("{p.name}")을 함께 알려주세요.</p>
             </div>
           </div>
         ))}
@@ -351,10 +344,20 @@ const metaOgImage = products[0] ? `${site.siteUrl}${products[0].img}` : undefine
       border-top: 1px solid rgba(0,0,0,0.08);
     }
 
-    .inquiry-actions {
+    .inquiry-head {
       display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 10px;
-      flex-wrap: wrap;
+    }
+
+    .inquiry-head .panel-title {
+      margin: 0;
+      text-align: left;
+    }
+
+    .inquiry-head .btn.kakao {
+      flex-shrink: 0;
     }
 
     .inquiry-note {
