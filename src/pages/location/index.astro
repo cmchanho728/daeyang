@@ -17,7 +17,12 @@ import { baseUrl as base } from "../../utils/url";
 
       <div class="section-spacing">
         <div class="card">
-          <b>지도</b>
+          <b>주소</b>
+          <div class="address-row">
+            <span class="address-text" data-address={site.address}>{site.address}</span>
+            <button class="btn ghost copy-btn" type="button" data-copy-address>주소 복사</button>
+          </div>
+
           <div class="map-wrap">
             <iframe
               title={`${site.shortName} 위치`}
@@ -27,18 +32,77 @@ import { baseUrl as base } from "../../utils/url";
               allowfullscreen>
             </iframe>
           </div>
+
+          <div class="map-links">
+            <a
+              class="btn ghost"
+              href={`https://map.naver.com/p/search/${encodeURIComponent(site.address)}`}
+              target="_blank"
+              rel="noopener"
+            >
+              네이버지도에서 보기
+            </a>
+            <a
+              class="btn ghost"
+              href={`https://map.kakao.com/link/search/${encodeURIComponent(site.address)}`}
+              target="_blank"
+              rel="noopener"
+            >
+              카카오맵에서 보기
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <script is:inline>
+    const copyBtn = document.querySelector("[data-copy-address]");
+    const addressEl = document.querySelector("[data-address]");
+
+    if (copyBtn && addressEl) {
+      const defaultLabel = copyBtn.textContent;
+      copyBtn.addEventListener("click", async () => {
+        const address = addressEl.dataset.address || "";
+        try {
+          await navigator.clipboard.writeText(address);
+          copyBtn.textContent = "복사됨";
+        } catch (e) {
+          copyBtn.textContent = "복사 실패";
+        }
+        setTimeout(() => {
+          copyBtn.textContent = defaultLabel;
+        }, 1500);
+      });
+    }
+  </script>
 
   <style>
     .section-spacing {
       margin-top: 16px;
     }
 
-    .map-wrap {
+    .address-row {
       margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .address-text {
+      color: var(--text-2);
+      font-weight: 600;
+    }
+
+    .copy-btn {
+      height: 36px;
+      padding: 0 12px;
+      font-size: 14px;
+    }
+
+    .map-wrap {
+      margin-top: 14px;
       border: 1px solid var(--line);
       border-radius: 12px;
       overflow: hidden;
@@ -51,6 +115,13 @@ import { baseUrl as base } from "../../utils/url";
       aspect-ratio: 16 / 9;
       height: auto;
       border: 0;
+    }
+
+    .map-links {
+      margin-top: 14px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
     @media (max-width: 768px) {
