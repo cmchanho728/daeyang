@@ -15,6 +15,7 @@ Astro (v5, static output, no UI framework) marketing/catalog site for 대양특�
 - 표기 통일 완료: "카탈로그"(← 카다로그), "바이패스"(← 바이페스), "플랜지"(← 플렌지), "보텀"(← 보톰). 화면에 보이는 문구에는 옛 표기를 병기하지 않고, 옛 표기는 head 메타 설명에만 검색어로 한 번씩 남겨둔다 (`catalog/index.astro`, `business/index.astro`, `products/index.astro`의 각 `description` 참고). 파일명·id(`300l-bypass`, `bypass.jpg` 등)는 영문 그대로이므로 변경 대상 아님.
 - 제품군(카테고리) 명칭: `src/data/products/categories.ts`의 카드 제목과 각 카테고리 파일의 `pageTitle`을 일치시켰다 (예: "분뇨차 펌프", "유조차 밸브", "분뇨차 기타 부품", "플랜지-패킹"). 명칭 확정본이 추가로 나오면 이 목록을 갱신할 것.
 - 작업은 `renewal` 브랜치에서 진행한다. 커밋은 단계별로 나누고, 각 커밋 전에 변경 내역을 요약해서 보여준 뒤 진행한다.
+- **견적 문의 폼은 만들지 않는다.** 연락 채널은 전화·카카오톡·이메일 3가지만 쓴다. "견적 문의"/"문의" 버튼이나 링크는 입력 폼이 아니라 `contact/index.astro`(전화·카카오톡·이메일 안내 페이지)나 `mailto:`/`tel:`/카카오톡 상담 링크로 연결한다. 새 문의 접점을 추가할 때도 이 3채널 안에서만 구현할 것.
 
 ## Commands
 
