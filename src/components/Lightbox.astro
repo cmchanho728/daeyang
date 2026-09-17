@@ -19,8 +19,11 @@ const { ariaLabel = "이미지 확대 보기" } = Astro.props;
   const lightbox = document.querySelector("[data-lightbox]");
   const lightboxImage = document.querySelector("[data-lightbox-image]");
   const lightboxCaption = document.querySelector("[data-lightbox-caption]");
+  const lightboxCloseBtn = document.querySelector("[data-lightbox] .close");
   const openButtons = Array.from(document.querySelectorAll("[data-lightbox-src]"));
   const closeButtons = Array.from(document.querySelectorAll("[data-lightbox-close]"));
+
+  let lastFocused = null;
 
   const closeLightbox = () => {
     if (!lightbox || !lightboxImage || !lightboxCaption) return;
@@ -29,6 +32,10 @@ const { ariaLabel = "이미지 확대 보기" } = Astro.props;
     lightboxImage.setAttribute("alt", "");
     lightboxCaption.textContent = "";
     document.body.style.overflow = "";
+    if (lastFocused) {
+      lastFocused.focus();
+      lastFocused = null;
+    }
   };
 
   openButtons.forEach((btn) => {
@@ -36,11 +43,13 @@ const { ariaLabel = "이미지 확대 보기" } = Astro.props;
       if (!lightbox || !lightboxImage || !lightboxCaption) return;
       const src = btn.dataset.lightboxSrc || "";
       const title = btn.dataset.lightboxCaption || "이미지";
+      lastFocused = btn;
       lightboxImage.setAttribute("src", src);
       lightboxImage.setAttribute("alt", title);
       lightboxCaption.textContent = title;
       lightbox.hidden = false;
       document.body.style.overflow = "hidden";
+      lightboxCloseBtn?.focus();
     });
   });
 

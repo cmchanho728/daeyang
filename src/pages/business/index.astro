@@ -29,15 +29,15 @@ const certifications = [
       <h1 class="h1">기술현황</h1>
 
       <div class="tabs" role="tablist" aria-label="기술현황 탭">
-        <button class="tab is-active" type="button" role="tab" aria-selected="true" data-tab="patent">
+        <button class="tab is-active" type="button" role="tab" id="tab-patent" aria-controls="panel-patent" aria-selected="true" tabindex="0" data-tab="patent">
           특허
         </button>
-        <button class="tab" type="button" role="tab" aria-selected="false" data-tab="cert">
+        <button class="tab" type="button" role="tab" id="tab-cert" aria-controls="panel-cert" aria-selected="false" tabindex="-1" data-tab="cert">
           기술 인증
         </button>
       </div>
 
-      <section class="panel is-active" role="tabpanel" data-panel="patent">
+      <section class="panel is-active" role="tabpanel" id="panel-patent" aria-labelledby="tab-patent" data-panel="patent">
         <div class="grid">
           {patents.map((item) => (
             <figure class="card">
@@ -50,7 +50,7 @@ const certifications = [
         </div>
       </section>
 
-      <section class="panel" role="tabpanel" data-panel="cert" hidden>
+      <section class="panel" role="tabpanel" id="panel-cert" aria-labelledby="tab-cert" data-panel="cert" hidden>
         <div class="grid">
           {certifications.map((item) => (
             <figure class="card">
@@ -76,6 +76,7 @@ const certifications = [
         const active = tab.dataset.tab === target;
         tab.classList.toggle("is-active", active);
         tab.setAttribute("aria-selected", active ? "true" : "false");
+        tab.setAttribute("tabindex", active ? "0" : "-1");
       });
 
       panels.forEach((panel) => {
@@ -85,8 +86,29 @@ const certifications = [
       });
     };
 
-    tabs.forEach((tab) => {
+    tabs.forEach((tab, index) => {
       tab.addEventListener("click", () => setActive(tab.dataset.tab));
+
+      tab.addEventListener("keydown", (e) => {
+        let nextIndex = null;
+
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+          nextIndex = (index + 1) % tabs.length;
+        } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+          nextIndex = (index - 1 + tabs.length) % tabs.length;
+        } else if (e.key === "Home") {
+          nextIndex = 0;
+        } else if (e.key === "End") {
+          nextIndex = tabs.length - 1;
+        }
+
+        if (nextIndex !== null) {
+          e.preventDefault();
+          const nextTab = tabs[nextIndex];
+          setActive(nextTab.dataset.tab);
+          nextTab.focus();
+        }
+      });
     });
   </script>
 
