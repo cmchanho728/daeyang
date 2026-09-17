@@ -7,6 +7,7 @@ import Breadcrumb from "./Breadcrumb.astro";
 import Lightbox from "./Lightbox.astro";
 import ContactActions from "./ContactActions.astro";
 import type { CategoryData } from "../data/products";
+import { categoryMetas } from "../data/products";
 import { site } from "../config/site";
 import { baseUrl as base } from "../utils/url";
 
@@ -15,15 +16,32 @@ interface Props {
   data: CategoryData;
 }
 
-const { data } = Astro.props;
+const { category, data } = Astro.props;
 
 const { pageTitle, pageDescription, products } = data;
 
-// 메타 description은 카테고리명 + 실제 제품명 2~3개로 자동 생성 (본문 pageDescription과는 별개)
-const metaDescription = `${pageTitle} — ${products
-  .slice(0, 3)
+// 메타 description은 "대양특장의 {분뇨차/유조차} {카테고리명} — 실제 제품명 3~4개 등. ..." 형식으로 자동 생성
+// (본문 pageDescription과는 별개). 차량 구분은 categoryMetas(2-B에서 만든 실제 카드 데이터)에서 가져온다 —
+// vacuum/fuel 그룹은 그룹 자체로, common 그룹(조인트/플랜지/호스/커플링)은 각 카테고리의 실제 summary가
+// "분뇨차"/"유조차" 중 어느 쪽으로 시작하는지로 판단한다.
+const categoryMeta = categoryMetas.find((c) => c.key === category);
+const vehicleLabel =
+  categoryMeta?.group === "vacuum"
+    ? "분뇨차"
+    : categoryMeta?.group === "fuel"
+      ? "유조차"
+      : categoryMeta?.summary.startsWith("유조차")
+        ? "유조차"
+        : "분뇨차";
+const categoryLabel =
+  pageTitle.startsWith("분뇨차") || pageTitle.startsWith("유조차")
+    ? pageTitle
+    : `${vehicleLabel} ${pageTitle}`;
+
+const metaDescription = `${site.shortName}의 ${categoryLabel} — ${products
+  .slice(0, 4)
   .map((p) => p.name)
-  .join(", ")} 등 제품을 소개합니다.`;
+  .join(", ")} 등. 규격·사진·외관도를 확인하고 견적을 문의하세요.`;
 const metaOgImage = products[0] ? `${site.siteUrl}${products[0].img}` : undefined;
 ---
 
