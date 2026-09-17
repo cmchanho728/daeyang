@@ -101,7 +101,6 @@ export const etcVacuum: CategoryData = {
             alt: "분뇨차 에어클리너 SUS 65A",
           },
         ],
-        specImg: `${baseUrl}products/vc/etc/airclean.jpg`,
         drawings: [
           {
             src: `${baseUrl}products/vc/etc/airclean-65a-outer.jpg`,
