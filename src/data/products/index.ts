@@ -10,6 +10,8 @@ import { etcGasket } from "./etc-gasket";
 import { etcJoint } from "./etc-joint";
 import { etcVacuum } from "./etc-vacuum";
 import { etcHose } from "./etc-hose";
+import { categoryMetas } from "./categories";
+import { validateProductsData } from "./validate";
 
 export const productsData: Record<string, CategoryData> = {
   "pump-fuel": pumpFuel,
@@ -26,6 +28,8 @@ export const productsData: Record<string, CategoryData> = {
 };
 
 export const categories = Object.keys(productsData);
+
+validateProductsData(productsData, categoryMetas);
 
 export { categoryMetas } from "./categories";
 export type { CategoryMeta } from "./categories";
