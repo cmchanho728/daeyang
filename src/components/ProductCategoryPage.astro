@@ -6,7 +6,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumb from "./Breadcrumb.astro";
 import Lightbox from "./Lightbox.astro";
 import ContactActions from "./ContactActions.astro";
-import type { Product, CategoryData } from "../data/products";
+import type { CategoryData } from "../data/products";
 import { site } from "../config/site";
 import { baseUrl as base } from "../utils/url";
 
@@ -15,7 +15,7 @@ interface Props {
   data: CategoryData;
 }
 
-const { category, data } = Astro.props;
+const { data } = Astro.props;
 
 const { pageTitle, pageDescription, products } = data;
 ---
