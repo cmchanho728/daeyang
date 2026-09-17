@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import { site } from "../../config/site";
+import { baseUrl as base } from "../../utils/url";
 
 const imageModules = import.meta.glob<{ default: ImageMetadata }>(
   "../../assets/catalog/*.{jpg,jpeg,png,webp}",
@@ -28,6 +29,14 @@ const images = Object.entries(imageModules)
     <div class="container">
       <h1 class="h1">카탈로그</h1>
       <p class="p">제품 카탈로그 이미지를 확인하세요.</p>
+
+      <a
+        class="btn primary download-btn"
+        href={`${base}catalog.pdf`}
+        download="대양특장_카탈로그.pdf"
+      >
+        PDF 다운로드
+      </a>
 
       <div class="catalog" data-catalog>
         <div class="viewer" data-viewer>
@@ -91,6 +100,10 @@ const images = Object.entries(imageModules)
   </script>
 
   <style>
+    .download-btn {
+      margin-top: 14px;
+    }
+
     .catalog {
       margin-top: 18px;
       display: grid;
