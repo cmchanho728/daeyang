@@ -4,9 +4,23 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { site } from "../config/site";
 
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  noindex?: boolean;
+  canonical?: boolean;
+}
+
 const {
-  title = `${site.shortName} | (구) ${site.formerName} | 분뇨차·유조차 부품 전문`,
+  title = `${site.shortName}(구 ${site.formerName}) | 분뇨차·유조차 부품 전문`,
+  description = `${site.shortName}(구 ${site.formerName})은 2000년부터 분뇨차·유조차용 펌프·밸브·조인트·플렌지·호스 등 다양한 부품을 생산·공급해온 전문 기업입니다. 카테고리별 제품 정보를 확인하세요.`,
+  ogImage = `${site.siteUrl}/main.jpg`,
+  noindex = false,
+  canonical = true,
 } = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? site.siteUrl).toString();
 ---
 
 <!doctype html>
@@ -16,21 +30,24 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
 
-    <meta
-      name="description"
-      content={`${site.shortName}은 기존 ${site.formerName}가 법인 전환한 회사로, 분뇨차·유조차 부품을 20년 이상 공급해온 전문 기업입니다.`}
-    />
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonicalUrl} />}
 
-    <meta property="og:title" content={`${site.shortName} | (구) ${site.formerName} | 분뇨차·유조차 부품 전문`} />
-    <meta
-      property="og:description"
-      content={`분뇨차·유조차 부품 전문 기업 ${site.shortName}. 펌프, 밸브, 기타 부품 상담 및 견적 문의 가능.`}
-    />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={site.siteUrl} />
-    <meta property="og:image" content={`${site.siteUrl}/main.jpg`} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content={site.shortName} />
     <meta property="og:locale" content="ko_KR" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
+
+    {site.naverSiteVerification && (
+      <meta name="naver-site-verification" content={site.naverSiteVerification} />
+    )}
+    {site.googleSiteVerification && (
+      <meta name="google-site-verification" content={site.googleSiteVerification} />
+    )}
   </head>
 
   <body>

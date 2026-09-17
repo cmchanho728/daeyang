@@ -5,7 +5,10 @@ import { site } from "../../config/site";
 import { baseUrl as base } from "../../utils/url";
 ---
 
-<BaseLayout title={`오시는 길 | ${site.shortName}`}>
+<BaseLayout
+  title={`오시는 길 | ${site.shortName}`}
+  description={`${site.shortName} 오시는 길 안내입니다. ${site.address}에 위치하며, 지도로 위치를 확인하고 전화(${site.phone.display})로 문의하실 수 있습니다.`}
+>
   <section class="section">
     <div class="container">
       <Breadcrumb items={[{ label: "홈", href: base }, { label: "오시는 길" }]} />

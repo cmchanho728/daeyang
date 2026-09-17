@@ -5,7 +5,10 @@ import { site } from "../../config/site";
 import { baseUrl as base } from "../../utils/url";
 ---
 
-<BaseLayout title={`문의 | ${site.shortName}`}>
+<BaseLayout
+  title={`문의 | ${site.shortName}`}
+  description={`${site.shortName} 문의 안내입니다. 전화(${site.phone.display}), 이메일(${site.email}), 카카오톡 상담으로 제품 견적과 납기를 문의하실 수 있습니다.`}
+>
   <section class="section">
     <div class="container">
       <Breadcrumb items={[{ label: "홈", href: base }, { label: "문의" }]} />

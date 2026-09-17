@@ -6,7 +6,11 @@ import { site } from "../../config/site";
 import { baseUrl as base } from "../../utils/url";
 ---
 
-<BaseLayout title={`제품소개 | ${site.shortName}`}>
+<BaseLayout
+  title={`제품소개 | ${site.shortName}`}
+  description={`${site.shortName} 분뇨차·유조차 부품을 진공차량·유조차량 카테고리별로 안내합니다. 진공펌프·사방밸브·조인트·플렌지·호스 등 다양한 제품 정보와 견적 문의를 확인하세요.`}
+  ogImage={`${site.siteUrl}/products-vctruck.jpg`}
+>
   <section class="section">
     <div class="container">
       <Breadcrumb items={[{ label: "홈", href: base }, { label: "제품소개" }]} />

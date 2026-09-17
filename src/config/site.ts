@@ -20,4 +20,8 @@ export const site = {
   businessRegistrationNumber: "",
   fax: "",
   businessHours: "",
+
+  // 검색엔진 소유 확인 코드. 값이 있을 때만 BaseLayout이 해당 meta 태그를 출력한다.
+  naverSiteVerification: "",
+  googleSiteVerification: "",
 };

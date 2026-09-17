@@ -19,7 +19,10 @@ const certifications = [
 ];
 ---
 
-<BaseLayout title={`기술현황 | ${site.shortName}`}>
+<BaseLayout
+  title={`기술현황 | ${site.shortName}`}
+  description={`${site.shortName}은 버큠로리 메인 맨홀 특허를 보유하고 있으며, 분뇨차·유조차용 이방밸브·안전밸브·에어벤트·바이페스밸브 등에 대한 기술 인증을 획득했습니다.`}
+>
   <section class="section">
     <div class="container">
       <Breadcrumb items={[{ label: "홈", href: base }, { label: "기술현황" }]} />

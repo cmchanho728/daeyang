@@ -5,7 +5,11 @@ import { site } from "../../config/site";
 import { baseUrl as base } from "../../utils/url";
 ---
 
-<BaseLayout title={`회사소개 | ${site.shortName}`}>
+<BaseLayout
+  title={`회사소개 | ${site.shortName}`}
+  description={`${site.shortName}(구 ${site.formerName})은 2000년 설립 이후 분뇨차·유조차용 펌프와 밸브를 생산해온 기업으로, SUS 기어펌프·사방밸브·안전밸브 등 다양한 제품을 공급하고 있습니다. 회사연혁과 인사말을 확인하세요.`}
+  ogImage={`${site.siteUrl}/about-us.jpg`}
+>
   <section class="section about-simple">
     <div class="container">
       <Breadcrumb items={[{ label: "홈", href: base }, { label: "회사소개" }]} />

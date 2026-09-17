@@ -18,9 +18,16 @@ interface Props {
 const { data } = Astro.props;
 
 const { pageTitle, pageDescription, products } = data;
+
+// 메타 description은 카테고리명 + 실제 제품명 2~3개로 자동 생성 (본문 pageDescription과는 별개)
+const metaDescription = `${pageTitle} — ${products
+  .slice(0, 3)
+  .map((p) => p.name)
+  .join(", ")} 등 제품을 소개합니다.`;
+const metaOgImage = products[0] ? `${site.siteUrl}${products[0].img}` : undefined;
 ---
 
-<BaseLayout title={`${pageTitle} | ${site.shortName}`}>
+<BaseLayout title={`${pageTitle} | ${site.shortName}`} description={metaDescription} ogImage={metaOgImage}>
   <section class="section">
     <div class="container">
       <Breadcrumb

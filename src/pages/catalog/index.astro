@@ -20,7 +20,10 @@ const images = Object.entries(imageModules)
   );
 ---
 
-<BaseLayout title={`카다로그 | ${site.shortName}`}>
+<BaseLayout
+  title={`카탈로그 | ${site.shortName}`}
+  description={`${site.shortName}(구 ${site.formerName}) 제품 카탈로그를 이미지로 확인할 수 있습니다. 분뇨차·유조차용 펌프·밸브·조인트·플렌지 등 전체 제품 라인업이 정리되어 있습니다.`}
+>
   <section class="section">
     <div class="container">
       <h1 class="h1">카다로그</h1>
