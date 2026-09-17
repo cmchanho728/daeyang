@@ -1,0 +1,84 @@
+---
+import { site } from "../config/site";
+---
+
+<div class="mobile-contact-bar" aria-label="빠른 상담">
+  <a class="bar-btn phone" href={site.phone.href}>
+    <span class="ico">☎</span>
+    <span>전화하기</span>
+  </a>
+  <a class="bar-btn kakao" href={site.kakaoUrl} target="_blank" rel="noopener">
+    <span class="talk">TALK</span>
+    <span>카카오톡 상담</span>
+  </a>
+</div>
+
+<style is:global>
+  @media (max-width: 768px) {
+    body {
+      padding-bottom: calc(60px + env(safe-area-inset-bottom));
+    }
+  }
+</style>
+
+<style>
+  .mobile-contact-bar {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-contact-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 60;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: #fff;
+      border-top: 1px solid var(--line);
+      padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
+      gap: 8px;
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.06);
+    }
+  }
+
+  .bar-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 44px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 15px;
+  }
+
+  .bar-btn.phone {
+    background: var(--brand);
+    color: #fff;
+  }
+
+  .bar-btn.kakao {
+    background: #fee500;
+    color: #191919;
+  }
+
+  .ico {
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .talk {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #43291d;
+    color: #f7c608;
+    font-size: 7px;
+    font-weight: 900;
+  }
+</style>
