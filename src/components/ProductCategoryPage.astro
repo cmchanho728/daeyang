@@ -209,7 +209,7 @@ const metaOgImage = products[0] ? `${site.siteUrl}${products[0].img}` : undefine
     .card { display:block; text-decoration:none; border-radius:14px; overflow:hidden; background:#fff; box-shadow:0 6px 18px rgba(0,0,0,0.05); transition:0.25s; }
     .card:hover { transform:translateY(-4px); }
     .card img { width:100%; aspect-ratio: 16 / 9; object-fit:cover; display:block; }
-    .card-title { padding:16px; text-align:center; font-size:18px; font-weight:600; color:#1f2a37; }
+    .card-title { padding:16px; text-align:center; font-size:18px; font-weight:600; color:var(--text); }
 
     .actions { margin-top:40px; display:flex; gap:12px; flex-wrap:wrap; }
 
@@ -217,7 +217,7 @@ const metaOgImage = products[0] ? `${site.siteUrl}${products[0].img}` : undefine
     @media (max-width:600px){ .grid{ grid-template-columns:1fr; } }
 
     .h2{ margin-top:44px; font-size:22px; font-weight:800; }
-    .muted{ color:#6b7280; margin:8px 0 18px; line-height:1.6; }
+    .muted{ color:var(--text-3); margin:8px 0 18px; line-height:1.6; }
 
     .spec-card{ border:1px solid rgba(0,0,0,0.08); border-radius:14px; padding:16px; background:#fff; margin-bottom:14px; scroll-margin-top:90px; }
     .spec-head{ display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
@@ -242,7 +242,7 @@ const metaOgImage = products[0] ? `${site.siteUrl}${products[0].img}` : undefine
       text-align:center;
       font-size:18px;
       font-weight:800;
-      color:#111827;
+      color:var(--text);
       line-height:1.2;
     }
 
@@ -315,7 +315,7 @@ const metaOgImage = products[0] ? `${site.siteUrl}${products[0].img}` : undefine
       margin: 6px 0 0;
       font-size: 14px;
       font-weight: 700;
-      color: #374151;
+      color: var(--text-2);
       text-align: center;
       line-height: 1.4;
     }
@@ -329,14 +329,14 @@ const metaOgImage = products[0] ? `${site.siteUrl}${products[0].img}` : undefine
       align-items: center;
       justify-content: center;
       height: 160px;
-      background: #f5f5f5;
+      background: var(--surface);
       border: 1px solid rgba(0,0,0,0.12);
       border-radius: 12px;
       margin: 0;
     }
 
     .no-image p {
-      color: #999;
+      color: var(--text-3);
       font-size: 14px;
       margin: 0;
     }
@@ -362,8 +362,8 @@ const metaOgImage = products[0] ? `${site.siteUrl}${products[0].img}` : undefine
     .table-wrap{ overflow-x:auto; }
     .spec-table{ width:100%; border-collapse:collapse; min-width:0; }
     .spec-table th, .spec-table td{ border-top:1px solid rgba(0,0,0,0.08); padding:10px 12px; text-align:left; vertical-align:top; }
-    .spec-table th{ width:180px; color:#374151; font-weight:700; background:rgba(0,0,0,0.02); }
-    .spec-table td{ color:#111827; }
+    .spec-table th{ width:180px; color:var(--text-2); font-weight:700; background:rgba(0,0,0,0.02); }
+    .spec-table td{ color:var(--text); }
     .spec-photo{ margin:0; display:flex; align-items:center; justify-content:center; }
     .photo-btn{ width:100%; height:100%; border:0; background:transparent; padding:0; cursor:zoom-in; display:flex; align-items:center; justify-content:center; }
 
