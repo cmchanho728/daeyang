@@ -2,7 +2,7 @@ import type { CategoryData } from "./types";
 import { baseUrl } from "./base";
 
 export const etcFlange: CategoryData = {
-    pageTitle: "플랜지",
+    pageTitle: "플랜지-패킹",
     pageDescription: "배관 연결용 플랜지/가스켓입니다.",
 
     products: [
