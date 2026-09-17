@@ -32,7 +32,7 @@ export const etcVacuum: CategoryData = {
           },
         ],
         specs: {
-          "모델명": "분뇨차 용 메인맨홀",
+          "모델명": "분뇨차용 메인맨홀",
           "규격": "Φ500",
           "형식": "플로팅 밸브",
           "재질": "SUS, FC",
@@ -75,7 +75,7 @@ export const etcVacuum: CategoryData = {
           },
         ],
         specs: {
-          "모델명": "분뇨차 용 오일통",
+          "모델명": "분뇨차용 오일통",
           "규격": "65A  ||  50A",
           "형식": "",
           "재질": "SUS, FC",
@@ -117,7 +117,7 @@ export const etcVacuum: CategoryData = {
           },
         ],
         specs: {
-          "모델명": "분뇨차 용 에어클리너",
+          "모델명": "분뇨차용 에어클리너",
           "규격": "65A ||  50A",
           "형식": "",
           "재질": "SUS, FC",
@@ -159,7 +159,7 @@ export const etcVacuum: CategoryData = {
           },
         ],
         specs: {
-          "모델명": "분뇨차 용 오일여과기",
+          "모델명": "분뇨차용 오일여과기",
           "규격": "65A  ||  50A",
           "형식": "",
           "재질": "SUS, FC",
@@ -173,7 +173,7 @@ export const etcVacuum: CategoryData = {
         img: `${baseUrl}products/vc/etc/deodorizer.jpg`,
         specImg: `${baseUrl}products/vc/etc/deodorizer-outer.jpg`,
         specs: {
-          "모델명": "분뇨차 용 탈취기",
+          "모델명": "분뇨차용 탈취기",
           "규격": "",
           "형식": "",
           "재질": "SUS",
@@ -187,7 +187,7 @@ export const etcVacuum: CategoryData = {
         img: `${baseUrl}products/vc/etc/backmanhole.jpg`,
         specImg: `${baseUrl}products/vc/etc/backmanhole-outer.jpg`,
         specs: {
-          "모델명": "분뇨차 용 뒷맨홀",
+          "모델명": "분뇨차용 뒷맨홀",
           "규격": "Φ500",
           "형식": "맨홀",
           "재질": "FC",

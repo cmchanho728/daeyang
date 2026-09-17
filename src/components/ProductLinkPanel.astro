@@ -7,7 +7,7 @@ const commonCards = categoryMetas
   .sort((a, b) => a.order - b.order)
   .map((c) => ({ title: c.title, desc: c.summary, href: `${base}products/${c.key}/` }));
 
-// 페어당 카드 2개 + 배너 이미지 1장 — 현재 순서(조인트,플렌지 / 호스,커플링)를 그대로 유지.
+// 페어당 카드 2개 + 배너 이미지 1장 — 현재 순서(조인트,플랜지 / 호스,커플링)를 그대로 유지.
 const pairBanners = [
   { src: `${base}power-trans.jpg`, alt: "power-trans" },
   { src: `${base}pipe-joint.jpg`, alt: "pipe-joint" },

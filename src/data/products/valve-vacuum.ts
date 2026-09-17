@@ -13,26 +13,26 @@ export const valveVacuum: CategoryData = {
         images: [
           {
             src: `${baseUrl}products/vc/valve/4way-65a.jpg`,
-            alt: "분뇨차 용 65A 사방밸브",
+            alt: "분뇨차용 65A 사방밸브",
           },
           {
             src: `${baseUrl}products/vc/valve/4way-50a.jpg`,
-            alt: "분뇨차 용 50A 사방밸브 외관도",
+            alt: "분뇨차용 50A 사방밸브 외관도",
           },
         ],
         specImg: `${baseUrl}products/vc/valve/4way-65a-outer.jpg`,
         drawings: [
           {
             src: `${baseUrl}products/vc/valve/4way-65a-outer.jpg`,
-            alt: "분뇨차 용 65A 사방밸브 외관도",
+            alt: "분뇨차용 65A 사방밸브 외관도",
           },
           {
             src: `${baseUrl}products/vc/valve/4way-50a-outer.jpg`,
-            alt: "분뇨차 용 50A 사방밸브 내부도",
+            alt: "분뇨차용 50A 사방밸브 내부도",
           }
         ],
         specs: {
-          "모델명": "분뇨차 용 사방밸브",
+          "모델명": "분뇨차용 사방밸브",
           "규격": "65A  ||  50A  ||  80A 별도 문의",
           "형식": "65A: 원형, 사각  ||  50A: 사각",
           "재질": "65A: SUS, FC  ||  50A: FC",
@@ -48,26 +48,26 @@ export const valveVacuum: CategoryData = {
         images: [
           {
             src: `${baseUrl}products/vc/valve/2way-65.jpg`,
-            alt: "분뇨차 용 65A 이방밸브",
+            alt: "분뇨차용 65A 이방밸브",
           },
           {
             src: `${baseUrl}products/vc/valve/2way-80.jpg`,
-            alt: "분뇨차 용 80A 이방밸브",
+            alt: "분뇨차용 80A 이방밸브",
           },
         ],
         specImg: `${baseUrl}products/vc/valve/2way-80-outer.jpg`,
         drawings: [
           {
             src: `${baseUrl}products/vc/valve/2way-65-outer.jpg`,
-            alt: "분뇨차 용 65A 이방밸브 외관도",
+            alt: "분뇨차용 65A 이방밸브 외관도",
           },
           {
             src: `${baseUrl}products/vc/valve/2way-80-outer.jpg`,
-            alt: "분뇨차 용 80A 이방밸브 외관도",
+            alt: "분뇨차용 80A 이방밸브 외관도",
           }
         ],
         specs: {
-          "모델명": "분뇨차 용 이방밸브",
+          "모델명": "분뇨차용 이방밸브",
           "규격": "80A  ||  65A",
           "형식": "80A: 커플링, 나사  ||  65A: 커플링, 호수꽂이",
           "재질": "80A: FC (볼: SUS)  ||  65A: FC (볼: SUS)",
@@ -82,7 +82,7 @@ export const valveVacuum: CategoryData = {
         img: `${baseUrl}products/valve/valve-vc-check.jpg`,
         specImg: `${baseUrl}products/valve/valve-vc-check.jpg`,
         specs: {
-          "모델명": "분뇨차 용 체크밸브",
+          "모델명": "분뇨차용 체크밸브",
           "규격": "80M  ||  50M",
           "형식": "80M: 인라인 스프링  ||  50M: 인라인 스프링",
           "재질": "80M: FC  ||  50M: FC",
@@ -96,7 +96,7 @@ export const valveVacuum: CategoryData = {
         img: `${baseUrl}products/vc/valve/safety.jpg`,
         specImg: `${baseUrl}products/vc/valve/safety-outer.jpg`,
         specs: {
-          "모델명": "분뇨차 용 안전밸브",
+          "모델명": "분뇨차용 안전밸브",
           "규격": "",
           "형식": "",
           "재질": "FC",

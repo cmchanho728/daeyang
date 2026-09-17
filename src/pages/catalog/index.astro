@@ -22,12 +22,12 @@ const images = Object.entries(imageModules)
 
 <BaseLayout
   title={`카탈로그 | ${site.shortName}`}
-  description={`${site.shortName}(구 ${site.formerName}) 제품 카탈로그를 이미지로 확인할 수 있습니다. 분뇨차·유조차용 펌프·밸브·조인트·플랜지 등 전체 제품 라인업이 정리되어 있습니다.`}
+  description={`${site.shortName}(구 ${site.formerName}) 제품 카탈로그(카다로그)를 이미지로 확인할 수 있습니다. 분뇨차·유조차용 펌프·밸브·조인트·플랜지 등 전체 제품 라인업이 정리되어 있습니다.`}
 >
   <section class="section">
     <div class="container">
-      <h1 class="h1">카다로그</h1>
-      <p class="p">제품 카다로그 이미지를 확인하세요.</p>
+      <h1 class="h1">카탈로그</h1>
+      <p class="p">제품 카탈로그 이미지를 확인하세요.</p>
 
       <div class="catalog" data-catalog>
         <div class="viewer" data-viewer>
@@ -35,7 +35,7 @@ const images = Object.entries(imageModules)
             <figure class={`panel ${index === 0 ? "is-active" : ""}`} data-panel={index}>
               <Image
                 src={item.image}
-                alt={`카다로그 ${index + 1}`}
+                alt={`카탈로그 ${index + 1}`}
                 width={1600}
                 sizes="(min-width: 1024px) 72vw, 100vw"
                 loading={index === 0 ? "eager" : "lazy"}
@@ -45,18 +45,18 @@ const images = Object.entries(imageModules)
           ))}
         </div>
 
-        <div class="thumbs" role="tablist" aria-label="카다로그 썸네일">
+        <div class="thumbs" role="tablist" aria-label="카탈로그 썸네일">
           {images.map((item, index) => (
             <button
               class={`thumb ${index === 0 ? "is-active" : ""}`}
               type="button"
               data-thumb={index}
-              aria-label={`카다로그 ${index + 1} 보기`}
+              aria-label={`카탈로그 ${index + 1} 보기`}
               aria-selected={index === 0 ? "true" : "false"}
             >
               <Image
                 src={item.image}
-                alt={`카다로그 썸네일 ${index + 1}`}
+                alt={`카탈로그 썸네일 ${index + 1}`}
                 width={260}
                 sizes="(min-width: 1024px) 180px, 34vw"
                 loading="lazy"

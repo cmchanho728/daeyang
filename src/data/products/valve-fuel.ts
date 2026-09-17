@@ -40,7 +40,7 @@ export const valveFuel: CategoryData = {
           },
         ],        
         specs: {
-          "모델명": "유뇨차 용 사방밸브",
+          "모델명": "유조차용 사방밸브",
           "규격": "80A  ||  65A  ||  50A",
           "형식": "80A: 원형  ||  65A: 원형  ||  50A: 사각",
           "재질": "80A: SUS, FC  ||  65A: SUS, FC  ||  50A: FC",
@@ -55,7 +55,7 @@ export const valveFuel: CategoryData = {
         img: `${baseUrl}products/tl/valve/2way-80.jpg`,
         specImg: `${baseUrl}products/tl/valve/2way-80-outer.jpg`,
         specs: {
-          "모델명": "유조차 용 이방밸브",
+          "모델명": "유조차용 이방밸브",
           "규격": "80A  ||  55A",
           "형식": "80A: 볼밸브  ||  50A: 볼밸브",
           "재질": "80A: SUS, FC  ||  50A: FC",
@@ -66,11 +66,11 @@ export const valveFuel: CategoryData = {
       },
       {
         id: "shutoff",
-        name: "바이페스밸브",
+        name: "바이패스밸브",
         img: `${baseUrl}products/tl/valve/bypass.jpg`,
         specImg: `${baseUrl}products/tl/valve/bypass-outer.jpg`,
         specs: {
-          "모델명": "유조차 용 안전밸브",
+          "모델명": "유조차용 안전밸브",
           "규격": "65A",
           "형식": "인라인 스프링 밸브",
           "재질": "SUS, FC",
@@ -81,11 +81,11 @@ export const valveFuel: CategoryData = {
       },
       {
         id: "bottom",
-        name: "보톰밸브",
+        name: "보텀밸브",
         img: `${baseUrl}products/tl/valve/bottom.jpg`,
         specImg: `${baseUrl}products/tl/valve/bottom-outer.jpg`,
         specs: {
-          "모델명": "유조차 용 보톰밸브",
+          "모델명": "유조차용 보텀밸브",
           "규격": "80A",
           "형식": "",
           "재질": "SUS, FC",
@@ -95,11 +95,11 @@ export const valveFuel: CategoryData = {
       },
       {
         id: "lever",
-        name: "레버식 보톰밸브",
+        name: "레버식 보텀밸브",
         img: `${baseUrl}products/tl/valve/lever.jpg`,
         specImg: `${baseUrl}products/tl/valve/lever-outer.jpg`,
         specs: {
-          "모델명": "유조차 용 레버식 보톰밸브",
+          "모델명": "유조차용 레버식 보텀밸브",
           "규격": "50A",
           "형식": "",
           "재질": "FC",
@@ -113,7 +113,7 @@ export const valveFuel: CategoryData = {
         img: `${baseUrl}products/tl/valve/main.jpg`,
         specImg: `${baseUrl}products/tl/valve/main-outer.jpg`,
         specs: {
-          "모델명": "유조차 용 메인밸브",
+          "모델명": "유조차용 메인밸브",
           "규격": "80A",
           "형식": "",
           "재질": "SUS, FC",
@@ -127,7 +127,7 @@ export const valveFuel: CategoryData = {
         img: `${baseUrl}products/tl/valve/airvent.jpg`,
         specImg: `${baseUrl}products/tl/valve/airvent-outer.jpg`,
         specs: {
-          "모델명": "유조차 용 에어벤트(에어누끼)",
+          "모델명": "유조차용 에어벤트(에어누끼)",
           "규격": "",
           "형식": "인라인 스프링 밸브",
           "재질": "SUS, AL",
