@@ -13,20 +13,28 @@ import { baseUrl as base } from "../../utils/url";
     <div class="container">
       <Breadcrumb items={[{ label: "홈", href: base }, { label: "문의" }]} />
       <h1 class="h1">문의</h1>
-      <p class="p">견적, 납기, 제품 문의는 전화 또는 이메일로 연락 주세요.</p>
+      <p class="p">전화, 카카오톡, 이메일로 견적과 제품 문의를 받고 있습니다.</p>
 
-      <div class="grid cols-2 contact-grid">
-        <div class="card">
-          <b>연락처</b>
-          <div class="p contact-block">
-            전화: <a href={site.phone.href} class="contact-link">{site.phone.display}</a><br/>
-            이메일: <a href={`mailto:${site.email}`} class="contact-link">{site.email}</a><br/>
-            카카오톡: <a href={site.kakaoUrl} target="_blank" rel="noopener" class="contact-link">상담 바로가기</a>
-          </div>
+      <div class="contact-grid">
+        <div class="card contact-card">
+          <div class="ico">☎</div>
+          <b>전화</b>
+          <div class="value"><a href={site.phone.href} class="contact-link">{site.phone.display}</a></div>
+          <a href={site.phone.href} class="btn primary contact-action">전화하기</a>
         </div>
-        <div class="card">
-          <b>문의 방식</b>
-          <div class="p contact-block">카카오톡 상담 또는 전화 문의를 우선 이용해 주세요.</div>
+
+        <div class="card contact-card">
+          <div class="ico talk">TALK</div>
+          <b>카카오톡</b>
+          <div class="value">카카오톡 상담 바로가기</div>
+          <a href={site.kakaoUrl} target="_blank" rel="noopener" class="btn kakao contact-action">카카오톡 상담</a>
+        </div>
+
+        <div class="card contact-card">
+          <div class="ico">✉</div>
+          <b>이메일</b>
+          <div class="value"><a href={`mailto:${site.email}`} class="contact-link">{site.email}</a></div>
+          <a href={`mailto:${site.email}`} class="btn ghost contact-action">이메일 보내기</a>
         </div>
       </div>
     </div>
@@ -34,16 +42,58 @@ import { baseUrl as base } from "../../utils/url";
 
   <style>
     .contact-grid {
-      margin-top: 16px;
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
     }
 
-    .contact-block {
-      margin-top: 6px;
+    .contact-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      text-align: left;
+    }
+
+    .contact-card .ico {
+      width: 40px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--bg-soft);
+      color: var(--brand);
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .contact-card .ico.talk {
+      background: #43291d;
+      color: #f7c608;
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    .value {
+      color: var(--text-2);
     }
 
     .contact-link {
       color: var(--brand);
       font-weight: 700;
+    }
+
+    .contact-action {
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </BaseLayout>
