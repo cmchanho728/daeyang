@@ -1,7 +1,14 @@
 ﻿---
 import ProductLinkPanel from "./ProductLinkPanel.astro";
 import ContactActions from "./ContactActions.astro";
+import { categoryMetas } from "../data/products";
 import { baseUrl as base } from "../utils/url";
+
+const publishedByGroup = (group: "vacuum" | "fuel") =>
+  categoryMetas
+    .filter((c) => c.published && c.group === group)
+    .sort((a, b) => a.order - b.order)
+    .map((c) => ({ title: c.title, desc: c.summary, href: `${base}products/${c.key}/` }));
 
 const vacuumBanner = Astro.props.vacuumBanner ?? `${base}products-vctruck.jpg`;
 const fuelBanner = Astro.props.fuelBanner ?? `${base}products-tltruck.jpg`;
@@ -11,17 +18,8 @@ const titleText = Astro.props.titleText ?? "제품소개";
 const subtitleText =
   Astro.props.subtitleText ?? "분뇨차·유조차 주요 부품을 카테고리별로 안내합니다.";
 
-const vacuumCards = [
-  { title: "진공차량 펌프", desc: "버큠탱크로리(분뇨차,준설차) 진공펌프", href: `${base}products/pump-vacuum/` },
-  { title: "진공차량 밸브", desc: "버큠탱크로리 사방/이방/체크 밸브 등", href: `${base}products/valve-vacuum/` },
-  { title: "진공차량 부품", desc: "맨홀/탈취기/에어클리너/오일여과기/오일통 등", href: `${base}products/etc-vacuum/` },
-];
-
-const fuelCards = [
-  { title: "유조차량 펌프", desc: "유류 이송차량 용 기어펌프", href: `${base}products/pump-fuel/` },
-  { title: "유조차량 밸브", desc: "사방/이방/바이페스/보톰 밸브 등", href: `${base}products/valve-fuel/` },
-  { title: "유조차량 부품", desc: "맨홀/스트레이너/보톰핸들 등", href: `${base}products/etc-fuel/` },
-];
+const vacuumCards = publishedByGroup("vacuum");
+const fuelCards = publishedByGroup("fuel");
 
 const showActions = Astro.props.showActions ?? false;
 const showLinkPanel = Astro.props.showLinkPanel ?? false;

@@ -1,43 +1,41 @@
 ---
+import { categoryMetas } from "../data/products";
 import { baseUrl as base } from "../utils/url";
+
+const commonCards = categoryMetas
+  .filter((c) => c.published && c.group === "common")
+  .sort((a, b) => a.order - b.order)
+  .map((c) => ({ title: c.title, desc: c.summary, href: `${base}products/${c.key}/` }));
+
+// 페어당 카드 2개 + 배너 이미지 1장 — 현재 순서(조인트,플렌지 / 호스,커플링)를 그대로 유지.
+const pairBanners = [
+  { src: `${base}power-trans.jpg`, alt: "power-trans" },
+  { src: `${base}pipe-joint.jpg`, alt: "pipe-joint" },
+];
+
+const pairs = pairBanners.map((banner, i) => ({
+  banner,
+  cards: commonCards.slice(i * 2, i * 2 + 2),
+}));
 ---
 
 <section class="link-panel" aria-label="추가 제품 링크">
-  <div class="pair">
-    <div class="image-box">
-      <img src={`${base}power-trans.jpg`} alt="power-trans" loading="lazy" />
+  {pairs.map((pair) => (
+    <div class="pair">
+      <div class="image-box">
+        <img src={pair.banner.src} alt={pair.banner.alt} loading="lazy" />
+      </div>
+      <div class="card-row">
+        {pair.cards.map((c) => (
+          <a class="link-card" href={c.href}>
+            <div class="card-title">{c.title}</div>
+            <div class="card-desc">{c.desc}</div>
+            <div class="card-cta">자세히 보기 →</div>
+          </a>
+        ))}
+      </div>
     </div>
-    <div class="card-row">
-      <a class="link-card" href={`${base}products/etc-joint/`}>
-        <div class="card-title">조인트</div>
-        <div class="card-desc">분뇨차 조인트/피팅 부품</div>
-        <div class="card-cta">자세히 보기 →</div>
-      </a>
-      <a class="link-card" href={`${base}products/etc-flange/`}>
-        <div class="card-title">플렌지-패킹</div>
-        <div class="card-desc">유조차 플렌지/패킹 부품</div>
-        <div class="card-cta">자세히 보기 →</div>
-      </a>
-    </div>
-  </div>
-
-  <div class="pair">
-    <div class="image-box">
-      <img src={`${base}pipe-joint.jpg`} alt="pipe-joint" loading="lazy" />
-    </div>
-    <div class="card-row">
-      <a class="link-card" href={`${base}products/etc-hose/`}>
-        <div class="card-title">호스</div>
-        <div class="card-desc">유조차 호스/피팅 부품</div>
-        <div class="card-cta">자세히 보기 →</div>
-      </a>
-      <a class="link-card" href={`${base}products/etc-coupling/`}>
-        <div class="card-title">커플링</div>
-        <div class="card-desc">분뇨차 라인 커플링 부품</div>
-        <div class="card-cta">자세히 보기 →</div>
-      </a>
-    </div>
-  </div>
+  ))}
 </section>
 
 <style>

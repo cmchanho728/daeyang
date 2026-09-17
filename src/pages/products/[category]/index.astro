@@ -3,13 +3,15 @@
 // 동적 라우팅을 사용하여 카테고리별 제품 페이지 생성
 
 import ProductCategoryPage from "../../../components/ProductCategoryPage.astro";
-import { productsData, categories } from "../../../data/products";
+import { productsData, categoryMetas } from "../../../data/products";
 
 export function getStaticPaths() {
-  return categories.map((category) => ({
-    params: { category },
-    props: { category },
-  }));
+  return categoryMetas
+    .filter((c) => c.published)
+    .map(({ key }) => ({
+      params: { category: key },
+      props: { category: key },
+    }));
 }
 
 interface Props {
