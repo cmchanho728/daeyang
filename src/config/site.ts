@@ -22,6 +22,6 @@ export const site = {
   businessHours: "",
 
   // 검색엔진 소유 확인 코드. 값이 있을 때만 BaseLayout이 해당 meta 태그를 출력한다.
-  naverSiteVerification: "",
+  naverSiteVerification: "4b3676167b6a52b0307bd2d0c03eaeb4cc787444",
   googleSiteVerification: "",
 };
