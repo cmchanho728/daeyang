@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../config/site";
+import { baseUrl as base } from "../utils/url";
+---
+
+<BaseLayout
+  title={`페이지를 찾을 수 없음 | ${site.shortName}`}
+  description="죄송합니다. 요청하신 페이지를 찾을 수 없습니다. 대양특장 홈페이지로 이동하시거나 제품소개 페이지에서 분뇨차·유조차 부품 정보를 확인해 주세요."
+  noindex={true}
+  canonical={false}
+>
+  <section class="section">
+    <div class="container notfound">
+      <p class="code">404</p>
+      <h1 class="h1">페이지를 찾을 수 없습니다</h1>
+      <p class="p">
+        요청하신 페이지가 삭제되었거나 주소가 변경되었을 수 있습니다.
+      </p>
+
+      <div class="actions">
+        <a class="btn primary" href={base}>홈으로</a>
+        <a class="btn ghost" href={`${base}products/`}>제품소개 보기</a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .notfound {
+      padding: 40px 0 60px;
+      text-align: center;
+    }
+
+    .code {
+      margin: 0 0 8px;
+      font-size: 56px;
+      font-weight: 900;
+      color: var(--brand);
+      letter-spacing: -0.02em;
+    }
+
+    .actions {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</BaseLayout>
