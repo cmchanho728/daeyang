@@ -4,9 +4,33 @@ import ProductShowcase from "../components/ProductShowcase.astro";
 import ContactActions from "../components/ContactActions.astro";
 import { site } from "../config/site";
 import { baseUrl as base } from "../utils/url";
+
+const pageTitle = `${site.shortName}(구 ${site.formerName}) | 분뇨차·유조차 부품 전문`;
+const pageDescription =
+  `${site.shortName}(구 ${site.formerName})은 2000년부터 분뇨차·유조차용 펌프·밸브·조인트·플렌지·호스 등 다양한 부품을 생산·공급해온 전문 기업입니다. 카테고리별 제품 정보를 확인하세요.`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  ...(site.companyName && { name: site.companyName }),
+  ...(site.formerName && { alternateName: site.formerName }),
+  ...(site.siteUrl && { url: site.siteUrl }),
+  ...(site.siteUrl && { image: `${site.siteUrl}/main.jpg` }),
+  description: pageDescription,
+  ...(site.phone.display && { telephone: site.phone.display }),
+  ...(site.email && { email: site.email }),
+  ...(site.address && {
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: site.address,
+      addressCountry: "KR",
+    },
+  }),
+};
 ---
 
-<BaseLayout title={`${site.shortName} | (구) ${site.formerName} | 분뇨차·유조차 부품 전문`}>
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
   <section class="section">
     <div class="container">
       <span class="badge">Vacuum Truck · Fuel Tanker</span>
