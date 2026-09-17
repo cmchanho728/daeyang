@@ -10,7 +10,6 @@ export const pumpFuel: CategoryData = {
         id: "200l",
         name: "200L 펌프",
         img: `${baseUrl}products/tl/pump/200.jpg`,
-        cardImg: `${baseUrl}products/tl/pump/200.jpg`,
         specImg: `${baseUrl}products/tl/pump/200-outer.jpg`,
         specs: {
           "용량": "200L/min",
@@ -25,7 +24,6 @@ export const pumpFuel: CategoryData = {
         id: "300l",
         name: "300L 펌프",
         img: `${baseUrl}products/tl/pump/300.jpg`,
-        cardImg: `${baseUrl}products/tl/pump/300.jpg`,
         specImg: `${baseUrl}products/tl/pump/300-outer.jpg`,
         specs: {
           "용량": "300L/min",
@@ -40,7 +38,6 @@ export const pumpFuel: CategoryData = {
         id: "300l-bypass",
         name: "300L 내장형 펌프",
         img: `${baseUrl}products/tl/pump/300-bypass.jpg`,
-        cardImg: `${baseUrl}products/tl/pump/300-bypass.jpg`,
         specImg: `${baseUrl}products/tl/pump/300-bypass-outer.jpg`,
         specs: {
           "용량": "300L/min",
@@ -55,7 +52,6 @@ export const pumpFuel: CategoryData = {
         id: "600l",
         name: "600L 펌프",
         img: `${baseUrl}products/tl/pump/600.jpg`,
-        cardImg: `${baseUrl}products/tl/pump/600.jpg`,
         specImg: `${baseUrl}products/tl/pump/600-outer.jpg`,
         specs: {
           "용량": "600L/min",
@@ -70,7 +66,6 @@ export const pumpFuel: CategoryData = {
         id: "1000l",
         name: "1000L 펌프",
         img: `${baseUrl}products/tl/pump/1000.jpg`,
-        cardImg: `${baseUrl}products/tl/pump/1000.jpg`,
         specImg: `${baseUrl}products/tl/pump/1000-outer.jpg`,
         specs: {
           "용량": "1000L/min",

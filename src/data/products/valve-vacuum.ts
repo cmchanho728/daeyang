@@ -10,7 +10,6 @@ export const valveVacuum: CategoryData = {
         id: "shutoff",
         name: "사방밸브",
         img: `${baseUrl}products/vc/valve/4way-65a.jpg`,
-        cardImg: `${baseUrl}products/vc/valve/4way-65a.jpg`,
         images: [
           {
             src: `${baseUrl}products/vc/valve/4way-65a.jpg`,
@@ -46,7 +45,6 @@ export const valveVacuum: CategoryData = {
         id: "vc2way",
         name: "이방밸브",
         img: `${baseUrl}products/vc/valve/2way-80.jpg`,
-        cardImg: `${baseUrl}products/vc/valve/2way-80.jpg`,
         images: [
           {
             src: `${baseUrl}products/vc/valve/2way-65.jpg`,
@@ -82,7 +80,6 @@ export const valveVacuum: CategoryData = {
         id: "check",
         name: "체크밸브",
         img: `${baseUrl}products/valve/valve-vc-check.jpg`,
-        cardImg: `${baseUrl}products/valve/valve-vc-check.jpg`,
         specImg: `${baseUrl}products/valve/valve-vc-check.jpg`,
         specs: {
           "모델명": "분뇨차 용 체크밸브",
@@ -97,7 +94,6 @@ export const valveVacuum: CategoryData = {
         id: "safety",
         name: "안전밸브",
         img: `${baseUrl}products/vc/valve/safety.jpg`,
-        cardImg: `${baseUrl}products/vc/valve/safety.jpg`,
         specImg: `${baseUrl}products/vc/valve/safety-outer.jpg`,
         specs: {
           "모델명": "분뇨차 용 안전밸브",

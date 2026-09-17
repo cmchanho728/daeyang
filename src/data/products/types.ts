@@ -8,7 +8,6 @@ export interface Product {
   id: string;
   name: string;
   img: string;
-  cardImg?: string;
   specImg?: string;
   images?: ProductImage[];
   drawings?: ProductImage[];

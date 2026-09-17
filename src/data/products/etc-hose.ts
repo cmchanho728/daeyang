@@ -9,7 +9,6 @@ export const etcHose: CategoryData = {
       id: "hose-c",
       name: "청고압호스 C형",
       img: `${baseUrl}products/etc/hose/hose.jpg`,
-      cardImg: `${baseUrl}products/etc/hose/hose.jpg`,
       specImg: `${baseUrl}products/etc/hose/hose-spec.jpg`,
       specs: {
         "규격": "2인치 || 2.5인치 || 3인치",
@@ -20,7 +19,6 @@ export const etcHose: CategoryData = {
       id: "hose-cf",
       name: "청고압호스 CF형",
       img: `${baseUrl}products/etc/hose/hose-cf.jpg`,
-      cardImg: `${baseUrl}products/etc/hose/hose-cf.jpg`,
       specImg: `${baseUrl}products/etc/hose/hose-spec.jpg`,
       specs: {
         "규격": "2인치 || 2.5인치 || 3인치",

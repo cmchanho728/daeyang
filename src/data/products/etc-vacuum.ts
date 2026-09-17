@@ -10,7 +10,6 @@ export const etcVacuum: CategoryData = {
         id: "manhole",
         name: "메인맨홀",
         img: `${baseUrl}products/vc/etc/manhole.jpg`,
-        cardImg: `${baseUrl}products/vc/etc/manhole.jpg`,
         images: [
           {
             src: `${baseUrl}products/vc/etc/manhole.jpg`,
@@ -46,7 +45,6 @@ export const etcVacuum: CategoryData = {
         id: "oiltank",
         name: "오일통",
         img: `${baseUrl}products/vc/etc/oiltank-65a.jpg`,
-        cardImg: `${baseUrl}products/vc/etc/oiltank-65a.jpg`,
         images: [
           {
             src: `${baseUrl}products/vc/etc/oiltank-65a.jpg`,
@@ -89,7 +87,6 @@ export const etcVacuum: CategoryData = {
         id: "airclean",
         name: "에어클리너",
         img: `${baseUrl}products/vc/etc/airclean.jpg`,
-        cardImg: `${baseUrl}products/vc/etc/airclean.jpg`,
         images: [
           {
             src: `${baseUrl}products/vc/etc/airclean-65a.jpg`,
@@ -132,7 +129,6 @@ export const etcVacuum: CategoryData = {
         id: "oilsep",
         name: "오일여과기",
         img: `${baseUrl}products/vc/etc/oilfilter-65a.jpg`,
-        cardImg: `${baseUrl}products/vc/etc/oilfilter-65a.jpg`,
         images: [
           {
             src: `${baseUrl}products/vc/etc/oilfilter-65a.jpg`,
@@ -175,7 +171,6 @@ export const etcVacuum: CategoryData = {
         id: "deodor",
         name: "탈취기",
         img: `${baseUrl}products/vc/etc/deodorizer.jpg`,
-        cardImg: `${baseUrl}products/vc/etc/deodorizer.jpg`,
         specImg: `${baseUrl}products/vc/etc/deodorizer-outer.jpg`,
         specs: {
           "모델명": "분뇨차 용 탈취기",
@@ -190,7 +185,6 @@ export const etcVacuum: CategoryData = {
         id: "backmanhole",
         name: "뒷맨홀",
         img: `${baseUrl}products/vc/etc/backmanhole.jpg`,
-        cardImg: `${baseUrl}products/vc/etc/backmanhole.jpg`,
         specImg: `${baseUrl}products/vc/etc/backmanhole-outer.jpg`,
         specs: {
           "모델명": "분뇨차 용 뒷맨홀",

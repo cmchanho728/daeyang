@@ -10,7 +10,6 @@ export const pumpVacuum: CategoryData = {
         id: "10l",
         name: "진공펌프 10L (10000)",
         img: `${baseUrl}products/pump/pump-vacuum-10l.jpg`,
-        cardImg: `${baseUrl}products/pump/pump-vacuum-10l.jpg`,
         specImg: `${baseUrl}products/pump/pump-vacuum-10l-outer.jpg`,
         specs: {
           "체적 용량": "10L",
@@ -25,7 +24,6 @@ export const pumpVacuum: CategoryData = {
         id: "8l",
         name: "진공펌프 8L (8000)",
         img: `${baseUrl}products/pump/pump-vacuum-8l.jpg`,
-        cardImg: `${baseUrl}products/pump/pump-vacuum-8l.jpg`,
         specImg: `${baseUrl}products/pump/pump-vacuum-8l-outer.jpg`,
         specs: {
           "체적 용량": "8L",
@@ -40,7 +38,6 @@ export const pumpVacuum: CategoryData = {
         id: "5l",
         name: "진공펌프 5L (6000)",
         img: `${baseUrl}products/vc/pump/5l-long.jpg`,
-        cardImg: `${baseUrl}products/vc/pump/5l-long.jpg`,
         images: [
           {
             src: `${baseUrl}products/vc/pump/5l-long.jpg`,
@@ -83,7 +80,6 @@ export const pumpVacuum: CategoryData = {
         id: "3l",
         name: "진공펌프 3L (4000)",
         img: `${baseUrl}products/pump/pump-vacuum-3l.jpg`,
-        cardImg: `${baseUrl}products/pump/pump-vacuum-3l.jpg`,
         specImg: `${baseUrl}products/pump/pump-vacuum-3l-outer.jpg`,
         specs: {
           "체적 용량": "3L",

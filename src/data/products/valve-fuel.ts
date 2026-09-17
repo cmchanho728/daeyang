@@ -10,7 +10,6 @@ export const valveFuel: CategoryData = {
         id: "ball",
         name: "사방밸브",
         img: `${baseUrl}products/tl/valve/4way-80.jpg`,
-        cardImg: `${baseUrl}products/tl/valve/4way-80.jpg`,
         images: [
           {
             src: `${baseUrl}products/tl/valve/4way-50.jpg`,
@@ -54,7 +53,6 @@ export const valveFuel: CategoryData = {
         id: "check",
         name: "이방밸브",
         img: `${baseUrl}products/tl/valve/2way-80.jpg`,
-        cardImg: `${baseUrl}products/tl/valve/2way-80.jpg`,
         specImg: `${baseUrl}products/tl/valve/2way-80-outer.jpg`,
         specs: {
           "모델명": "유조차 용 이방밸브",
@@ -70,7 +68,6 @@ export const valveFuel: CategoryData = {
         id: "shutoff",
         name: "바이페스밸브",
         img: `${baseUrl}products/tl/valve/bypass.jpg`,
-        cardImg: `${baseUrl}products/tl/valve/bypass.jpg`,
         specImg: `${baseUrl}products/tl/valve/bypass-outer.jpg`,
         specs: {
           "모델명": "유조차 용 안전밸브",
@@ -86,7 +83,6 @@ export const valveFuel: CategoryData = {
         id: "bottom",
         name: "보톰밸브",
         img: `${baseUrl}products/tl/valve/bottom.jpg`,
-        cardImg: `${baseUrl}products/tl/valve/bottom.jpg`,
         specImg: `${baseUrl}products/tl/valve/bottom-outer.jpg`,
         specs: {
           "모델명": "유조차 용 보톰밸브",
@@ -101,7 +97,6 @@ export const valveFuel: CategoryData = {
         id: "lever",
         name: "레버식 보톰밸브",
         img: `${baseUrl}products/tl/valve/lever.jpg`,
-        cardImg: `${baseUrl}products/tl/valve/lever.jpg`,
         specImg: `${baseUrl}products/tl/valve/lever-outer.jpg`,
         specs: {
           "모델명": "유조차 용 레버식 보톰밸브",
@@ -116,7 +111,6 @@ export const valveFuel: CategoryData = {
         id: "main",
         name: "메인밸브",
         img: `${baseUrl}products/tl/valve/main.jpg`,
-        cardImg: `${baseUrl}products/tl/valve/main.jpg`,
         specImg: `${baseUrl}products/tl/valve/main-outer.jpg`,
         specs: {
           "모델명": "유조차 용 메인밸브",
@@ -131,7 +125,6 @@ export const valveFuel: CategoryData = {
         id: "airvent",
         name: "에어벤트(에어누끼)",
         img: `${baseUrl}products/tl/valve/airvent.jpg`,
-        cardImg: `${baseUrl}products/tl/valve/airvent.jpg`,
         specImg: `${baseUrl}products/tl/valve/airvent-outer.jpg`,
         specs: {
           "모델명": "유조차 용 에어벤트(에어누끼)",

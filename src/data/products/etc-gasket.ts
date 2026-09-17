@@ -10,7 +10,6 @@ export const etcGasket: CategoryData = {
         id: "nozzle",
         name: "노즐/미터",
         img: `${baseUrl}products-tltruck.jpg`,
-        cardImg: `${baseUrl}products-tltruck.jpg`,
         specImg: undefined,
         specs: {
           "규격": "확인 필요",
@@ -26,7 +25,6 @@ export const etcGasket: CategoryData = {
         id: "hose",
         name: "호스/피팅",
         img: `${baseUrl}products-tltruck.jpg`,
-        cardImg: `${baseUrl}products-tltruck.jpg`,
         specImg: undefined,
         specs: {
           "규격": "확인 필요",
@@ -42,7 +40,6 @@ export const etcGasket: CategoryData = {
         id: "coupler",
         name: "조인트/커플러",
         img: `${baseUrl}products-tltruck.jpg`,
-        cardImg: `${baseUrl}products-tltruck.jpg`,
         specImg: undefined,
         specs: {
           "규격": "확인 필요",

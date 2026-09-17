@@ -10,7 +10,6 @@ export const etcJoint: CategoryData = {
         id: "joint-short",
         name: "등속조인트 (숏)",
         img: `${baseUrl}products/etc/joint/joint-short.jpg`,
-        cardImg: `${baseUrl}products/etc/joint/joint-short.jpg`,
         specImg: undefined,
         specs: {
           "길이": "78mm ~ 105mm",
@@ -22,7 +21,6 @@ export const etcJoint: CategoryData = {
         id: "joint-long",
         name: "등속조인트 (롱)",
         img: `${baseUrl}products/etc/joint/joint-long.jpg`,
-        cardImg: `${baseUrl}products/etc/joint/joint-long.jpg`,
         specImg: undefined,
         specs: {
           "길이": "120mm 이상",
@@ -37,7 +35,6 @@ export const etcJoint: CategoryData = {
         id: "joint",
         name: "일반조인트",
         img: `${baseUrl}products/etc/joint/joint.jpg`,
-        cardImg: `${baseUrl}products/etc/joint/joint.jpg`,
         specImg: undefined,
         specs: {
           "길이": "300mm 이상",

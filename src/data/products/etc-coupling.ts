@@ -10,7 +10,6 @@ export const etcCoupling: CategoryData = {
         id: "ctype",
         name: "커플링 C형",
         img: `${baseUrl}products/etc/coupling/coupling-c.jpg`,
-        cardImg: `${baseUrl}products/etc/coupling/coupling-c.jpg`,
         specImg: undefined,
         specs: {
           "규격": "2인치 || 2.5인치 || 3인치",
@@ -23,7 +22,6 @@ export const etcCoupling: CategoryData = {
         id: "etype",
         name: "커플링 E형",
         img: `${baseUrl}products/etc/coupling/coupling-e.jpg`,
-        cardImg: `${baseUrl}products/etc/coupling/coupling-e.jpg`,
         specImg: undefined,
         specs: {
           "규격": "2인치 || 2.5인치 || 3인치",
@@ -36,7 +34,6 @@ export const etcCoupling: CategoryData = {
         id: "atype",
         name: "커플링 A형",
         img: `${baseUrl}products/etc/coupling/coupling-a.jpg`,
-        cardImg: `${baseUrl}products/etc/coupling/coupling-a.jpg`,
         specImg: undefined,
         specs: {
           "규격": "2인치 || 2.5인치 || 3인치",
@@ -49,7 +46,6 @@ export const etcCoupling: CategoryData = {
         id: "btype",
         name: "커플링 B형",
         img: `${baseUrl}products/etc/coupling/coupling-b.jpg`,
-        cardImg: `${baseUrl}products/etc/coupling/coupling-b.jpg`,
         specImg: undefined,
         specs: {
           "규격": "2인치 || 2.5인치 || 3인치",
@@ -62,7 +58,6 @@ export const etcCoupling: CategoryData = {
         id: "dtype",
         name: "커플링 D형",
         img: `${baseUrl}products/etc/coupling/coupling-d.jpg`,
-        cardImg: `${baseUrl}products/etc/coupling/coupling-d.jpg`,
         specImg: undefined,
         specs: {
           "규격": "2인치 || 2.5인치 || 3인치",
@@ -75,7 +70,6 @@ export const etcCoupling: CategoryData = {
         id: "ftype",
         name: "커플링 F형",
         img: `${baseUrl}products/etc/coupling/coupling-f.jpg`,
-        cardImg: `${baseUrl}products/etc/coupling/coupling-f.jpg`,
         specImg: undefined,
         specs: {
           "규격": "2인치 || 2.5인치 || 3인치",
@@ -88,7 +82,6 @@ export const etcCoupling: CategoryData = {
         id: "bbtype",
         name: "커플링 BB형",
         img: `${baseUrl}products/etc/coupling/coupling-bb.jpg`,
-        cardImg: `${baseUrl}products/etc/coupling/coupling-bb.jpg`,
         specImg: undefined,
         specs: {
           "규격": "3-3인치 || 3-2.5인치 || 3-2인치",
@@ -101,7 +94,6 @@ export const etcCoupling: CategoryData = {
         id: "dctype",
         name: "커플링 DC형",
         img: `${baseUrl}products/etc/coupling/coupling-dc.jpg`,
-        cardImg: `${baseUrl}products/etc/coupling/coupling-dc.jpg`,
         specImg: undefined,
         specs: {
           "규격": "3인치 || 2.5인치 || 2인치",
@@ -114,7 +106,6 @@ export const etcCoupling: CategoryData = {
         id: "bptype",
         name: "커플링 DP형",
         img: `${baseUrl}products/etc/coupling/coupling-dp.jpg`,
-        cardImg: `${baseUrl}products/etc/coupling/coupling-dp.jpg`,
         specImg: undefined,
         specs: {
           "규격": "3-3인치 || 3-2.5인치 || 3-2인치",

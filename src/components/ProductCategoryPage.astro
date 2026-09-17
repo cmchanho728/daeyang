@@ -38,7 +38,7 @@ const { pageTitle, pageDescription, products } = data;
       <div class="grid">
         {products.map((item) => (
           <a href={`#spec-${item.id}`} class="card">
-            <img src={item.cardImg ?? item.img} alt={`${pageTitle} ${item.name}`} loading="lazy" />
+            <img src={item.img} alt={`${pageTitle} ${item.name}`} loading="lazy" />
             <div class="card-title">{item.name}</div>
           </a>
         ))}

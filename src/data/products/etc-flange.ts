@@ -10,7 +10,6 @@ export const etcFlange: CategoryData = {
         id: "flange-circle",
         name: "원형 플랜지",
         img: `${baseUrl}products/etc/flange/flange-circle.jpg`,
-        cardImg: `${baseUrl}products/etc/flange/flange-circle.jpg`,
         specImg: `${baseUrl}products/etc/flange/flange-circle-spec.jpg`,
         specs: {
           "규격": "확인 필요",
@@ -26,7 +25,6 @@ export const etcFlange: CategoryData = {
         id: "flange-rect",
         name: "사각 플랜지",
         img: `${baseUrl}products/etc/flange/flange-rect.jpg`,
-        cardImg: `${baseUrl}products/etc/flange/flange-rect.jpg`,
         specImg: `${baseUrl}products/etc/flange/flange-rect-spec.jpg`,
         specs: {
           "규격": "□ 90 || □ 105 || □ 120",
@@ -42,7 +40,6 @@ export const etcFlange: CategoryData = {
         id: "gasket-circle",
         name: "원형 가스켓",
         img: `${baseUrl}products/etc/flange/gasket-circle.jpg`,
-        cardImg: `${baseUrl}products/etc/flange/gasket-circle.jpg`,
         specImg: `${baseUrl}products/etc/flange/gasket-circle-spec.jpg`,
         specs: {
           "규격": "확인 필요",
@@ -58,7 +55,6 @@ export const etcFlange: CategoryData = {
         id: "gasket-rect",
         name: "사각 가스켓",
         img: `${baseUrl}products/etc/flange/gasket-rect.jpg`,
-        cardImg: `${baseUrl}products/etc/flange/gasket-rect.jpg`,
         specImg: `${baseUrl}products/etc/flange/gasket-rect-spec.jpg`,
         specs: {
           "규격": "확인 필요",
