@@ -12,10 +12,10 @@ import { baseUrl as base } from "../../utils/url";
       <h1 class="h1">오시는 길</h1>
       <p class="p">주소와 지도를 확인하세요.</p>
 
-      <div style="margin-top:16px;">
+      <div class="section-spacing">
         <div class="card">
           <b>지도</b>
-          <div class="map-wrap" style="margin-top:10px;">
+          <div class="map-wrap">
             <iframe
               title={`${site.shortName} 위치`}
               src={`https://www.google.com/maps?q=${encodeURIComponent(site.address)}&output=embed`}
@@ -30,7 +30,12 @@ import { baseUrl as base } from "../../utils/url";
   </section>
 
   <style>
+    .section-spacing {
+      margin-top: 16px;
+    }
+
     .map-wrap {
+      margin-top: 10px;
       border: 1px solid var(--line);
       border-radius: 12px;
       overflow: hidden;
