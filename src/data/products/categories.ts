@@ -52,7 +52,7 @@ export const categoryMetas: CategoryMeta[] = [
     key: "etc-fuel",
     group: "fuel",
     title: "유조차 기타 부품",
-    summary: "맨홀/스트레이너/보텀핸들 등",
+    summary: "스트레이너/원터치 맨홀/보텀핸들/케이블레버/LAS 커플링 등",
     order: 3,
     published: true,
   },
