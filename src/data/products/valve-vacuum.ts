@@ -79,7 +79,7 @@ export const valveVacuum: CategoryData = {
       {
         id: "check",
         name: "체크밸브",
-        img: `${baseUrl}products/valve/valve-vc-check.jpg`,
+        img: `${baseUrl}products/vc/valve/check.jpg`,
         specs: {
           "모델명": "분뇨차용 체크밸브",
           "규격": "80M  ||  50M",
