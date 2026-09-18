@@ -125,11 +125,18 @@
 
 ## etc-fuel (유조차 기타 부품)
 
+2026-09-18 제품 구성 변경으로 아래 5종으로 교체(스트레이너·원터치 맨홀·보텀핸들은 반영 완료,
+케이블레버·LAS 커플링은 사진 준비중).
+
 | 제품 | 사진 종류 | 현재 파일 경로 | 저장 위치 | 크기(px) | 비율 | 배경색 추정 | 파일 없음 | 교체대상 | 비고 |
 |---|---|---|---|---|---|---|---|---|---|
-| 조인트/커플러 (coupler) | 제품사진 | products-tltruck.jpg | products-tltruck.jpg | 1100×299 | 가로형 (3.68:1) | 기타(단색 아님/배경 있음) |  | 예 | 실제 제품사진 아님(공용 배너 임시 사용, 스펙도 미확정 — docs/todo-specs.md 참고) |
-| 호스/피팅 (hose) | 제품사진 | products-tltruck.jpg | products-tltruck.jpg | 1100×299 | 가로형 (3.68:1) | 기타(단색 아님/배경 있음) |  | 예 | 실제 제품사진 아님(공용 배너 임시 사용, 스펙도 미확정 — docs/todo-specs.md 참고) |
-| 노즐/미터 (nozzle) | 제품사진 | products-tltruck.jpg | products-tltruck.jpg | 1100×299 | 가로형 (3.68:1) | 기타(단색 아님/배경 있음) |  | 예 | 실제 제품사진 아님(공용 배너 임시 사용, 스펙도 미확정 — docs/todo-specs.md 참고) |
+| 스트레이너 (strainer) | 제품사진 | products/tl/etc/strainer-80a.jpg | tl/etc/strainer-80a.jpg | 1187×1187 | 정사각형 | 흰색 |  | 예 | 대표 사진(80A) |
+| 스트레이너 (strainer) | 제품사진 | products/tl/etc/strainer-65a.jpg | tl/etc/strainer-65a.jpg | 991×991 | 정사각형 | 흰색 |  | 예 |  |
+| 스트레이너 (strainer) | 제품사진 | products/tl/etc/strainer-50a.jpg | tl/etc/strainer-50a.jpg | 997×997 | 정사각형 | 흰색 |  | 예 |  |
+| 원터치 맨홀 (onetouch-manhole) | 제품사진 | products/tl/etc/onetouch-manhole.jpg | tl/etc/onetouch-manhole.jpg | 1200×1200 | 정사각형 | 흰색 |  | 예 |  |
+| 보텀핸들 (bottom-handle) | 제품사진 | products/tl/etc/bottom-handle.jpg | tl/etc/bottom-handle.jpg | 1200×1200 | 정사각형 | 흰색 |  | 예 | 원본 비율 약 2.3:1(가로로 길쭉)로 기본 86% 규칙대로면 유난히 얇아 보여, 체크/안전밸브(vc/valve)와 같은 기준으로 배율 0.95 예외 적용 |
+| 케이블레버 (cable-lever) | 제품사진 | products/tl/etc/cable-lever.jpg | tl/etc/cable-lever.jpg | - | - | - | **예** | 예 | 사진 준비중(스펙도 미확정 — docs/todo-specs.md 참고) |
+| LAS 커플링 (las-coupling) | 제품사진 | products/tl/etc/las-coupling.jpg | tl/etc/las-coupling.jpg | - | - | - | **예** | 예 | 사진 준비중(스펙도 미확정 — docs/todo-specs.md 참고) |
 
 ## etc-joint (조인트)
 
