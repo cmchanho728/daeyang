@@ -88,15 +88,15 @@
 
 | 제품 | 사진 종류 | 현재 파일 경로 | 저장 위치 | 크기(px) | 비율 | 배경색 추정 | 파일 없음 | 교체대상 | 비고 |
 |---|---|---|---|---|---|---|---|---|---|
-| 1000L 펌프 (1000l) | 제품사진 | products/tl/pump/1000.jpg | tl/pump/1000.jpg | 1174×750 | 가로형 (1.57:1) | 흰색 |  | 예 |  |
+| 1000L 펌프 (1000l) | 제품사진 | products/tl/pump/1000.jpg | tl/pump/1000.jpg | 1200×1200 | 정사각형 | 흰색 |  | 예 |  |
 | 1000L 펌프 (1000l) | 외관도 | products/tl/pump/1000-outer.jpg | - | 1098×982 | 가로형 (1.12:1) | 흰색 |  | 제외 |  |
-| 200L 펌프 (200l) | 제품사진 | products/tl/pump/200.jpg | tl/pump/200.jpg | 944×646 | 가로형 (1.46:1) | 흰색 |  | 예 |  |
+| 200L 펌프 (200l) | 제품사진 | products/tl/pump/200.jpg | tl/pump/200.jpg | 1076×1076 | 정사각형 | 흰색 |  | 예 |  |
 | 200L 펌프 (200l) | 외관도 | products/tl/pump/200-outer.jpg | - | 1098×771 | 가로형 (1.42:1) | 흰색 |  | 제외 |  |
-| 300L 펌프 (300l) | 제품사진 | products/tl/pump/300.jpg | tl/pump/300.jpg | 1117×709 | 가로형 (1.58:1) | 흰색 |  | 예 |  |
+| 300L 펌프 (300l) | 제품사진 | products/tl/pump/300.jpg | tl/pump/300.jpg | 1200×1200 | 정사각형 | 흰색 |  | 예 |  |
 | 300L 펌프 (300l) | 외관도 | products/tl/pump/300-outer.jpg | - | 1170×1122 | 정사각형 (1170×1122) | 흰색 |  | 제외 |  |
-| 300L 내장형 펌프 (300l-bypass) | 제품사진 | products/tl/pump/300-bypass.jpg | tl/pump/300-bypass.jpg | - | - | - | **예** | 예 |  |
+| 300L 내장형 펌프 (300l-bypass) | 제품사진 | products/tl/pump/300-bypass.jpg | tl/pump/300-bypass.jpg | 1064×1064 | 정사각형 | 흰색 |  | 예 |  |
 | 300L 내장형 펌프 (300l-bypass) | 외관도 | products/tl/pump/300-bypass-outer.jpg | - | 2000×1414 | 가로형 (1.41:1) | 흰색 |  | 제외 |  |
-| 600L 펌프 (600l) | 제품사진 | products/tl/pump/600.jpg | tl/pump/600.jpg | 1155×722 | 가로형 (1.60:1) | 흰색 |  | 예 |  |
+| 600L 펌프 (600l) | 제품사진 | products/tl/pump/600.jpg | tl/pump/600.jpg | 1070×1070 | 정사각형 | 흰색 |  | 예 |  |
 | 600L 펌프 (600l) | 외관도 | products/tl/pump/600-outer.jpg | - | 1098×982 | 가로형 (1.12:1) | 흰색 |  | 제외 |  |
 
 ## valve-fuel (유조차 밸브)
