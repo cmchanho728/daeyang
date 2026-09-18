@@ -8,8 +8,12 @@
  *   예: daeyang-photos/vc/valve/2way-80.jpg -> public/products/vc/valve/2way-80.jpg
  *   파일명만 같고 폴더가 다르면 매칭하지 않는다 (같은 파일명이 vc/valve, tl/valve 등 여러 폴더에 있을 수 있어서).
  * - 확장자는 .jpg/.jpeg/.png를 서로 다르게 써도 매칭하고(예: 대상이 .jpg여도 원본이 .png면 매칭), 대소문자도 구분하지 않는다.
- * - 매칭된 파일은 흰 배경 1200x1200 정사각형 캔버스 가운데에, 제품이 캔버스의 약 80%를 차지하도록
- *   리사이즈해 합성한 뒤 품질을 유지하며 압축해서 저장한다.
+ * - 매칭된 파일은 흰 배경 정사각형 캔버스 가운데에 합성한 뒤 압축해서 저장한다. 원본에 알파 채널이
+ *   있는지(투명 배경 원본인지)에 따라 두 가지 방식으로 처리한다.
+ *   - 불투명 원본: 1200x1200 캔버스, 제품이 캔버스의 약 80%(960px)를 차지하도록 리사이즈, 품질 90.
+ *   - 투명 배경(RGBA) 원본: 알파 채널 기준으로 제품 테두리를 찾아 잘라낸 뒤, 제품 긴 변이 캔버스의
+ *     86%가 되도록 흰 배경 1200x1200 캔버스 가운데에 배치한다. 단, 제품 긴 변이 1032px(1200의 86%)
+ *     보다 작으면 확대하지 않고, 캔버스 쪽을 제품 크기에 맞춰 줄인다(긴 변 / 0.86). JPG 품질 85로 저장.
  * - 매 실행마다 목록표의 제품사진 교체대상 경로에 맞춰 daeyang-photos 안에 빈 폴더를 미리 만들어 둔다
  *   (교체대상이 없는 폴더는 만들지 않는다).
  *
@@ -20,6 +24,7 @@
  */
 
 import { existsSync, mkdirSync, readdirSync, readFileSync } from "node:fs";
+import { writeFile } from "node:fs/promises";
 import path from "node:path";
 import readline from "node:readline";
 import { fileURLToPath } from "node:url";
@@ -32,7 +37,12 @@ const dataDir = path.join(root, "src/data/products");
 const sourceDir = "G:/Claude/projects/daeyang-photos";
 
 const CANVAS_SIZE = 1200;
-const PRODUCT_SCALE = 0.8; // 제품이 캔버스의 약 80%를 차지
+const PRODUCT_SCALE = 0.8; // 불투명 원본: 제품이 캔버스의 약 80%를 차지
+const TRANSPARENT_PRODUCT_SCALE = 0.86; // 투명 배경 원본: 제품 긴 변이 캔버스의 86%
+const TRANSPARENT_MIN_INNER = Math.round(CANVAS_SIZE * TRANSPARENT_PRODUCT_SCALE); // 1032px
+const TRIM_ALPHA_THRESHOLD = 10;
+const JPEG_QUALITY_OPAQUE = 90;
+const JPEG_QUALITY_TRANSPARENT = 85;
 
 const PRODUCTS_PREFIX = "products/";
 const ALLOWED_EXTS = new Set([".jpg", ".jpeg", ".png"]);
@@ -186,7 +196,8 @@ function ensureSourceFolders(photoTargets) {
   return created;
 }
 
-async function processImage(sourcePath, destPath) {
+/** 불투명 원본: 1200x1200 캔버스, 제품이 캔버스의 약 80%(960px)를 차지하도록 리사이즈. */
+async function processOpaqueImage(sourcePath, destExt) {
   const inner = Math.round(CANVAS_SIZE * PRODUCT_SCALE);
 
   const resized = await sharp(sourcePath)
@@ -206,12 +217,77 @@ async function processImage(sourcePath, destPath) {
     },
   }).composite([{ input: resized, left, top }]);
 
-  const ext = path.extname(destPath).toLowerCase();
-  if (ext === ".png") {
-    await canvas.png({ quality: 90 }).toFile(destPath);
+  const buffer =
+    destExt === ".png"
+      ? await canvas.png({ quality: 90 }).toBuffer()
+      : await canvas.jpeg({ quality: JPEG_QUALITY_OPAQUE, mozjpeg: true }).toBuffer();
+
+  return { mode: "opaque", cropSize: "-", outputSize: `${CANVAS_SIZE}x${CANVAS_SIZE}`, buffer };
+}
+
+/** 투명 배경(RGBA) 원본: 알파 채널 기준으로 제품 테두리를 찾아 잘라낸 뒤, 제품 긴 변이 캔버스의
+ *  86%가 되도록 흰 배경 캔버스 가운데에 배치한다. 제품 긴 변이 1032px보다 작으면 확대하지 않고
+ *  캔버스 쪽을 제품 크기에 맞춰 줄인다. 항상 JPG로 저장한다. */
+async function processTransparentImage(sourcePath) {
+  const { data: trimmed, info } = await sharp(sourcePath)
+    .trim({ threshold: TRIM_ALPHA_THRESHOLD })
+    .toBuffer({ resolveWithObject: true });
+
+  const cropWidth = info.width;
+  const cropHeight = info.height;
+  const longSide = Math.max(cropWidth, cropHeight);
+
+  let canvasSize;
+  let resizeTarget;
+  if (longSide >= TRANSPARENT_MIN_INNER) {
+    canvasSize = CANVAS_SIZE;
+    resizeTarget = TRANSPARENT_MIN_INNER;
   } else {
-    await canvas.jpeg({ quality: 90, mozjpeg: true }).toFile(destPath);
+    canvasSize = Math.round(longSide / TRANSPARENT_PRODUCT_SCALE);
+    resizeTarget = longSide; // 확대하지 않음(withoutEnlargement)
   }
+
+  const productBuffer = await sharp(trimmed)
+    .resize(resizeTarget, resizeTarget, { fit: "inside", withoutEnlargement: true })
+    .flatten({ background: { r: 255, g: 255, b: 255 } }) // 알파를 흰 배경에 합성
+    .toBuffer();
+
+  const productMeta = await sharp(productBuffer).metadata();
+  const left = Math.round((canvasSize - (productMeta.width ?? resizeTarget)) / 2);
+  const top = Math.round((canvasSize - (productMeta.height ?? resizeTarget)) / 2);
+
+  const buffer = await sharp({
+    create: {
+      width: canvasSize,
+      height: canvasSize,
+      channels: 3,
+      background: { r: 255, g: 255, b: 255 },
+    },
+  })
+    .composite([{ input: productBuffer, left, top }])
+    .jpeg({ quality: JPEG_QUALITY_TRANSPARENT, mozjpeg: true })
+    .toBuffer();
+
+  return {
+    mode: "transparent",
+    cropSize: `${cropWidth}x${cropHeight}`,
+    outputSize: `${canvasSize}x${canvasSize}`,
+    buffer,
+  };
+}
+
+/** 원본에 알파 채널이 있으면 투명 배경 처리, 없으면 기존 불투명 처리 방식을 적용한다. */
+async function processImage(sourcePath, destPath) {
+  const meta = await sharp(sourcePath).metadata();
+  const destExt = path.extname(destPath).toLowerCase();
+  const result = meta.hasAlpha
+    ? await processTransparentImage(sourcePath)
+    : await processOpaqueImage(sourcePath, destExt);
+  return { ...result, sourceSize: `${meta.width}x${meta.height}` };
+}
+
+function formatBytes(bytes) {
+  return `${(bytes / 1024).toFixed(0)}KB`;
 }
 
 function ask(question) {
@@ -273,9 +349,19 @@ async function main() {
   console.log(`\n[replace-photos] 대상(제품사진) 참조 총 ${seenTargets.size}개, daeyang-photos에서 매칭된 파일 ${plan.length}개`);
 
   if (plan.length > 0) {
-    console.log("\n반영될 파일:");
     for (const p of plan) {
-      console.log(`  - [${p.category}] ${p.name}(${p.id}): ${path.relative(sourceDir, p.source)} -> public/${p.relPath}`);
+      p.result = await processImage(p.source, p.dest);
+    }
+
+    console.log("\n반영될 파일:");
+    console.log(
+      "  | 제품 | 원본 -> 대상 | 방식 | 원본 크기 | 잘라낸 제품 크기 | 최종 출력 크기 | 용량 |",
+    );
+    for (const p of plan) {
+      const r = p.result;
+      console.log(
+        `  | [${p.category}] ${p.name}(${p.id}) | ${path.relative(sourceDir, p.source)} -> public/${p.relPath} | ${r.mode} | ${r.sourceSize} | ${r.cropSize} | ${r.outputSize} | ${formatBytes(r.buffer.length)} |`,
+      );
     }
   }
 
@@ -321,7 +407,7 @@ async function main() {
   }
 
   for (const p of plan) {
-    await processImage(p.source, p.dest);
+    await writeFile(p.dest, p.result.buffer);
     console.log(`  ✓ ${p.relPath}`);
   }
 
