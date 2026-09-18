@@ -38,15 +38,15 @@
 
 | 제품 | 사진 종류 | 현재 파일 경로 | 저장 위치 | 크기(px) | 비율 | 배경색 추정 | 파일 없음 | 교체대상 | 비고 |
 |---|---|---|---|---|---|---|---|---|---|
-| 체크밸브 (check) | 제품사진 | products/vc/valve/check.jpg | vc/valve/check.jpg | 1024×765 | 가로형 (1.34:1) | 흰색 |  | 예 |  |
-| 안전밸브 (safety) | 제품사진 | products/vc/valve/safety.jpg | vc/valve/safety.jpg | - | - | - | **예** | 예 |  |
+| 체크밸브 (check) | 제품사진 | products/vc/valve/check.jpg | vc/valve/check.jpg | 1200×1200 | 정사각형 | 흰색 |  | 예 |  |
+| 안전밸브 (safety) | 제품사진 | products/vc/valve/safety.jpg | vc/valve/safety.jpg | 1200×1200 | 정사각형 | 흰색 |  | 예 |  |
 | 안전밸브 (safety) | 외관도 | products/vc/valve/safety-outer.jpg | - | 2000×1414 | 가로형 (1.41:1) | 흰색 |  | 제외 |  |
-| 사방밸브 (shutoff) | 제품사진 | products/vc/valve/4way-65a.jpg | vc/valve/4way-65a.jpg | 632×939 | 세로형 (1:1.49) | 회색 |  | 예 |  |
-| 사방밸브 (shutoff) | 제품사진 | products/vc/valve/4way-50a.jpg | vc/valve/4way-50a.jpg | 618×869 | 세로형 (1:1.41) | 회색 |  | 예 |  |
+| 사방밸브 (shutoff) | 제품사진 | products/vc/valve/4way-65a.jpg | vc/valve/4way-65a.jpg | 1200×1200 | 정사각형 | 흰색 |  | 예 |  |
+| 사방밸브 (shutoff) | 제품사진 | products/vc/valve/4way-50a.jpg | vc/valve/4way-50a.jpg | 1200×1200 | 정사각형 | 흰색 |  | 예 |  |
 | 사방밸브 (shutoff) | 외관도 | products/vc/valve/4way-65a-outer.jpg | - | 2000×1414 | 가로형 (1.41:1) | 흰색 |  | 제외 |  |
 | 사방밸브 (shutoff) | 외관도 | products/vc/valve/4way-50a-outer.jpg | - | 2000×1414 | 가로형 (1.41:1) | 흰색 |  | 제외 |  |
-| 이방밸브 (vc2way) | 제품사진 | products/vc/valve/2way-80.jpg | vc/valve/2way-80.jpg | 559×696 | 세로형 (1:1.25) | 흰색 |  | 예 |  |
-| 이방밸브 (vc2way) | 제품사진 | products/vc/valve/2way-65.jpg | vc/valve/2way-65.jpg | 613×974 | 세로형 (1:1.59) | 흰색 |  | 예 |  |
+| 이방밸브 (vc2way) | 제품사진 | products/vc/valve/2way-80.jpg | vc/valve/2way-80.jpg | 1200×1200 | 정사각형 | 흰색 |  | 예 |  |
+| 이방밸브 (vc2way) | 제품사진 | products/vc/valve/2way-65.jpg | vc/valve/2way-65.jpg | 1138×1138 | 정사각형 | 흰색 |  | 예 |  |
 | 이방밸브 (vc2way) | 외관도 | products/vc/valve/2way-80-outer.jpg | - | 2000×1414 | 가로형 (1.41:1) | 흰색 |  | 제외 |  |
 | 이방밸브 (vc2way) | 외관도 | products/vc/valve/2way-65-outer.jpg | - | 2000×1414 | 가로형 (1.41:1) | 흰색 |  | 제외 |  |
 

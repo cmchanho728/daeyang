@@ -14,6 +14,8 @@
  *   - 투명 배경(RGBA) 원본: 알파 채널 기준으로 제품 테두리를 찾아 잘라낸 뒤, 제품 긴 변이 캔버스의
  *     86%가 되도록 흰 배경 1200x1200 캔버스 가운데에 배치한다. 단, 제품 긴 변이 1032px(1200의 86%)
  *     보다 작으면 확대하지 않고, 캔버스 쪽을 제품 크기에 맞춰 줄인다(긴 변 / 0.86). JPG 품질 85로 저장.
+ *     제품이 가로로 아주 길쭉해(약 3:1 이상) 86% 규칙대로면 유난히 작아 보이는 경우, 아래
+ *     TRANSPARENT_SCALE_OVERRIDES 표에 등록해 그 제품만 다른 배율을 쓸 수 있다.
  * - 매 실행마다 목록표의 제품사진 교체대상 경로에 맞춰 daeyang-photos 안에 빈 폴더를 미리 만들어 둔다
  *   (교체대상이 없는 폴더는 만들지 않는다).
  *
@@ -39,10 +41,18 @@ const sourceDir = "G:/Claude/projects/daeyang-photos";
 const CANVAS_SIZE = 1200;
 const PRODUCT_SCALE = 0.8; // 불투명 원본: 제품이 캔버스의 약 80%를 차지
 const TRANSPARENT_PRODUCT_SCALE = 0.86; // 투명 배경 원본: 제품 긴 변이 캔버스의 86%
-const TRANSPARENT_MIN_INNER = Math.round(CANVAS_SIZE * TRANSPARENT_PRODUCT_SCALE); // 1032px
 const TRIM_ALPHA_THRESHOLD = 10;
 const JPEG_QUALITY_OPAQUE = 90;
 const JPEG_QUALITY_TRANSPARENT = 85;
+
+/** 특정 제품사진만 기본 86% 대신 다른 배율을 적용하고 싶을 때 쓰는 예외 표.
+ *  키는 matchKey() 형식(폴더/파일명, 확장자 제외). 원본이 가로로 아주 길쭉한(약 3:1)
+ *  제품이라 기본 규칙을 적용하면 짧은 변이 지나치게 작아져 다른 사진보다 왜소해 보이는
+ *  경우에만 예외를 둔다. */
+const TRANSPARENT_SCALE_OVERRIDES = new Map([
+  ["vc/valve/check", 0.95],
+  ["vc/valve/safety", 0.95],
+]);
 
 const PRODUCTS_PREFIX = "products/";
 const ALLOWED_EXTS = new Set([".jpg", ".jpeg", ".png"]);
@@ -228,7 +238,7 @@ async function processOpaqueImage(sourcePath, destExt) {
 /** 투명 배경(RGBA) 원본: 알파 채널 기준으로 제품 테두리를 찾아 잘라낸 뒤, 제품 긴 변이 캔버스의
  *  86%가 되도록 흰 배경 캔버스 가운데에 배치한다. 제품 긴 변이 1032px보다 작으면 확대하지 않고
  *  캔버스 쪽을 제품 크기에 맞춰 줄인다. 항상 JPG로 저장한다. */
-async function processTransparentImage(sourcePath) {
+async function processTransparentImage(sourcePath, scale = TRANSPARENT_PRODUCT_SCALE) {
   const { data: trimmed, info } = await sharp(sourcePath)
     .trim({ threshold: TRIM_ALPHA_THRESHOLD })
     .toBuffer({ resolveWithObject: true });
@@ -236,14 +246,15 @@ async function processTransparentImage(sourcePath) {
   const cropWidth = info.width;
   const cropHeight = info.height;
   const longSide = Math.max(cropWidth, cropHeight);
+  const minInner = Math.round(CANVAS_SIZE * scale);
 
   let canvasSize;
   let resizeTarget;
-  if (longSide >= TRANSPARENT_MIN_INNER) {
+  if (longSide >= minInner) {
     canvasSize = CANVAS_SIZE;
-    resizeTarget = TRANSPARENT_MIN_INNER;
+    resizeTarget = minInner;
   } else {
-    canvasSize = Math.round(longSide / TRANSPARENT_PRODUCT_SCALE);
+    canvasSize = Math.round(longSide / scale);
     resizeTarget = longSide; // 확대하지 않음(withoutEnlargement)
   }
 
@@ -277,11 +288,11 @@ async function processTransparentImage(sourcePath) {
 }
 
 /** 원본에 알파 채널이 있으면 투명 배경 처리, 없으면 기존 불투명 처리 방식을 적용한다. */
-async function processImage(sourcePath, destPath) {
+async function processImage(sourcePath, destPath, scale) {
   const meta = await sharp(sourcePath).metadata();
   const destExt = path.extname(destPath).toLowerCase();
   const result = meta.hasAlpha
-    ? await processTransparentImage(sourcePath)
+    ? await processTransparentImage(sourcePath, scale)
     : await processOpaqueImage(sourcePath, destExt);
   return { ...result, sourceSize: `${meta.width}x${meta.height}` };
 }
@@ -350,7 +361,8 @@ async function main() {
 
   if (plan.length > 0) {
     for (const p of plan) {
-      p.result = await processImage(p.source, p.dest);
+      const scale = TRANSPARENT_SCALE_OVERRIDES.get(matchKey(p.relPath));
+      p.result = await processImage(p.source, p.dest, scale);
     }
 
     console.log("\n반영될 파일:");
