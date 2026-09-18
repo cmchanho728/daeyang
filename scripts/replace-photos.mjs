@@ -52,6 +52,7 @@ const JPEG_QUALITY_TRANSPARENT = 85;
 const TRANSPARENT_SCALE_OVERRIDES = new Map([
   ["vc/valve/check", 0.95],
   ["vc/valve/safety", 0.95],
+  ["tl/etc/bottom-handle", 0.95],
 ]);
 
 const PRODUCTS_PREFIX = "products/";
