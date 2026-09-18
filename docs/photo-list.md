@@ -56,31 +56,33 @@
 
 | 제품 | 사진 종류 | 현재 파일 경로 | 저장 위치 | 크기(px) | 비율 | 배경색 추정 | 파일 없음 | 교체대상 | 비고 |
 |---|---|---|---|---|---|---|---|---|---|
-| 에어클리너 (airclean) | 제품사진 | products/vc/etc/airclean.jpg | vc/etc/airclean.jpg | - | - | - | **예** | 예 |  |
-| 에어클리너 (airclean) | 제품사진 | products/vc/etc/airclean-65a.jpg | vc/etc/airclean-65a.jpg | 429×405 | 가로형 (1.06:1) | 흰색 |  | 예 |  |
-| 에어클리너 (airclean) | 제품사진 | products/vc/etc/airclean-50a.jpg | vc/etc/airclean-50a.jpg | 414×332 | 가로형 (1.25:1) | 흰색 |  | 예 |  |
-| 에어클리너 (airclean) | 제품사진 | products/vc/etc/airclean-65a-sus.jpg | vc/etc/airclean-65a-sus.jpg | - | - | - | **예** | 예 |  |
+| 에어클리너 (airclean) | 제품사진 | products/vc/etc/airclean.jpg | vc/etc/airclean.jpg | 1200×1200 | 정사각형 | 흰색 |  | 예 |  |
+| 에어클리너 (airclean) | 제품사진 | products/vc/etc/airclean-65a.jpg | vc/etc/airclean-65a.jpg | 1200×1200 | 정사각형 | 흰색 |  | 예 |  |
+| 에어클리너 (airclean) | 제품사진 | products/vc/etc/airclean-50a.jpg | vc/etc/airclean-50a.jpg | 1200×1200 | 정사각형 | 흰색 |  | 예 |  |
+| 에어클리너 (airclean) | 제품사진 | products/vc/etc/airclean-65a-sus.jpg | vc/etc/airclean-65a-sus.jpg | 1200×1200 | 정사각형 | 흰색 |  | 예 |  |
 | 에어클리너 (airclean) | 외관도 | products/vc/etc/airclean-65a-outer.jpg | - | 1414×2000 | 세로형 (1:1.41) | 흰색 |  | 제외 |  |
 | 에어클리너 (airclean) | 외관도 | products/vc/etc/airclean-50a-outer.jpg | - | 2000×1414 | 가로형 (1.41:1) | 흰색 |  | 제외 |  |
-| 뒷맨홀 (backmanhole) | 제품사진 | products/vc/etc/backmanhole.jpg | vc/etc/backmanhole.jpg | 632×405 | 가로형 (1.56:1) | 흰색 |  | 예 |  |
+| 뒷맨홀 (backmanhole) | 제품사진 | products/vc/etc/backmanhole.jpg | vc/etc/backmanhole.jpg | 1200×1200 | 정사각형 | 흰색 |  | 예 |  |
 | 뒷맨홀 (backmanhole) | 외관도 | products/vc/etc/backmanhole-outer.jpg | - | 2000×1414 | 가로형 (1.41:1) | 흰색 |  | 제외 |  |
-| 탈취기 (deodor) | 제품사진 | products/vc/etc/deodorizer.jpg | vc/etc/deodorizer.jpg | 475×324 | 가로형 (1.47:1) | 흰색 |  | 예 |  |
+| 탈취기 (deodor) | 제품사진 | products/vc/etc/deodorizer.jpg | vc/etc/deodorizer.jpg | 1098×1098 | 정사각형 | 흰색 |  | 예 |  |
 | 탈취기 (deodor) | 외관도 | products/vc/etc/deodorizer-outer.jpg | - | - | - | - | **예** | 제외 |  |
-| 메인맨홀 (manhole) | 제품사진 | products/vc/etc/manhole.jpg | vc/etc/manhole.jpg | 1594×792 | 가로형 (2.01:1) | 흰색 |  | 예 |  |
-| 메인맨홀 (manhole) | 제품사진 | products/vc/etc/manhole-sus.jpg | vc/etc/manhole-sus.jpg | 751×850 | 세로형 (1:1.13) | 흰색 |  | 예 |  |
+| 메인맨홀 (manhole) | 제품사진 | products/vc/etc/manhole.jpg | vc/etc/manhole.jpg | 1200×1200 | 정사각형 | 흰색 |  | 예 |  |
+| 메인맨홀 (manhole) | 제품사진 | products/vc/etc/manhole-sus.jpg | vc/etc/manhole-sus.jpg | 1200×1200 | 정사각형 | 흰색 |  | 예 |  |
 | 메인맨홀 (manhole) | 외관도 | products/vc/etc/manhole-outer.jpg | - | 2000×1414 | 가로형 (1.41:1) | 흰색 |  | 제외 |  |
-| 오일여과기 (oilsep) | 제품사진 | products/vc/etc/oilfilter-65a.jpg | vc/etc/oilfilter-65a.jpg | 518×405 | 가로형 (1.28:1) | 흰색 |  | 예 |  |
-| 오일여과기 (oilsep) | 제품사진 | products/vc/etc/oilfilter-50a.jpg | vc/etc/oilfilter-50a.jpg | 518×405 | 가로형 (1.28:1) | 흰색 |  | 예 |  |
-| 오일여과기 (oilsep) | 제품사진 | products/vc/etc/oilfilter-65a-sus.jpg | vc/etc/oilfilter-65a-sus.jpg | - | - | - | **예** | 예 |  |
+| 오일여과기 (oilsep) | 제품사진 | products/vc/etc/oilfilter-65a.jpg | vc/etc/oilfilter-65a.jpg | 518×405 | 가로형 (1.28:1) | 흰색 |  | 예 | 이번 반영분에 없음(기존 저해상도 사진 유지) |
+| 오일여과기 (oilsep) | 제품사진 | products/vc/etc/oilfilter-50a.jpg | vc/etc/oilfilter-50a.jpg | 1200×1200 | 정사각형 | 흰색 |  | 예 |  |
+| 오일여과기 (oilsep) | 제품사진 | products/vc/etc/oilfilter-65a-sus.jpg | vc/etc/oilfilter-65a-sus.jpg | - | - | - | **예** | 예 | 이번 반영분에 없음(계속 "사진 준비중") |
 | 오일여과기 (oilsep) | 외관도 | products/vc/etc/oilfilter-65a-outer.jpg | - | 2000×1414 | 가로형 (1.41:1) | 흰색 |  | 제외 |  |
 | 오일여과기 (oilsep) | 외관도 | products/vc/etc/oilfilter-50a-outer.jpg | - | 2000×1414 | 가로형 (1.41:1) | 흰색 |  | 제외 |  |
-| 오일통 (oiltank) | 제품사진 | products/vc/etc/oiltank-65a.jpg | vc/etc/oiltank-65a.jpg | 1793×1263 | 가로형 (1.42:1) | 흰색 |  | 예 |  |
-| 오일통 (oiltank) | 제품사진 | products/vc/etc/oiltank-50a.jpg | vc/etc/oiltank-50a.jpg | 764×1028 | 세로형 (1:1.35) | 흰색 |  | 예 |  |
-| 오일통 (oiltank) | 제품사진 | products/vc/etc/oiltank-65a-sus.jpg | vc/etc/oiltank-65a-sus.jpg | 822×651 | 가로형 (1.26:1) | 흰색 |  | 예 |  |
+| 오일통 (oiltank) | 제품사진 | products/vc/etc/oiltank-65a.jpg | vc/etc/oiltank-65a.jpg | 1200×1200 | 정사각형 | 흰색 |  | 예 |  |
+| 오일통 (oiltank) | 제품사진 | products/vc/etc/oiltank-50a.jpg | vc/etc/oiltank-50a.jpg | 1200×1200 | 정사각형 | 흰색 |  | 예 |  |
+| 오일통 (oiltank) | 제품사진 | products/vc/etc/oiltank-65a-sus.jpg | vc/etc/oiltank-65a-sus.jpg | 1200×1200 | 정사각형 | 흰색 |  | 예 |  |
 | 오일통 (oiltank) | 외관도 | products/vc/etc/oiltank-65a-outer.jpg | - | 2000×1414 | 가로형 (1.41:1) | 흰색 |  | 제외 |  |
 | 오일통 (oiltank) | 외관도 | products/vc/etc/oiltank-50a-outer.jpg | - | 2000×1414 | 가로형 (1.41:1) | 흰색 |  | 제외 |  |
 
 에어클리너(airclean)는 제품사진과 외관도가 원래 같은 파일(`airclean.jpg`)을 참조했으나, 데이터에서 외관도(`specImg`) 참조를 제거해 화면에는 남은 `drawings[]`만 표시됩니다.
+
+`daeyang-photos/vc/etc/airclean.png`와 `airclean-65a-sus.png`는 원본이 완전히 동일한 파일(바이트 단위 일치)이라, `airclean.jpg`(카드 대표 이미지)와 `airclean-65a-sus.jpg`(SUS 65A 사진)도 같은 이미지로 반영됩니다.
 
 ## pump-fuel (유조차 펌프)
 
