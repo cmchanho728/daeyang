@@ -122,7 +122,7 @@ const metaOgImage = products[0] ? `${site.siteUrl}${products[0].img}` : undefine
                             data-lightbox-src={img.src}
                             data-lightbox-caption={(img.caption ?? img.alt) || `${p.name} 제품사진`}
                           >
-                            <span class="product-media-frame media-frame-square">
+                            <span class="product-media-frame">
                               <img src={img.src} alt={img.alt || `${p.name} 제품사진`} loading="lazy" />
                             </span>
                           </button>
@@ -130,7 +130,7 @@ const metaOgImage = products[0] ? `${site.siteUrl}${products[0].img}` : undefine
                         </figure>
                       ) : (
                         <figure class="spec-photo">
-                          <div class="no-image no-image-square"><p>사진 준비중</p></div>
+                          <div class="no-image"><p>사진 준비중</p></div>
                           {img.caption && <p class="product-media-caption">{img.caption}</p>}
                         </figure>
                       )
@@ -144,13 +144,13 @@ const metaOgImage = products[0] ? `${site.siteUrl}${products[0].img}` : undefine
                       data-lightbox-src={p.img}
                       data-lightbox-caption={`${p.name} 제품사진`}
                     >
-                      <span class="product-media-frame media-frame-square">
+                      <span class="product-media-frame">
                         <img src={p.img} alt={`${p.name} 제품사진`} loading="lazy" />
                       </span>
                     </button>
                   </figure>
                 ) : (
-                  <div class="no-image no-image-square"><p>사진 준비중</p></div>
+                  <div class="no-image"><p>사진 준비중</p></div>
                 )}
               </section>
 
@@ -286,9 +286,11 @@ const metaOgImage = products[0] ? `${site.siteUrl}${products[0].img}` : undefine
       background:transparent;
     }
 
+    /* 제품사진·외관도 액자는 같은 정사각 기준을 쓴다 — 그리드에서 두 컬럼 너비가 같으므로
+       (spec-content.three-panel의 1fr 1fr) 정사각으로 두면 높이도 자연히 맞는다. */
     .product-media-frame {
       width:100%;
-      height:160px;
+      aspect-ratio: 1 / 1;
       border:1px solid rgba(0,0,0,0.12);
       border-radius:12px;
       background:#fff;
@@ -304,12 +306,6 @@ const metaOgImage = products[0] ? `${site.siteUrl}${products[0].img}` : undefine
       object-fit:contain;
       background:#fff;
       display:block;
-    }
-
-    /* 제품사진 액자: 목록 카드와 같은 기준(정사각 + contain). 외관도 액자는 위 고정 높이 박스를 그대로 쓴다. */
-    .product-media-frame.media-frame-square {
-      height:auto;
-      aspect-ratio: 1 / 1;
     }
 
     .photo-grid {
@@ -358,22 +354,17 @@ const metaOgImage = products[0] ? `${site.siteUrl}${products[0].img}` : undefine
       object-fit:contain;
     }
 
+    /* "사진 준비중"/"외관도 준비중" 박스도 액자와 같은 정사각 기준. */
     .no-image {
       display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
-      height: 160px;
+      aspect-ratio: 1 / 1;
       background: var(--surface);
       border: 1px solid rgba(0,0,0,0.12);
       border-radius: 12px;
       margin: 0;
-    }
-
-    /* 제품사진 자리의 "사진 준비중"도 같은 정사각 기준. 외관도 자리(.no-image 단독)는 고정 높이를 유지. */
-    .no-image.no-image-square {
-      height: auto;
-      aspect-ratio: 1 / 1;
     }
 
     .no-image p {
@@ -439,11 +430,6 @@ const metaOgImage = products[0] ? `${site.siteUrl}${products[0].img}` : undefine
       .drawing-grid {
         max-width: 200px;
       }
-
-      .product-media-frame,
-      .no-image {
-        height:140px;
-      }
     }
 
     @media (max-width:600px){
@@ -475,11 +461,6 @@ const metaOgImage = products[0] ? `${site.siteUrl}${products[0].img}` : undefine
 
       .drawing-grid {
         max-width: 180px;
-      }
-
-      .product-media-frame,
-      .no-image {
-        height:120px;
       }
     }
   </style>
